@@ -892,6 +892,1328 @@ button{
         padding:25px;
     }
 }
+/* ==========================================
+   MOBA BATTLE 2.0
+========================================== */
+
+.moba-land{
+    position:absolute;
+    inset:0;
+    width:100%;
+    height:100%;
+    overflow:hidden;
+    background:#07120f;
+    color:#fff;
+}
+
+
+/* ==========================================
+   TOP HUD
+========================================== */
+
+.moba-top{
+    position:absolute;
+    z-index:100;
+    top:0;
+    left:0;
+    right:0;
+
+    height:58px;
+
+    display:flex;
+    align-items:center;
+    justify-content:center;
+
+    background:
+        linear-gradient(
+            180deg,
+            rgba(3,8,15,.95),
+            rgba(3,8,15,.68),
+            transparent
+        );
+
+    pointer-events:none;
+}
+
+.team-score{
+    position:absolute;
+
+    top:10px;
+
+    display:flex;
+    gap:12px;
+    align-items:center;
+
+    font-size:11px;
+    font-weight:800;
+    letter-spacing:1px;
+}
+
+.team-score strong{
+    font-size:22px;
+}
+
+.blue-team{
+    left:25px;
+    color:#76baff;
+}
+
+.red-team{
+    right:25px;
+    color:#ff7586;
+}
+
+.match-clock{
+    font-size:16px;
+    font-weight:900;
+
+    padding:6px 18px;
+
+    background:#050a11cc;
+
+    border:
+        1px solid
+        rgba(255,255,255,.25);
+
+    border-radius:6px;
+}
+
+.gold-counter{
+    position:absolute;
+    right:150px;
+
+    top:12px;
+
+    padding:7px 12px;
+
+    background:#070c14dd;
+
+    border:1px solid #c6a657;
+
+    border-radius:6px;
+
+    color:#f1d06b;
+
+    font-size:12px;
+}
+
+
+/* ==========================================
+   MAP
+========================================== */
+
+.moba-map{
+    position:absolute;
+
+    width:min(1200px,100vw);
+    height:100%;
+
+    left:50%;
+    top:0;
+
+    transform:translateX(-50%);
+
+    overflow:hidden;
+
+    background:
+
+        radial-gradient(
+            circle at 50% 45%,
+            #416746 0%,
+            #284d37 27%,
+            transparent 52%
+        ),
+
+        linear-gradient(
+            135deg,
+            #102d25,
+            #31593c 45%,
+            #162b30
+        );
+}
+
+
+/* TERRAIN */
+
+.terrain{
+    position:absolute;
+
+    border-radius:50%;
+
+    background:
+        radial-gradient(
+            circle,
+            #18372c,
+            #10251e 65%,
+            transparent 70%
+        );
+
+    opacity:.95;
+}
+
+.jungle-a{
+    width:300px;
+    height:220px;
+
+    left:18%;
+    top:18%;
+}
+
+.jungle-b{
+    width:280px;
+    height:230px;
+
+    right:18%;
+    bottom:18%;
+}
+
+.jungle-c{
+    width:200px;
+    height:180px;
+
+    right:15%;
+    top:20%;
+}
+
+
+/* ==========================================
+   LANES
+========================================== */
+
+.real-lane{
+    position:absolute;
+
+    height:12px;
+
+    border-radius:20px;
+
+    background:
+        linear-gradient(
+            90deg,
+            #a9a36c,
+            #ded394,
+            #a39b63
+        );
+
+    box-shadow:
+        0 0 7px
+        rgba(234,221,139,.5);
+
+    opacity:.85;
+}
+
+.top-lane{
+    width:76%;
+
+    left:11%;
+    top:22%;
+
+    transform:rotate(25deg);
+}
+
+.mid-lane{
+    width:88%;
+
+    left:6%;
+    top:50%;
+
+    transform:rotate(-28deg);
+}
+
+.bottom-lane{
+    width:76%;
+
+    left:11%;
+    bottom:22%;
+
+    transform:rotate(25deg);
+}
+
+
+/* ==========================================
+   BASE
+========================================== */
+
+.main-base{
+    position:absolute;
+
+    width:100px;
+    height:100px;
+
+    border-radius:50%;
+
+    display:flex;
+
+    flex-direction:column;
+
+    align-items:center;
+    justify-content:center;
+
+    font-size:9px;
+    font-weight:900;
+
+    z-index:5;
+}
+
+.blue-main-base{
+    left:3%;
+    bottom:8%;
+
+    border:4px solid #54aaff;
+
+    background:
+        radial-gradient(
+            circle,
+            #316c9d,
+            #0b1b35
+        );
+
+    box-shadow:
+        0 0 40px
+        #3295ff99;
+}
+
+.red-main-base{
+    right:3%;
+    top:8%;
+
+    border:4px solid #ff5f73;
+
+    background:
+        radial-gradient(
+            circle,
+            #9b3c4c,
+            #30101c
+        );
+
+    box-shadow:
+        0 0 40px
+        #ff435d99;
+}
+
+.base-core{
+    width:34px;
+    height:34px;
+
+    border-radius:50%;
+
+    border:3px solid #fff8;
+
+    margin-bottom:6px;
+}
+
+
+/* ==========================================
+   TOWERS
+========================================== */
+
+.tower{
+    position:absolute;
+
+    width:55px;
+    height:75px;
+
+    z-index:12;
+
+    display:flex;
+
+    flex-direction:column;
+
+    align-items:center;
+
+    justify-content:center;
+
+    font-size:9px;
+    font-weight:900;
+
+    transition:.3s;
+}
+
+.tower-core{
+    width:38px;
+    height:48px;
+
+    border-radius:
+        20px 20px 8px 8px;
+
+    border:3px solid;
+
+    background:
+        linear-gradient(
+            180deg,
+            #8897a8,
+            #263344
+        );
+
+    box-shadow:
+        0 0 20px
+        rgba(255,255,255,.2);
+}
+
+.tower-blue{
+    color:#7fc3ff;
+}
+
+.tower-blue .tower-core{
+    border-color:#61b3ff;
+    box-shadow:0 0 20px #3a9cff88;
+}
+
+.tower-red{
+    color:#ff7585;
+}
+
+.tower-red .tower-core{
+    border-color:#ff5e73;
+    box-shadow:0 0 20px #ff435d88;
+}
+
+.blue-tower-1{
+    left:22%;
+    bottom:27%;
+}
+
+.blue-tower-2{
+    left:12%;
+    bottom:37%;
+}
+
+.red-tower-1{
+    right:22%;
+    top:27%;
+}
+
+.red-tower-2{
+    right:12%;
+    top:37%;
+}
+
+.tower.destroyed{
+    opacity:.25;
+
+    transform:
+        scale(.75)
+        rotate(15deg);
+
+    filter:grayscale(1);
+}
+
+
+/* ==========================================
+   OBJECTIVES
+========================================== */
+
+.objective{
+    position:absolute;
+
+    width:110px;
+    height:110px;
+
+    z-index:15;
+
+    display:flex;
+
+    flex-direction:column;
+
+    align-items:center;
+
+    justify-content:center;
+
+    font-size:9px;
+    font-weight:900;
+}
+
+.turtle-objective{
+    left:47%;
+    top:27%;
+}
+
+.lord-objective{
+    left:46%;
+    top:58%;
+}
+
+.objective-ring{
+    position:absolute;
+
+    width:105px;
+    height:105px;
+
+    border-radius:50%;
+
+    border:
+        2px solid
+        rgba(90,189,255,.6);
+
+    animation:
+        objectivePulse
+        2s
+        infinite;
+}
+
+.lord-ring{
+    border-color:
+        rgba(212,118,255,.7);
+}
+
+@keyframes objectivePulse{
+
+    50%{
+        transform:scale(1.12);
+
+        opacity:.5;
+    }
+
+}
+
+.objective-monster{
+    position:relative;
+
+    z-index:2;
+
+    font-size:48px;
+
+    filter:
+        drop-shadow(
+            0 0 12px
+            rgba(255,255,255,.5)
+        );
+}
+
+.objective-hp{
+    position:relative;
+
+    z-index:3;
+
+    width:80px;
+    height:6px;
+
+    margin-top:3px;
+
+    background:#171c22;
+
+    border-radius:10px;
+
+    overflow:hidden;
+}
+
+.objective-hp div{
+    width:100%;
+    height:100%;
+
+    background:#e85e67;
+
+    transition:.3s;
+}
+
+.hidden-objective{
+    display:none;
+}
+
+
+/* ==========================================
+   BUFF
+========================================== */
+
+.buff{
+    position:absolute;
+
+    width:90px;
+    height:70px;
+
+    z-index:10;
+
+    display:flex;
+
+    flex-direction:column;
+
+    align-items:center;
+
+    justify-content:center;
+
+    font-size:8px;
+
+    border-radius:12px;
+
+    background:#071018cc;
+
+    border:1px solid #6f839c;
+}
+
+.blue-buff{
+    left:25%;
+    top:30%;
+}
+
+.red-buff{
+    right:25%;
+    bottom:30%;
+}
+
+.buff-icon{
+    font-size:30px;
+
+    margin-bottom:3px;
+}
+
+
+/* ==========================================
+   MINIONS
+========================================== */
+
+#minionLayer{
+    position:absolute;
+
+    inset:0;
+
+    z-index:20;
+
+    pointer-events:none;
+}
+
+.minion{
+    position:absolute;
+
+    width:36px;
+    height:48px;
+
+    display:flex;
+
+    flex-direction:column;
+
+    align-items:center;
+
+    justify-content:center;
+
+    transition:
+        left .12s linear,
+        top .12s linear;
+
+    font-size:25px;
+}
+
+.minion-name{
+    font-size:7px;
+    font-weight:bold;
+
+    white-space:nowrap;
+}
+
+.minion-hp{
+    width:32px;
+    height:4px;
+
+    background:#222;
+
+    border-radius:10px;
+
+    overflow:hidden;
+}
+
+.minion-hp div{
+    width:100%;
+    height:100%;
+
+    background:#56c779;
+}
+
+.enemy-minion .minion-hp div{
+    background:#e65768;
+}
+
+.minion.dead{
+    opacity:0;
+
+    transform:
+        scale(.3)
+        translateY(20px);
+}
+
+
+/* ==========================================
+   HEROES
+========================================== */
+
+.battle-unit{
+    position:absolute;
+
+    width:85px;
+    height:115px;
+
+    z-index:35;
+
+    display:flex;
+
+    flex-direction:column;
+
+    align-items:center;
+
+    justify-content:center;
+
+    user-select:none;
+}
+
+.your-player{
+    left:37%;
+    top:53%;
+}
+
+.enemy-player{
+    left:63%;
+    top:39%;
+}
+
+.unit-avatar{
+    width:65px;
+    height:65px;
+
+    border-radius:50%;
+
+    display:flex;
+
+    align-items:center;
+    justify-content:center;
+
+    font-size:40px;
+
+    border:3px solid;
+}
+
+.your-avatar{
+    background:
+        radial-gradient(
+            circle,
+            #5daaff,
+            #172f59
+        );
+
+    border-color:#6bbaff;
+
+    box-shadow:
+        0 0 22px
+        #3b9dff99;
+}
+
+.enemy-avatar{
+    background:
+        radial-gradient(
+            circle,
+            #ff6b7d,
+            #4a1724
+        );
+
+    border-color:#ff667a;
+
+    box-shadow:
+        0 0 22px
+        #ff435d99;
+}
+
+.unit-hp{
+    width:75px;
+    height:6px;
+
+    margin-bottom:3px;
+
+    background:#15191f;
+
+    border-radius:10px;
+
+    overflow:hidden;
+}
+
+.unit-hp div{
+    width:100%;
+    height:100%;
+
+    background:#52d47a;
+
+    transition:.25s;
+}
+
+.enemy-player .unit-hp div{
+    background:#f05265;
+}
+
+.unit-level{
+    position:absolute;
+
+    top:0;
+
+    padding:2px 5px;
+
+    border-radius:4px;
+
+    background:#050a10cc;
+
+    font-size:7px;
+}
+
+.unit-name{
+    margin-top:3px;
+
+    font-size:8px;
+    font-weight:900;
+}
+
+
+/* ==========================================
+   MESSAGE
+========================================== */
+
+.combat-message{
+    position:absolute;
+
+    z-index:100;
+
+    top:18%;
+
+    left:50%;
+
+    transform:
+        translateX(-50%)
+        translateY(-10px);
+
+    padding:9px 20px;
+
+    background:#030810dd;
+
+    border:
+        1px solid
+        rgba(255,255,255,.25);
+
+    border-radius:8px;
+
+    font-size:12px;
+    font-weight:900;
+
+    opacity:0;
+
+    transition:.25s;
+
+    pointer-events:none;
+}
+
+.combat-message.show{
+    opacity:1;
+
+    transform:
+        translateX(-50%)
+        translateY(0);
+}
+
+
+/* ==========================================
+   DAMAGE
+========================================== */
+
+.damage-number{
+    position:absolute;
+
+    z-index:150;
+
+    color:#ff6979;
+
+    font-size:23px;
+
+    font-weight:900;
+
+    pointer-events:none;
+
+    animation:
+        damageFloat
+        .8s
+        forwards;
+}
+
+@keyframes damageFloat{
+
+    from{
+        opacity:1;
+        transform:translateY(0);
+    }
+
+    to{
+        opacity:0;
+        transform:translateY(-45px);
+    }
+
+}
+
+
+/* ==========================================
+   JOYSTICK
+========================================== */
+
+.joystick-area{
+    position:absolute;
+
+    z-index:120;
+
+    left:25px;
+    bottom:35px;
+
+    width:145px;
+    height:145px;
+}
+
+.joystick{
+    position:relative;
+
+    width:125px;
+    height:125px;
+
+    border-radius:50%;
+
+    background:
+        radial-gradient(
+            circle,
+            rgba(100,150,190,.28),
+            rgba(5,12,20,.7)
+        );
+
+    border:
+        2px solid
+        rgba(180,215,240,.45);
+
+    box-shadow:
+        inset 0 0 25px #0008,
+        0 0 15px #0008;
+
+    touch-action:none;
+}
+
+.joystick-ring{
+    position:absolute;
+
+    inset:18px;
+
+    border:
+        1px solid
+        rgba(255,255,255,.18);
+
+    border-radius:50%;
+}
+
+.joystick-stick{
+    position:absolute;
+
+    width:55px;
+    height:55px;
+
+    left:35px;
+    top:35px;
+
+    border-radius:50%;
+
+    display:flex;
+
+    justify-content:center;
+    align-items:center;
+
+    background:
+        radial-gradient(
+            circle at 35% 30%,
+            #9fc4e8,
+            #315879
+        );
+
+    border:
+        2px solid
+        #a8c8e4;
+
+    color:#d9edff;
+
+    font-size:22px;
+
+    box-shadow:
+        0 4px 15px #0008;
+
+    touch-action:none;
+
+    transition:
+        left .08s,
+        top .08s;
+}
+
+.joystick-label{
+    display:block;
+
+    text-align:center;
+
+    margin-top:5px;
+
+    font-size:8px;
+
+    color:#c5d1df;
+
+    letter-spacing:2px;
+}
+
+
+/* ==========================================
+   COMBAT BUTTONS
+========================================== */
+
+.combat-controls{
+    position:absolute;
+
+    z-index:120;
+
+    right:25px;
+    bottom:30px;
+
+    width:230px;
+    height:180px;
+}
+
+.combat-button{
+    position:absolute;
+
+    width:65px;
+    height:65px;
+
+    border-radius:50%;
+
+    display:flex;
+
+    flex-direction:column;
+
+    align-items:center;
+    justify-content:center;
+
+    cursor:pointer;
+
+    color:#fff;
+
+    font-size:22px;
+
+    background:
+        radial-gradient(
+            circle at 35% 25%,
+            #5c7694,
+            #101b2a
+        );
+
+    border:
+        2px solid
+        #7891ad;
+
+    box-shadow:
+        0 5px 15px #0009;
+
+    transition:.15s;
+}
+
+.combat-button:hover{
+    transform:scale(1.08);
+}
+
+.combat-button:active{
+    transform:scale(.92);
+}
+
+.combat-button small{
+    font-size:7px;
+
+    margin-top:2px;
+
+    letter-spacing:.5px;
+}
+
+.attack-button{
+    width:82px;
+    height:82px;
+
+    right:0;
+    bottom:10px;
+
+    border-color:#f06c77;
+
+    background:
+        radial-gradient(
+            circle,
+            #a84756,
+            #2c1119
+        );
+}
+
+.skill-button{
+    right:75px;
+    bottom:0;
+
+    border-color:#e4c46c;
+
+    background:
+        radial-gradient(
+            circle,
+            #856e3b,
+            #281f11
+        );
+}
+
+.defend-button{
+    right:65px;
+    bottom:83px;
+
+    border-color:#67aaff;
+}
+
+.tower-button{
+    right:140px;
+    bottom:5px;
+
+    border-color:#bb8ce8;
+}
+
+.combat-button.cooldown{
+    filter:grayscale(1);
+
+    opacity:.45;
+
+    pointer-events:none;
+}
+
+
+/* ==========================================
+   BOTTOM INFO
+========================================== */
+
+.battle-info{
+    position:absolute;
+
+    z-index:120;
+
+    left:50%;
+
+    transform:translateX(-50%);
+
+    bottom:12px;
+
+    width:280px;
+
+    display:flex;
+
+    align-items:center;
+
+    gap:7px;
+
+    padding:6px 10px;
+
+    border-radius:7px;
+
+    background:#030811bb;
+
+    border:
+        1px solid
+        rgba(255,255,255,.16);
+
+    font-size:8px;
+}
+
+.bottom-hp{
+    width:100px;
+    height:7px;
+
+    background:#1a2028;
+
+    border-radius:10px;
+
+    overflow:hidden;
+}
+
+.bottom-hp div{
+    width:100%;
+    height:100%;
+
+    background:
+        linear-gradient(
+            90deg,
+            #35c873,
+            #74ed91
+        );
+
+    transition:.25s;
+}
+
+
+/* ==========================================
+   MINI MAP
+========================================== */
+
+.mini-map{
+    position:absolute;
+
+    z-index:130;
+
+    top:70px;
+    left:20px;
+
+    width:145px;
+    height:145px;
+
+    border:
+        2px solid
+        #667f98;
+
+    border-radius:9px;
+
+    background:
+        linear-gradient(
+            135deg,
+            #1b4436,
+            #294c37,
+            #1c3440
+        );
+
+    box-shadow:
+        0 8px 25px #0009;
+
+    overflow:hidden;
+}
+
+.mini-lane{
+    position:absolute;
+
+    height:4px;
+
+    background:#aaa269;
+
+    border-radius:10px;
+}
+
+.lane-one{
+    width:80%;
+    left:10%;
+    top:22%;
+    transform:rotate(25deg);
+}
+
+.lane-two{
+    width:85%;
+    left:7%;
+    top:50%;
+    transform:rotate(-28deg);
+}
+
+.lane-three{
+    width:80%;
+    left:10%;
+    bottom:22%;
+    transform:rotate(25deg);
+}
+
+.mini-base{
+    position:absolute;
+
+    width:16px;
+    height:16px;
+
+    border-radius:50%;
+
+    z-index:3;
+}
+
+.blue-mini{
+    left:5px;
+    bottom:5px;
+
+    background:#4ba9ff;
+}
+
+.red-mini{
+    right:5px;
+    top:5px;
+
+    background:#ff566d;
+}
+
+.mini-dot{
+    position:absolute;
+
+    width:7px;
+    height:7px;
+
+    border-radius:50%;
+
+    z-index:5;
+}
+
+.player-dot{
+    background:#8bc8ff;
+
+    left:40%;
+    top:58%;
+}
+
+.enemy-dot{
+    background:#ff7383;
+
+    left:65%;
+    top:38%;
+}
+
+
+/* ==========================================
+   RESPONSIVE
+========================================== */
+
+@media(max-width:700px){
+
+    .mini-map{
+        width:90px;
+        height:90px;
+
+        top:65px;
+        left:10px;
+    }
+
+    .gold-counter{
+        right:20px;
+        top:45px;
+    }
+
+    .team-score{
+        font-size:8px;
+    }
+
+    .team-score strong{
+        font-size:16px;
+    }
+
+    .combat-controls{
+        right:8px;
+        bottom:20px;
+
+        transform:
+            scale(.82);
+
+        transform-origin:
+            bottom right;
+    }
+
+    .joystick-area{
+        left:10px;
+        bottom:20px;
+
+        transform:
+            scale(.82);
+
+        transform-origin:
+            bottom left;
+    }
+
+    .battle-info{
+        width:220px;
+
+        bottom:5px;
+
+        transform:
+            translateX(-50%)
+            scale(.8);
+    }
+
+}
 </style>
 </head>
 
@@ -1148,8 +2470,8 @@ No hero selected
 <div class="team-slot">Sasa</div>
 <div class="team-slot">Kicau Mania</div>
 <div class="team-slot">My Mine Gueh</div>
-<div class="team-slot">jaki jamet</div>
-<div class="team-slot">kentut monyet goreng</div>
+<div class="team-slot">Lau siape mpruy</div>
+<div class="team-slot">Maas maf</div>
 </div>
 
 </div>
@@ -1324,111 +2646,341 @@ ENTER LAND
 </section>
 
 
-<!-- LAND -->
+<!-- ================================
+     LAND 2.0
+================================ -->
+
 <section class="screen" id="land">
+
+<div class="moba-land">
+
+    <!-- TOP HUD -->
+    <div class="moba-top">
+
+        <div class="team-score blue-team">
+            <span>YOU × ME</span>
+            <strong id="landScore">0</strong>
+        </div>
+
+        <div class="match-clock" id="battleClock">
+            00:00
+        </div>
+
+        <div class="team-score red-team">
+            <strong>0</strong>
+            <span>ENEMY</span>
+        </div>
+
+        <div class="gold-counter">
+            💰 <span id="landGold">500</span>
+        </div>
+
+    </div>
+
+
+    <!-- MINI MAP -->
+    <div class="mini-map">
+
+        <div class="mini-base blue-mini"></div>
+        <div class="mini-base red-mini"></div>
+
+        <div class="mini-lane lane-one"></div>
+        <div class="mini-lane lane-two"></div>
+        <div class="mini-lane lane-three"></div>
+
+        <div class="mini-dot player-dot" id="miniPlayer"></div>
+        <div class="mini-dot enemy-dot" id="miniEnemy"></div>
+
+    </div>
+
+
+    <!-- MAP -->
+    <div class="moba-map" id="mobaMap">
+
+        <!-- TERRAIN -->
+        <div class="terrain jungle-a"></div>
+        <div class="terrain jungle-b"></div>
+        <div class="terrain jungle-c"></div>
+
+        <!-- LANES -->
+        <div class="real-lane top-lane"></div>
+        <div class="real-lane mid-lane"></div>
+        <div class="real-lane bottom-lane"></div>
+
+
+        <!-- BLUE BASE -->
+        <div class="main-base blue-main-base">
+            <div class="base-core"></div>
+            <span>BASE</span>
+        </div>
+
+
+        <!-- ENEMY BASE -->
+        <div class="main-base red-main-base">
+            <div class="base-core"></div>
+            <span>ENEMY BASE</span>
+        </div>
+
+
+        <!-- TOWERS -->
+        <div class="tower tower-blue blue-tower-1"
+             id="blueTower1">
+            <div class="tower-core"></div>
+            <span>T1</span>
+        </div>
+
+        <div class="tower tower-blue blue-tower-2"
+             id="blueTower2">
+            <div class="tower-core"></div>
+            <span>T2</span>
+        </div>
+
+        <div class="tower tower-red red-tower-1"
+             id="redTower1">
+            <div class="tower-core"></div>
+            <span>T1</span>
+        </div>
+
+        <div class="tower tower-red red-tower-2"
+             id="redTower2">
+            <div class="tower-core"></div>
+            <span>T2</span>
+        </div>
+
+
+        <!-- TURTLE -->
+        <div class="objective turtle-objective"
+             id="turtle">
+
+            <div class="objective-ring"></div>
+            <div class="objective-monster">🐢</div>
+
+            <div class="objective-hp">
+                <div id="turtleHp"></div>
+            </div>
+
+            <span>TURTLE</span>
+
+        </div>
+
+
+        <!-- LORD -->
+        <div class="objective lord-objective hidden-objective"
+             id="lord">
+
+            <div class="objective-ring lord-ring"></div>
+            <div class="objective-monster">👑</div>
+
+            <div class="objective-hp">
+                <div id="lordHp"></div>
+            </div>
+
+            <span>LORD</span>
+
+        </div>
+
+
+        <!-- BLUE BUFF -->
+        <div class="buff blue-buff"
+             id="blueBuff">
+
+            <div class="buff-icon">🔵</div>
+            <span>BLUE BUFF</span>
+
+        </div>
+
+
+        <!-- RED BUFF -->
+        <div class="buff red-buff"
+             id="redBuff">
+
+            <div class="buff-icon">🔴</div>
+            <span>RED BUFF</span>
+
+        </div>
+
+
+        <!-- MINIONS -->
+        <div id="minionLayer"></div>
+
+
+        <!-- ENEMY HERO -->
+        <div class="battle-unit enemy-player"
+             id="enemyPlayer">
+
+            <div class="unit-hp">
+                <div id="enemyPlayerHp"></div>
+            </div>
+
+            <div class="unit-level">
+                LV. 5
+            </div>
+
+            <div class="unit-avatar enemy-avatar">
+                ⚔️
+            </div>
+
+            <div class="unit-name">
+                ENEMY
+            </div>
+
+        </div>
+
+
+        <!-- YOUR HERO -->
+        <div class="battle-unit your-player"
+             id="yourPlayer">
+
+            <div class="unit-hp">
+                <div id="yourPlayerHp"></div>
+            </div>
+
+            <div class="unit-level">
+                LV. 5
+            </div>
+
+            <div class="unit-avatar your-avatar">
+                ⚔️
+            </div>
+
+            <div class="unit-name">
+                YOU
+            </div>
+
+        </div>
+
+
+        <!-- COMBAT MESSAGE -->
+        <div class="combat-message"
+             id="combatMessage">
+        </div>
+
+
+        <!-- FLOATING DAMAGE -->
+        <div id="damageLayer"></div>
+
+    </div>
+
+
+    <!-- LEFT JOYSTICK -->
+    <div class="joystick-area">
+
+        <div class="joystick"
+             id="joystick">
+
+            <div class="joystick-ring"></div>
+
+            <div class="joystick-stick"
+                 id="joystickStick">
+                ●
+            </div>
+
+        </div>
+
+        <span class="joystick-label">
+            MOVE
+        </span>
+
+    </div>
+
+
+    <!-- RIGHT COMBAT BUTTONS -->
+    <div class="combat-controls">
+
+        <button class="combat-button tower-button"
+                onclick="battleAction('tower')">
+
+            🏰
+            <small>TOWER</small>
+
+        </button>
+
+
+        <button class="combat-button defend-button"
+                onclick="battleAction('defend')">
+
+            🛡️
+            <small>DEFEND</small>
+
+        </button>
+
+
+        <button class="combat-button skill-button"
+                id="skillButton"
+                onclick="battleAction('skill')">
+
+            ✦
+            <small id="skillText">
+                SKILL
+            </small>
+
+        </button>
+
+
+        <button class="combat-button attack-button"
+                onclick="battleAction('attack')">
+
+            ⚔️
+            <small>ATTACK</small>
+
+        </button>
+
+    </div>
+
+
+    <!-- BOTTOM INFO -->
+    <div class="battle-info">
+
+        <span>
+            HP
+        </span>
+
+        <div class="bottom-hp">
+            <div id="bottomHp"></div>
+        </div>
+
+        <span id="battleObjective">
+            Destroy enemy towers
+        </span>
+
+    </div>
+
+</div>
+
+</section>
+
+
+<!-- ================================
+     VICTORY
+================================ -->
+
+<section class="screen" id="victory">
+
 <div class="game-bg"></div>
 
 <div class="content">
 
-<div class="map-wrap">
-
-<div class="mini">BATTLEFIELD</div>
-
-<div class="map">
-
-<div class="lane top"></div>
-<div class="lane mid"></div>
-<div class="lane bottom"></div>
-
-<div class="base ally-base"></div>
-<div class="base enemy-base"></div>
-
-<div class="map-label" style="top:12%;left:5%;">
-EXP LANE
+<div class="victory-symbol">
+    ✦
 </div>
 
-<div class="map-label" style="top:46%;left:43%;">
-MID LANE
+<div class="mini">
+    MATCH RESULT
 </div>
 
-<div class="map-label" style="bottom:12%;right:5%;">
-GOLD LANE
+<div class="title">
+    VICTORY
 </div>
 
-</div>
+<p id="finalScore"
+   style="font-size:24px;margin-top:12px;">
+    1 — 0
+</p>
 
-<button class="btn" onclick="startBattle()">
-ENTER BATTLE
+<button class="btn"
+        onclick="go('reward')">
+    TAP TO CONTINUE
 </button>
-
-</div>
-
-</div>
-</section>
-
-
-<!-- BATTLE -->
-<section class="screen" id="battle">
-
-<div class="battle">
-
-<div class="hud">
-
-<div class="hud-box">
-ZAKY &nbsp; <span id="score">0</span> — 0 &nbsp; ENEMY
-</div>
-
-<div class="hud-box">
-GOLD: <span id="gold">500</span>
-</div>
-
-</div>
-
-<div class="minimap"></div>
-
-<div class="battle-hero" id="battlePlayer">
-
-<div class="hp-container">
-<div class="hp-bar player-hp" id="playerHp"></div>
-</div>
-
-⚔
-
-</div>
-
-<div class="enemy-hero" id="enemyHero">
-
-<div class="hp-container">
-<div class="hp-bar" id="enemyHp"></div>
-</div>
-
-☄
-
-</div>
-
-<div class="battle-message" id="battleMessage">
-READY?
-</div>
-
-<div class="battle-actions">
-
-<button class="action attack" onclick="attackEnemy()">
-⚔
-</button>
-
-<button class="action skill" onclick="skillEnemy()">
-✦
-</button>
-
-<button class="action defend" onclick="defend()">
-🛡
-</button>
-
-<button class="action tower" onclick="pushTower()">
-🏰
-</button>
-
-</div>
 
 </div>
 
@@ -2051,176 +3603,865 @@ function startLoading(){
 }
 
 
-/* ================================
-   BATTLE VARIABLES
-================================ */
+/* ==========================================
+   BATTLE 2.0
+========================================== */
 
-let enemyHP = 100;
-let playerHP = 100;
-let score = 0;
-let gold = 500;
-let defending = false;
 let battleStarted = false;
 
+let playerHP = 100;
+let enemyHP = 100;
 
-/* ================================
+let gold = 500;
+
+let score = 0;
+
+let battleSeconds = 0;
+
+let battleClockInterval = null;
+
+let skillCooldown = false;
+
+let turtleHP = 100;
+let lordHP = 180;
+
+let tower1HP = 100;
+let tower2HP = 100;
+
+let enemyTower1HP = 100;
+let enemyTower2HP = 100;
+
+let playerX = 37;
+let playerY = 53;
+
+let enemyX = 63;
+let enemyY = 39;
+
+let minions = [];
+
+let minionWave = 0;
+
+let turtleAlive = true;
+let lordAlive = false;
+
+let blueBuffActive = false;
+let redBuffActive = false;
+
+
+/* ==========================================
    START BATTLE
-================================ */
+========================================== */
 
 function startBattle(){
 
-    enemyHP = 100;
-    playerHP = 100;
-    score = 0;
-    gold = 500;
-    defending = false;
     battleStarted = true;
+
+    playerHP = 100;
+    enemyHP = 100;
+
+    gold = 500;
+
+    score = 0;
+
+    battleSeconds = 0;
+
+    tower1HP = 100;
+    tower2HP = 100;
+
+    enemyTower1HP = 100;
+    enemyTower2HP = 100;
+
+    turtleHP = 100;
+    lordHP = 180;
+
+    turtleAlive = true;
+    lordAlive = false;
+
+    blueBuffActive = false;
+    redBuffActive = false;
+
+    playerX = 37;
+    playerY = 53;
+
+    enemyX = 63;
+    enemyY = 39;
+
+    minionWave = 0;
+
+    document
+        .getElementById("turtle")
+        .classList.remove("hidden-objective");
+
+    document
+        .getElementById("lord")
+        .classList.add("hidden-objective");
+
+    document
+        .getElementById("blueBuff")
+        .style.opacity = "1";
+
+    document
+        .getElementById("redBuff")
+        .style.opacity = "1";
+
+    resetTowerVisuals();
+
+    clearMinions();
+
+    go("land");
 
     updateBattleUI();
 
-    go("battle");
+    startBattleClock();
 
-    showMessage(
-        "ENEMY DETECTED ⚔"
-    );
+    spawnWave();
 
-}
-
-
-/* ================================
-   ATTACK
-================================ */
-
-function attackEnemy(){
-
-    if(!battleStarted){
-        return;
-    }
-
-    let damage =
-        Math.floor(
-            Math.random() * 11
-        ) + 10;
-
-    enemyHP -= damage;
-
-    gold += 25;
-
-    showDamage(
-        damage,
-        "enemy"
-    );
-
-    showMessage(
-        "BASIC ATTACK! -" +
-        damage +
-        " HP"
-    );
-
-    enemyCounterAttack();
-
-    checkBattle();
-
-}
-
-
-/* ================================
-   SKILL
-================================ */
-
-function skillEnemy(){
-
-    if(!battleStarted){
-        return;
-    }
-
-    let damage =
-        Math.floor(
-            Math.random() * 16
-        ) + 20;
-
-    enemyHP -= damage;
-
-    gold += 40;
-
-    showDamage(
-        damage,
-        "enemy"
-    );
-
-    showMessage(
-        "SKILL HIT! -" +
-        damage +
-        " HP 💥"
-    );
-
-    enemyCounterAttack();
-
-    checkBattle();
-
-}
-
-
-/* ================================
-   DEFEND
-================================ */
-
-function defend(){
-
-    if(!battleStarted){
-        return;
-    }
-
-    defending = true;
-
-    showMessage(
-        "DEFEND! 🛡 DAMAGE REDUCED"
+    showBattleMessage(
+        "WELCOME TO THE BATTLEFIELD ⚔️"
     );
 
     setTimeout(()=>{
-        defending = false;
+        showBattleMessage(
+            "MINION WAVE HAS SPAWNED"
+        );
     },2000);
-
-    enemyCounterAttack();
-
-    checkBattle();
 
 }
 
 
-/* ================================
-   PUSH TOWER
-================================ */
+/* ==========================================
+   CLOCK
+========================================== */
 
-function pushTower(){
+function startBattleClock(){
+
+    clearInterval(battleClockInterval);
+
+    battleClockInterval =
+        setInterval(()=>{
+
+            if(!battleStarted){
+                return;
+            }
+
+            battleSeconds++;
+
+            let minutes =
+                Math.floor(
+                    battleSeconds / 60
+                );
+
+            let seconds =
+                battleSeconds % 60;
+
+            document
+                .getElementById("battleClock")
+                .textContent =
+                    String(minutes)
+                    .padStart(2,"0")
+                    +
+                    ":"
+                    +
+                    String(seconds)
+                    .padStart(2,"0");
+
+        },1000);
+
+}
+
+
+/* ==========================================
+   MINION WAVE
+========================================== */
+
+function spawnWave(){
 
     if(!battleStarted){
         return;
     }
 
-    let damage =
-        Math.floor(
-            Math.random() * 9
-        ) + 7;
+    minionWave++;
 
-    gold += 60;
+    createMinionWave();
 
-    showMessage(
-        "TOWER HIT! 🏰 +" +
-        damage +
-        " GOLD"
-    );
+    setTimeout(()=>{
 
-    enemyCounterAttack();
+        if(
+            battleStarted &&
+            minionWave < 15
+        ){
+            spawnWave();
+        }
 
-    checkBattle();
+    },9000);
 
 }
 
 
-/* ================================
-   ENEMY ATTACK
-================================ */
+function createMinionWave(){
+
+    const types = [
+        "⚔️",
+        "⚔️",
+        "🏹",
+        "⚔️",
+        "🛡️"
+    ];
+
+    types.forEach(
+        (icon,index)=>{
+
+            createMinion(
+                "ally",
+                icon,
+                index
+            );
+
+            setTimeout(()=>{
+
+                createMinion(
+                    "enemy",
+                    icon,
+                    index
+                );
+
+            },1500 + index * 250);
+
+        }
+    );
+
+}
+
+
+function createMinion(
+    team,
+    icon,
+    index
+){
+
+    const layer =
+        document.getElementById(
+            "minionLayer"
+        );
+
+    const element =
+        document.createElement("div");
+
+    element.className =
+        "minion " +
+        (
+            team === "enemy"
+            ?
+            "enemy-minion"
+            :
+            "ally-minion"
+        );
+
+    element.innerHTML = `
+        <div class="minion-hp">
+            <div></div>
+        </div>
+
+        <div>
+            ${icon}
+        </div>
+
+        <div class="minion-name">
+            MINION
+        </div>
+    `;
+
+    layer.appendChild(element);
+
+    const minion = {
+
+        element:element,
+
+        team:team,
+
+        x:
+            team === "ally"
+            ?
+            12 - index * 1.5
+            :
+            88 + index * 1.5,
+
+        y:
+            51 + (index % 2) * 2,
+
+        hp:100,
+
+        alive:true
+
+    };
+
+    minions.push(minion);
+
+    moveMinion(minion);
+
+}
+
+
+/* ==========================================
+   MINION MOVEMENT
+========================================== */
+
+function moveMinion(minion){
+
+    if(
+        !battleStarted ||
+        !minion.alive
+    ){
+        return;
+    }
+
+    const targetX =
+        minion.team === "ally"
+        ?
+        88
+        :
+        12;
+
+    const direction =
+        minion.team === "ally"
+        ?
+        1
+        :
+        -1;
+
+    minion.x +=
+        direction * .7;
+
+    minion.element.style.left =
+        minion.x + "%";
+
+    minion.element.style.top =
+        minion.y + "%";
+
+
+    const enemy =
+        minions.find(
+            other =>
+                other.alive &&
+                other.team !== minion.team &&
+                Math.abs(
+                    other.x - minion.x
+                ) < 7
+        );
+
+    if(enemy){
+
+        minionFight(
+            minion,
+            enemy
+        );
+
+    }
+
+
+    if(
+        minion.team === "ally" &&
+        minion.x >= 75
+    ){
+
+        attackEnemyTower(
+            minion
+        );
+
+    }
+
+
+    if(
+        minion.team === "enemy" &&
+        minion.x <= 25
+    ){
+
+        attackPlayerTower(
+            minion
+        );
+
+    }
+
+
+    setTimeout(
+        ()=>{
+            moveMinion(minion);
+        },
+        500
+    );
+
+}
+
+
+/* ==========================================
+   MINION VS MINION
+========================================== */
+
+function minionFight(
+    first,
+    second
+){
+
+    if(
+        !first.alive ||
+        !second.alive
+    ){
+        return;
+    }
+
+    first.hp -= 8;
+
+    second.hp -= 8;
+
+    updateMinionHP(first);
+
+    updateMinionHP(second);
+
+    if(first.hp <= 0){
+        killMinion(first);
+    }
+
+    if(second.hp <= 0){
+        killMinion(second);
+    }
+
+}
+
+
+function updateMinionHP(minion){
+
+    const hp =
+        minion.element
+            .querySelector(
+                ".minion-hp div"
+            );
+
+    hp.style.width =
+        Math.max(
+            minion.hp,
+            0
+        ) + "%";
+
+}
+
+
+function killMinion(minion){
+
+    minion.alive = false;
+
+    minion.element
+        .classList
+        .add("dead");
+
+    gold += 15;
+
+    updateBattleUI();
+
+}
+
+
+/* ==========================================
+   HERO MOVEMENT
+========================================== */
+
+function movePlayer(dx,dy){
+
+    if(!battleStarted){
+        return;
+    }
+
+    playerX += dx;
+    playerY += dy;
+
+    playerX =
+        Math.max(
+            5,
+            Math.min(
+                92,
+                playerX
+            )
+        );
+
+    playerY =
+        Math.max(
+            10,
+            Math.min(
+                88,
+                playerY
+            )
+        );
+
+    const hero =
+        document.getElementById(
+            "yourPlayer"
+        );
+
+    hero.style.left =
+        playerX + "%";
+
+    hero.style.top =
+        playerY + "%";
+
+    updateMiniMap();
+
+    checkNearbyObjectives();
+
+}
+
+
+/* ==========================================
+   JOYSTICK
+========================================== */
+
+const joystick =
+    document.getElementById(
+        "joystick"
+    );
+
+const joystickStick =
+    document.getElementById(
+        "joystickStick"
+    );
+
+let joystickActive = false;
+
+
+function joystickMove(
+    clientX,
+    clientY
+){
+
+    const rect =
+        joystick.getBoundingClientRect();
+
+    const centerX =
+        rect.left +
+        rect.width / 2;
+
+    const centerY =
+        rect.top +
+        rect.height / 2;
+
+    let dx =
+        clientX - centerX;
+
+    let dy =
+        clientY - centerY;
+
+    const distance =
+        Math.sqrt(
+            dx * dx +
+            dy * dy
+        );
+
+    const max =
+        35;
+
+    if(distance > max){
+
+        dx =
+            dx / distance * max;
+
+        dy =
+            dy / distance * max;
+
+    }
+
+    joystickStick.style.left =
+        (35 + dx) + "px";
+
+    joystickStick.style.top =
+        (35 + dy) + "px";
+
+
+    if(distance > 8){
+
+        movePlayer(
+            dx / 30,
+            dy / 30
+        );
+
+    }
+
+}
+
+
+joystick.addEventListener(
+    "pointerdown",
+    event=>{
+
+        joystickActive = true;
+
+        joystick.setPointerCapture(
+            event.pointerId
+        );
+
+        joystickMove(
+            event.clientX,
+            event.clientY
+        );
+
+    }
+);
+
+
+joystick.addEventListener(
+    "pointermove",
+    event=>{
+
+        if(
+            !joystickActive
+        ){
+            return;
+        }
+
+        joystickMove(
+            event.clientX,
+            event.clientY
+        );
+
+    }
+);
+
+
+joystick.addEventListener(
+    "pointerup",
+    ()=>{
+        joystickActive = false;
+
+        joystickStick.style.left =
+            "35px";
+
+        joystickStick.style.top =
+            "35px";
+    }
+);
+
+
+/* ==========================================
+   BATTLE ACTION
+========================================== */
+
+function battleAction(action){
+
+    if(!battleStarted){
+        return;
+    }
+
+    if(action === "attack"){
+        attackEnemyHero();
+    }
+
+    if(action === "skill"){
+        useSkill();
+    }
+
+    if(action === "defend"){
+        defendPlayer();
+    }
+
+    if(action === "tower"){
+        attackTowerManually();
+    }
+
+}
+
+
+/* ==========================================
+   BASIC ATTACK
+========================================== */
+
+function attackEnemyHero(){
+
+    const distance =
+        getDistance(
+            playerX,
+            playerY,
+            enemyX,
+            enemyY
+        );
+
+    if(distance > 18){
+
+        showBattleMessage(
+            "TOO FAR! MOVE CLOSER ⚔️"
+        );
+
+        return;
+    }
+
+    let damage =
+        12 +
+        Math.floor(
+            Math.random() * 10
+        );
+
+    if(redBuffActive){
+        damage += 8;
+    }
+
+    enemyHP -= damage;
+
+    gold += 10;
+
+    floatingDamage(
+        damage,
+        enemyX,
+        enemyY
+    );
+
+    showBattleMessage(
+        "BASIC ATTACK -" +
+        damage
+    );
+
+    enemyCounterAttack();
+
+    checkBattleEnd();
+
+}
+
+
+/* ==========================================
+   SKILL
+========================================== */
+
+function useSkill(){
+
+    if(skillCooldown){
+
+        showBattleMessage(
+            "SKILL ON COOLDOWN"
+        );
+
+        return;
+    }
+
+    const distance =
+        getDistance(
+            playerX,
+            playerY,
+            enemyX,
+            enemyY
+        );
+
+    if(distance > 25){
+
+        showBattleMessage(
+            "MOVE CLOSER TO USE SKILL"
+        );
+
+        return;
+    }
+
+    let damage = 30;
+
+    if(blueBuffActive){
+        damage += 10;
+    }
+
+    enemyHP -= damage;
+
+    gold += 30;
+
+    floatingDamage(
+        damage,
+        enemyX,
+        enemyY
+    );
+
+    showBattleMessage(
+        "SKILL HIT! -" +
+        damage +
+        " ✦"
+    );
+
+    skillCooldown = true;
+
+    const button =
+        document.getElementById(
+            "skillButton"
+        );
+
+    button.classList.add(
+        "cooldown"
+    );
+
+    let cooldown = 5;
+
+    const cooldownInterval =
+        setInterval(()=>{
+
+            cooldown--;
+
+            document
+                .getElementById(
+                    "skillText"
+                )
+                .textContent =
+                cooldown + "s";
+
+            if(cooldown <= 0){
+
+                clearInterval(
+                    cooldownInterval
+                );
+
+                skillCooldown = false;
+
+                button.classList.remove(
+                    "cooldown"
+                );
+
+                document
+                    .getElementById(
+                        "skillText"
+                    )
+                    .textContent =
+                    "SKILL";
+
+            }
+
+        },1000);
+
+    enemyCounterAttack();
+
+    checkBattleEnd();
+
+}
+
+
+/* ==========================================
+   DEFEND
+========================================== */
+
+function defendPlayer(){
+
+    showBattleMessage(
+        "SHIELD ACTIVE 🛡️"
+    );
+
+    const hero =
+        document.getElementById(
+            "yourPlayer"
+        );
+
+    hero.style.filter =
+        "drop-shadow(0 0 22px #67b7ff)";
+
+    setTimeout(()=>{
+
+        hero.style.filter =
+            "";
+
+    },3000);
+
+}
+
+
+/* ==========================================
+   ENEMY COUNTER
+========================================== */
 
 function enemyCounterAttack(){
 
@@ -2228,23 +4469,33 @@ function enemyCounterAttack(){
         return;
     }
 
-    let damage =
-        Math.floor(
-            Math.random() * 8
-        ) + 5;
+    const distance =
+        getDistance(
+            playerX,
+            playerY,
+            enemyX,
+            enemyY
+        );
 
-    if(defending){
-        damage =
-            Math.floor(
-                damage * .4
-            );
+    if(distance > 20){
+
+        moveEnemyCloser();
+
+        return;
     }
+
+    let damage =
+        7 +
+        Math.floor(
+            Math.random() * 6
+        );
 
     playerHP -= damage;
 
-    showDamage(
+    floatingDamage(
         damage,
-        "player"
+        playerX,
+        playerY
     );
 
     updateBattleUI();
@@ -2252,53 +4503,804 @@ function enemyCounterAttack(){
 }
 
 
-/* ================================
-   BATTLE CHECK
-================================ */
+/* ==========================================
+   ENEMY MOVEMENT
+========================================== */
 
-function checkBattle(){
+function moveEnemyCloser(){
+
+    if(enemyX > playerX){
+        enemyX -= 2;
+    }else{
+        enemyX += 2;
+    }
+
+    if(enemyY > playerY){
+        enemyY -= 1;
+    }else{
+        enemyY += 1;
+    }
+
+    updateEnemyPosition();
+
+}
+
+
+function updateEnemyPosition(){
+
+    const enemy =
+        document.getElementById(
+            "enemyPlayer"
+        );
+
+    enemy.style.left =
+        enemyX + "%";
+
+    enemy.style.top =
+        enemyY + "%";
+
+    updateMiniMap();
+
+}
+
+
+/* ==========================================
+   TOWER
+========================================== */
+
+function attackTowerManually(){
+
+    let tower = null;
+
+    let towerHP = 0;
+
+    if(
+        enemyTower1HP > 0 &&
+        playerX > 55
+    ){
+
+        tower =
+            document.getElementById(
+                "redTower1"
+            );
+
+        towerHP =
+            enemyTower1HP;
+
+    }else if(
+        enemyTower2HP > 0 &&
+        playerX > 65
+    ){
+
+        tower =
+            document.getElementById(
+                "redTower2"
+            );
+
+        towerHP =
+            enemyTower2HP;
+
+    }else{
+
+        showBattleMessage(
+            "MOVE CLOSER TO ENEMY TOWER 🏰"
+        );
+
+        return;
+
+    }
+
+    const damage = 10;
+
+    if(
+        tower.id === "redTower1"
+    ){
+
+        enemyTower1HP -= damage;
+
+    }else{
+
+        enemyTower2HP -= damage;
+
+    }
+
+    gold += 20;
+
+    showBattleMessage(
+        "TOWER HIT! 🏰"
+    );
+
+    if(
+        enemyTower1HP <= 0
+    ){
+
+        tower
+            .classList
+            .add("destroyed");
+
+        showBattleMessage(
+            "ENEMY TOWER 1 DESTROYED!"
+        );
+
+        unlockLord();
+
+    }
+
+    if(
+        enemyTower2HP <= 0
+    ){
+
+        tower
+            .classList
+            .add("destroyed");
+
+        showBattleMessage(
+            "ENEMY TOWER 2 DESTROYED!"
+        );
+
+        unlockLord();
+
+    }
 
     updateBattleUI();
 
-    if(enemyHP <= 0){
+}
 
-        enemyHP = 0;
-        score++;
 
-        battleStarted = false;
+/* ==========================================
+   MINION TOWER ATTACK
+========================================== */
 
-        document
-        .getElementById("finalScore")
-        .textContent =
-            score + " — 0";
+function attackEnemyTower(minion){
 
-        setTimeout(()=>{
-            go("victory");
-        },1000);
+    if(
+        enemyTower1HP > 0 &&
+        minion.x > 75
+    ){
 
-        return;
-    }
+        enemyTower1HP -= 3;
 
-    if(playerHP <= 0){
+        if(
+            enemyTower1HP <= 0
+        ){
 
-        playerHP = 0;
+            document
+                .getElementById(
+                    "redTower1"
+                )
+                .classList
+                .add("destroyed");
 
-        battleStarted = false;
-
-        setTimeout(()=>{
-
-            alert(
-                "Defeated 😭 Tapi namanya juga ranked. Coba lagi."
+            showBattleMessage(
+                "TOWER 1 DESTROYED 🏰"
             );
 
-            go("land");
+            unlockLord();
 
-        },700);
+        }
+
+    }
+
+    else if(
+        enemyTower2HP > 0 &&
+        minion.x > 82
+    ){
+
+        enemyTower2HP -= 3;
+
+        if(
+            enemyTower2HP <= 0
+        ){
+
+            document
+                .getElementById(
+                    "redTower2"
+                )
+                .classList
+                .add("destroyed");
+
+            showBattleMessage(
+                "TOWER 2 DESTROYED 🏰"
+            );
+
+            unlockLord();
+
+        }
+
+    }
+
+    updateBattleUI();
+
+}
+
+
+/* ==========================================
+   PLAYER BASE DEFENSE
+========================================== */
+
+function attackPlayerTower(minion){
+
+    if(
+        !document
+            .getElementById(
+                "blueTower1"
+            )
+            .classList
+            .contains("destroyed")
+    ){
+
+        tower1HP -= 2;
+
+    }else{
+
+        tower2HP -= 2;
 
     }
 
 }
 
+
+/* ==========================================
+   OBJECTIVE CHECK
+========================================== */
+
+function checkNearbyObjectives(){
+
+    const turtleDistance =
+        getDistance(
+            playerX,
+            playerY,
+            47,
+            27
+        );
+
+    if(
+        turtleAlive &&
+        turtleDistance < 12
+    ){
+
+        showBattleMessage(
+            "TURTLE IN RANGE 🐢"
+        );
+
+    }
+
+
+    if(
+        blueBuffActive === false
+    ){
+
+        const blueDistance =
+            getDistance(
+                playerX,
+                playerY,
+                25,
+                30
+            );
+
+        if(
+            blueDistance < 10
+        ){
+
+            showBattleMessage(
+                "BLUE BUFF AVAILABLE 🔵"
+            );
+
+        }
+
+    }
+
+
+    if(
+        redBuffActive === false
+    ){
+
+        const redDistance =
+            getDistance(
+                playerX,
+                playerY,
+                75,
+                70
+            );
+
+        if(
+            redDistance < 10
+        ){
+
+            showBattleMessage(
+                "RED BUFF AVAILABLE 🔴"
+            );
+
+        }
+
+    }
+
+}
+
+
+/* ==========================================
+   OBJECTIVE ATTACK
+========================================== */
+
+function attackObjective(){
+
+    if(
+        turtleAlive
+    ){
+
+        const distance =
+            getDistance(
+                playerX,
+                playerY,
+                47,
+                27
+            );
+
+        if(distance < 13){
+
+            turtleHP -= 15;
+
+            document
+                .getElementById(
+                    "turtleHp"
+                )
+                .style.width =
+                turtleHP + "%";
+
+            showBattleMessage(
+                "TURTLE HIT! 🐢"
+            );
+
+            if(turtleHP <= 0){
+
+                turtleAlive = false;
+
+                document
+                    .getElementById(
+                        "turtle"
+                    )
+                    .style.opacity =
+                    ".2";
+
+                blueBuffActive = true;
+
+                gold += 100;
+
+                showBattleMessage(
+                    "TURTLE SLAIN! TEAM BUFF +100G"
+                );
+
+                return;
+
+            }
+
+        }
+
+    }
+
+
+    if(
+        lordAlive
+    ){
+
+        const distance =
+            getDistance(
+                playerX,
+                playerY,
+                46,
+                58
+            );
+
+        if(distance < 13){
+
+            lordHP -= 18;
+
+            document
+                .getElementById(
+                    "lordHp"
+                )
+                .style.width =
+                (
+                    lordHP / 180 * 100
+                ) + "%";
+
+            showBattleMessage(
+                "LORD HIT! 👑"
+            );
+
+            if(lordHP <= 0){
+
+                lordAlive = false;
+
+                gold += 250;
+
+                showBattleMessage(
+                    "LORD SLAIN! PUSH POWER ↑"
+                );
+
+                setTimeout(
+                    ()=>{
+                        finishBattle();
+                    },
+                    2500
+                );
+
+            }
+
+        }
+
+    }
+
+}
+
+
+/* ==========================================
+   UNLOCK LORD
+========================================== */
+
+function unlockLord(){
+
+    if(
+        enemyTower1HP <= 0 ||
+        enemyTower2HP <= 0
+    ){
+
+        lordAlive = true;
+
+        document
+            .getElementById(
+                "lord"
+            )
+            .classList
+            .remove(
+                "hidden-objective"
+            );
+
+        document
+            .getElementById(
+                "battleObjective"
+            )
+            .textContent =
+            "Lord has spawned 👑";
+
+    }
+
+}
+
+
+/* ==========================================
+   AUTO OBJECTIVE ATTACK
+========================================== */
+
+setInterval(()=>{
+
+    if(
+        battleStarted
+    ){
+
+        attackObjective();
+
+    }
+
+},1200);
+
+
+/* ==========================================
+   DISTANCE
+========================================== */
+
+function getDistance(
+    x1,
+    y1,
+    x2,
+    y2
+){
+
+    return Math.sqrt(
+        Math.pow(
+            x1-x2,
+            2
+        )
+        +
+        Math.pow(
+            y1-y2,
+            2
+        )
+    );
+
+}
+
+
+/* ==========================================
+   FLOATING DAMAGE
+========================================== */
+
+function floatingDamage(
+    damage,
+    x,
+    y
+){
+
+    const layer =
+        document.getElementById(
+            "damageLayer"
+        );
+
+    const number =
+        document.createElement(
+            "div"
+        );
+
+    number.className =
+        "damage-number";
+
+    number.textContent =
+        "-" + damage;
+
+    number.style.left =
+        x + "%";
+
+    number.style.top =
+        y + "%";
+
+    layer.appendChild(number);
+
+    setTimeout(()=>{
+        number.remove();
+    },800);
+
+}
+
+
+/* ==========================================
+   MESSAGE
+========================================== */
+
+let battleMessageTimeout;
+
+function showBattleMessage(
+    text
+){
+
+    const message =
+        document.getElementById(
+            "combatMessage"
+        );
+
+    message.textContent =
+        text;
+
+    message.classList.add(
+        "show"
+    );
+
+    clearTimeout(
+        battleMessageTimeout
+    );
+
+    battleMessageTimeout =
+        setTimeout(()=>{
+
+            message.classList.remove(
+                "show"
+            );
+
+        },1400);
+
+}
+
+
+/* ==========================================
+   MINI MAP
+========================================== */
+
+function updateMiniMap(){
+
+    const player =
+        document.getElementById(
+            "miniPlayer"
+        );
+
+    const enemy =
+        document.getElementById(
+            "miniEnemy"
+        );
+
+    player.style.left =
+        playerX + "%";
+
+    player.style.top =
+        playerY + "%";
+
+    enemy.style.left =
+        enemyX + "%";
+
+    enemy.style.top =
+        enemyY + "%";
+
+}
+
+
+/* ==========================================
+   UI
+========================================== */
+
+function updateBattleUI(){
+
+    document
+        .getElementById(
+            "yourPlayerHp"
+        )
+        .style.width =
+        Math.max(
+            playerHP,
+            0
+        ) + "%";
+
+    document
+        .getElementById(
+            "bottomHp"
+        )
+        .style.width =
+        Math.max(
+            playerHP,
+            0
+        ) + "%";
+
+    document
+        .getElementById(
+            "enemyPlayerHp"
+        )
+        .style.width =
+        Math.max(
+            enemyHP,
+            0
+        ) + "%";
+
+    document
+        .getElementById(
+            "landGold"
+        )
+        .textContent =
+        gold;
+
+    document
+        .getElementById(
+            "landScore"
+        )
+        .textContent =
+        score;
+
+}
+
+
+/* ==========================================
+   BATTLE END
+========================================== */
+
+function checkBattleEnd(){
+
+    updateBattleUI();
+
+    if(
+        enemyHP <= 0
+    ){
+
+        enemyHP = 0;
+
+        score++;
+
+        showBattleMessage(
+            "ENEMY DEFEATED ⚔️"
+        );
+
+        enemyX = 75;
+        enemyY = 25;
+
+        updateEnemyPosition();
+
+    }
+
+
+    if(
+        playerHP <= 0
+    ){
+
+        playerHP = 0;
+
+        battleStarted = false;
+
+        clearInterval(
+            battleClockInterval
+        );
+
+        showBattleMessage(
+            "DEFEATED 😭"
+        );
+
+        setTimeout(
+            ()=>{
+                go("land");
+            },
+            1500
+        );
+
+    }
+
+}
+
+
+/* ==========================================
+   FINAL VICTORY
+========================================== */
+
+function finishBattle(){
+
+    if(
+        !battleStarted
+    ){
+        return;
+    }
+
+    battleStarted = false;
+
+    clearInterval(
+        battleClockInterval
+    );
+
+    score = 1;
+
+    document
+        .getElementById(
+            "finalScore"
+        )
+        .textContent =
+        "1 — 0";
+
+    go("victory");
+
+}
+
+
+/* ==========================================
+   RESET TOWERS
+========================================== */
+
+function resetTowerVisuals(){
+
+    document
+        .querySelectorAll(
+            ".tower"
+        )
+        .forEach(
+            tower=>{
+                tower.classList.remove(
+                    "destroyed"
+                );
+            }
+        );
+
+}
+
+
+/* ==========================================
+   CLEAR MINIONS
+========================================== */
+
+function clearMinions(){
+
+    minions = [];
+
+    const layer =
+        document.getElementById(
+            "minionLayer"
+        );
+
+    if(layer){
+        layer.innerHTML = "";
+    }
+
+}
 
 /* ================================
    UI
