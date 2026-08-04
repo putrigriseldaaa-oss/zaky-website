@@ -1,175 +1,925 @@
 <!DOCTYPE html>
-<html>
+<html lang="id">
 <head>
-    <title>For ma baee 💗</title>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+<title>For ma baeee 💗</title>
+
+<style>
+* {
+    box-sizing: border-box;
+}
+
+body {
+    margin: 0;
+    font-family: Arial, sans-serif;
+    background: linear-gradient(135deg, #ffe4ec, #fff7f9, #e9ddff);
+    color: #4a3040;
+    overflow-x: hidden;
+}
+
+button {
+    font-family: inherit;
+}
+
+.container {
+    width: 90%;
+    max-width: 700px;
+    margin: auto;
+}
+
+.hero {
+    min-height: 100vh;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    text-align: center;
+    padding: 30px 0;
+}
+
+.card {
+    background: rgba(255,255,255,0.88);
+    padding: 35px 25px;
+    border-radius: 30px;
+    box-shadow: 0 10px 30px rgba(100,60,90,0.15);
+    margin: 25px 0;
+}
+
+h1 {
+    font-size: 42px;
+    margin-bottom: 10px;
+}
+
+h2 {
+    color: #b64d78;
+}
+
+p {
+    line-height: 1.8;
+}
+
+.small {
+    font-size: 13px;
+    opacity: 0.7;
+}
+
+.heart {
+    font-size: 55px;
+    animation: bounce 1.5s infinite;
+}
+
+@keyframes bounce {
+    0%,100% { transform: translateY(0); }
+    50% { transform: translateY(-12px); }
+}
+
+.btn {
+    border: none;
+    background: #ff7fa3;
+    color: white;
+    padding: 13px 18px;
+    border-radius: 20px;
+    margin: 6px;
+    cursor: pointer;
+    font-size: 15px;
+    transition: 0.2s;
+}
+
+.btn:hover {
+    transform: scale(1.06);
+}
+
+.btn.purple {
+    background: #9c82d8;
+}
+
+.btn.dark {
+    background: #57425e;
+}
+
+.message {
+    display: none;
+    background: #fff0f5;
+    padding: 18px;
+    border-radius: 20px;
+    margin-top: 15px;
+    animation: appear 0.4s ease;
+}
+
+@keyframes appear {
+    from {
+        opacity: 0;
+        transform: translateY(10px);
+    }
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
+.photo-box {
+    border: 3px dashed #f3a6bd;
+    border-radius: 25px;
+    padding: 40px 15px;
+    margin: 20px 0;
+    background: #fff8fa;
+}
+
+.photo-box img {
+    max-width: 100%;
+    border-radius: 20px;
+}
+
+.game {
+    background: #faf4ff;
+    border-radius: 25px;
+    padding: 20px;
+    margin-top: 20px;
+}
+
+.footer {
+    text-align: center;
+    padding: 40px 20px 70px;
+}
+
+audio {
+    width: 100%;
+    margin-top: 15px;
+}
+
+.badge {
+    display: inline-block;
+    background: #ffe0ea;
+    color: #a43e67;
+    padding: 8px 14px;
+    border-radius: 30px;
+    font-size: 13px;
+    margin: 4px;
+}
+</style>
 </head>
 
 <body>
 
-    <h1>Hiii baeee 👋🏻</h1>
+<!-- PEMBUKA -->
 
-    <h2>Ini website khusus buat kamu.</h2>
+<section class="hero">
+<div class="container">
 
-    <p>
-        Hehe anu aku sebenarnya belum tau banyak hal tentang kamu.
-        Jadi kalau ada beberapa hal yang salah...
-        ya maaf, aku kira - kira aja nyakkk 😭
-    </p>
+<div class="card">
 
-    <p>
-        Aku tau akhir-akhir ini u got bad days and make u so tired.
-        Mungkin kamu bilang "gapapa",
-        tapi aku tahu kadang kamu sebenarnya nggak baik-baik aja.
-    </p>
+<div class="heart">💗</div>
 
-    <h2>Jadi...</h2>
+<h1>For my baby boy.</h1>
 
-    <p>
-        Kamu nggak harus selalu cerita ke aku.
-        Kamu juga nggak harus selalu terlihat kuat.
-        Kalau kamu mau sendiri, it's okay take ur time.
-        Kalau mau istirahat, istirahat yang banyak.
-        Kalau mau main, have funn baee.
-    </p>
+<p>
+atau mungkin lebih tepatnya...
+</p>
 
-    <p>
-        Aku cuma mau kamu tahu satu hal:
-        <b>aku tetap ada.</b>
-    </p>
+<h2>HII SAYANG KU, CINTA KU, KEKASIH KU 💗</h2>
 
-    <hr>
+<p>
+Selamat datang di website yang sebenarnya
+nggak kamu minta tapi tetap aku buat
+</p>
 
-    <h2>🎮 Kalau lagi bad mood...</h2>
+<p>
+Jangan kabur dulu
+Aku tahu kamu suka menghilang
+🫵🏻
+</p>
 
-    <p>Pilih salah satu:</p>
+<button class="btn" onclick="showMessage('welcome')">
+Pencet kalau berani 👀
+</button>
 
-    <button onclick="alert('OKE. MAIN ML SANA 😭 Tapi jangan kalah terus ya sayang.')">
-        🎮 Main ML
-    </button>
+<div id="welcome" class="message">
+HAHAHAHA KENA 😝
+<br><br>
+Sekarang sudah terlanjur masuk,
+jadi tolong lihat sampai selesai
+<br><br>
+Aku hari ini gada kabar iseng bikin ini sayang
+</div>
 
-    <button onclick="alert('BOXING DULU. Pukul samsak, jangan pukul orang 😭🥊')">
-        🥊 Boxing
-    </button>
+</div>
 
-    <button onclick="alert('Olahraga dulu biar badan dewa Yunaninya tetap mantap 😭')">
-        🏃 Olahraga
-    </button>
+</div>
+</section>
 
-    <button onclick="alert('Oke, tidur. Aku izinkan kamu menghilang sebentar. Tapi nanti balik lagi.')">
-        💤 Tidur & menghilang
-    </button>
 
-    <hr>
+<!-- DISCLAIMER -->
 
-    <h2>💗 Tapi setelah itu...</h2>
+<section class="container">
 
-    <p>
-        Sekarang kamu WAJIB memilih:
-    </p>
+<div class="card">
 
-    <button onclick="alert('HAHAHAHA GAK BISA KABUR. SEKARANG GILIRAN AKU GANGGU KAMU 😭💗')">
-        😈 Ganggu aku
-    </button>
+<h2>📌 Disclaimer kecil</h2>
 
-    <button onclick="alert('Salah pencet. Tetap harus diganggu aku 😭')">
-        😴 Aku mau tenang
-    </button>
+<p>
+Sebenernya aku belum tau banyak tentang kamu baeee, cedih:(((
+</p>
 
-    <hr>
+<p>
+Jadi kalau nanti aku ada pilihan
+ML, boxing, olahraga, tidur, atau hal-hal lain...
+itu sebagian besar adalah hasil pengamatan ku
+kalau salah semua ya udah sih salah siapa gamau kasih tau
+😤
+</p>
 
-    <h2>🏆 GOOD BOY DETECTED</h2>
+<p>
+Jadi jangan protes kalau ada yang salah
+Aku kan cuma...
+</p>
 
-    <p>
-        Aku tahu mungkin kamu nggak merasa ini sesuatu yang besar,
-        tapi aku tetap mau bilang:
-    </p>
+<h2>✨ sok tahu tentang kamu ✨</h2>
 
-    <p>
-        <b>Aku bangga sama kamu.</b>
-    </p>
+</div>
 
-    <p>
-        Kamu pelan-pelan belajar menghadapi masalah tanpa harus
-        melampiaskannya ke hal-hal yang bikin kamu makin hancur.
-    </p>
 
-    <p>
-        Nggak harus langsung berubah semuanya.
-        Pelan-pelan aja.
-    </p>
+<!-- BAD DAYS -->
 
-    <p>
-        Good job and good boy, baeee.
-    </p>
+<div class="card">
 
-    <hr>
+<h2>🌧️ Kalau akhir-akhir ini kamu lagi capek or get bad days...</h2>
 
-    <h2>💌 Sedikit pesan dari aku</h2>
+<p>
+Aku tahu kamu punya kebiasaan bilang
+<strong>"gapapa"</strong>
+meskipun sebenarnya mungkin ada banyak hal
+yang sedang kamu pendam sendiri
+</p>
 
-    <p>
-        Aku nggak datang untuk memperbaiki hidup kamu.
-        Aku juga nggak mau memaksa kamu untuk selalu cerita.
-    </p>
+<p>
+Dan aku tahu kamu kadang lebih memilih diam,
+menghilang, main, boxing, dkk
+atau melakukan sesuatu sendiri
+daripada menjelaskan apa yang sebenarnya terjadi
+</p>
 
-    <p>
-        Aku cuma ingin menjadi seseorang yang ketika kamu sedang
-        capek dengan semuanya, kamu tahu bahwa ada satu manusia
-        tengil yang tetap mau duduk di sampingmu.
-    </p>
+<p>
+Aku nggak akan maksa kamu cerita
+</p>
 
-    <p>
-        Bahkan kalau kamu cuma diam.
-    </p>
+<p>
+Karena menurutku,
+<strong>nggak semua rasa sakit harus langsung diceritakan</strong>
+Kadang seseorang cuma butuh waktu
+untuk mengerti apa yang sedang dia rasakan
+</p>
 
-    <p>
-        Bahkan kalau kamu nggak tahu harus ngomong apa.
-    </p>
+<p>
+Jadi kalau kamu sedang nggak baik-baik saja...
+<strong>nggak apa-apa</strong>
+</p>
 
-    <p>
-        Bahkan kalau kamu cuma mau bilang "gapapa".
-    </p>
+</div>
 
-    <p>
-        <b>Aku tetap di sini.</b>
-    </p>
 
-    <hr>
+<!-- SESI 1 -->
 
-    <h2>💋 Bonus Vitamin C</h2>
+<div class="card">
 
-    <p>
-        Sariawannya dah sembuh lom? Kalau lom...
-    </p>
+<h2>🎮 SESI 1 — MODE PENYELAMATAN</h2>
 
-    <p>
-        Aku punya vitamin C.
-    </p>
+<p>
+Oke, sekarang pilih cara kamu menghadapi bad mood
+<br>
+<strong>BEBAS.</strong>
+Aku nggak bakal bawel
+</p>
 
-    <p>
-        Gratis. Praktis. Mudah.
-    </p>
+<button class="btn" onclick="showMessage('ml')">
+🎮 Main ML
+</button>
 
-    <button onclick="alert('VITAMIN CIPOK, CIUMM 💋💋💋 jangan protes. GRATIS INI.')">
-        🍊 Ambil Vitamin C
-    </button>
+<button class="btn" onclick="showMessage('boxing')">
+🥊 Boxing
+</button>
 
-    <hr>
+<button class="btn" onclick="showMessage('gym')">
+🏋🏻‍♂️ GYM
+</button>
 
-    <h2>Dan terakhir...</h2>
+<button class="btn" onclick="showMessage('sleep')">
+💤 Tidur & menghilang
+</button>
 
-    <button onclick="alert('SELALU MANTEP BANGETTT SAYANGGG 😭 MAHADAHSYAT BAEEEE 💪🏻')">
-        🫵🏻 Pencet kalau kamu merasa ganteng, keren, kalcer, kece
-    </button>
 
-    <p>
-        Jangan geer.
-        Ini website aku.
-        Jadi aku yang berhak tengil.
-    </p>
+<div id="ml" class="message">
+🎮 <strong>MAIN ML.</strong>
+<br><br>
+Yaudah sana main
+Keluarin semua emosinya di Land of Dawn
+<br><br>
+Tapi kalau kalah ga boleh makin badmood
+SEMOGA WS KAMU LEBIH BANYAK DRPD LS MU, buruan gih nyampe imo 👀
+</div>
 
-    <br>
 
-    <h3>— dari aku yang suka ganggu kamu 💗</h3>
+<div id="boxing" class="message">
+🥊 <strong>BOXING.</strong>
+<br><br>
+Pukul samsaknya
+Jangan pukul orangg bae
+Tapi aku tau sih kamu gabakal kek gitu
+Gabut banget lu bang 🫵 
+</div>
+
+
+<div id="sport" class="message">
+🏃 <strong>GYM.</strong>
+<br><br>
+Nah ini bagus
+Keluarin capeknya dari badan
+Biar pikiranmu juga sedikit lebih lega
+Biar kamu bisa bobo juga
+<br><br>
+Kamu sengaja yaa semantep itu
+biar aku gragas kann baee😘
+</div>
+
+
+<div id="sleep" class="message">
+💤 <strong>TIDUR & MENGHILANG.</strong>
+<br><br>
+Kamu kalau butuh waktu, it's okay. Just take ur time
+Tapi aku minta tolong tetap berkabar yaa sayang
+<br><br>
+Istirahat
+Nggak perlu menjelaskan apa pun
+Nggak perlu pura-pura baik-baik saja.
+<br><br>
+<strong>Tapi jangan lupa balik</strong>
+<br><br>
+Karena masih ada aku yang belum selesai
+mengganggu hidupmu 🫵🏻
+</div>
+
+</div>
+
+
+<!-- SESI 2 -->
+
+<div class="card">
+
+<h2>🚨 SESI 2 — SEKARANG GILIRAN AKU 🚨</h2>
+
+<p>
+Oke kamu sudah memilih cara buat
+menenangkan diri
+</p>
+
+<p>
+<strong>SEKARANG NGGAK ADA PILIHAN KABUR.</strong>
+</p>
+
+<p>
+Sekarang kamu wajib memilih:
+</p>
+
+<button class="btn" onclick="showMessage('annoy')">
+😈 Ganggu aku
+</button>
+
+<button class="btn purple" onclick="showMessage('story')">
+💬 Aku mau cerita
+</button>
+
+<button class="btn dark" onclick="showMessage('hug')">
+🫂 Aku cuma mau diam
+</button>
+
+
+<div id="annoy" class="message">
+AHAHAHA
+<br><br>
+<strong>SELAMAT.</strong>
+<br>
+Sekarang kamu resmi menjadi korban
+gangguan aku
+<br><br>
+Aku mau peluk kamu yang lamaaa dan erattt sambil puk - puk
+<br>
+Kamu nggak boleh nolak
+<br>
+Aku juga mau kith yang banyak banyak, mwahh mwahhh 💋💋💋
+<br>
+Kamu juga nggak boleh nolak.
+<br><br>
+<strong>INI BUKAN DEMOKRASI</strong>
+😭🫂💋
+</div>
+
+
+<div id="story" class="message">
+💬 <strong>Kalau kamu mau cerita...</strong>
+<br><br>
+Aku dengerin
+<br><br>
+Nggak harus rapi
+Nggak harus masuk akal
+Nggak harus tahu harus mulai dari mana
+<br><br>
+Kamu boleh cerita sambil marah
+<br>
+Boleh sambil bingung
+<br>
+Boleh cuma bilang:
+<br><br>
+<strong>"Aku capek"</strong>
+<br><br>
+Dan aku akan mengerti bahwa
+mungkin hari ini kamu nggak membutuhkan
+solusi
+<br><br>
+Mungkin kamu cuma membutuhkan seseorang
+yang bilang:
+<br><br>
+<strong>"Iya, aku dengerinkamu sayanggg"</strong>
+</div>
+
+
+<div id="hug" class="message">
+🫂
+<br><br>
+Yaudah
+Sini
+<br><br>
+Nggak usah ngomong
+<br><br>
+*peluk virtual lama banget*
+<br><br>
+🫂🫂🫂🫂🫂
+<br><br>
+Aku nggak pergi
+</div>
+
+</div>
+
+
+<!-- GOOD BOY -->
+
+<div class="card">
+
+<h2>🏆 GOOD BOY AWARD</h2>
+
+<span class="badge">GOOD BOY</span>
+<span class="badge">STILL TRYING</span>
+<span class="badge">PROUD OF YOU</span>
+
+<p>
+Aku tahu mungkin kamu nggak menganggap
+ini sesuatu yang besar
+</p>
+
+<p>
+Tapi aku mau bilang sesuatu:
+</p>
+
+<h2>Aku bangga sama kamu</h2>
+
+<p>
+Kamu pelan-pelan belajar menghadapi masalah
+tanpa harus melampiaskannya ke hal-hal
+yang justru bisa bikin kamu makin chaoss
+</p>
+
+<p>
+Dan aku tahu proses seperti itu
+nggak gampang
+</p>
+
+<p>
+Kamu nggak harus langsung berubah
+Nggak harus langsung sempurna
+</p>
+
+<p>
+<strong>
+Pelan-pelan juga tetap maju
+</strong>
+</p>
+
+<p>
+Soo...
+ur always doin great. good job, baeee 👩‍❤️‍💋‍👨 
+</p>
+
+<p>
+I'm proud of you, my babyyyy 🤍
+</p>
+
+</div>
+
+
+<!-- PESAN DEEP -->
+
+<div class="card">
+
+<h2>💌 Ada sesuatu yang mau aku bilang...</h2>
+
+<p>
+Aku memang gatau apa yang kamu alami
+Aku juga ga memaksa kamu buat cerita
+</p>
+
+<p>
+Karena aku tau kamu punya privasi dan kamu bisa menyelesaikannya
+Karena kamu juga bisa aja mikir aku tidak pernah di posisi kamu
+</p>
+
+<p>
+Jujur aku juga bingung harus ngapain dan gimana
+LAMA LAMA KU SAMPERIN JUGA KAMUUUU BAEEEEEEE
+</p>
+
+<p>
+Aku cuma ingin kamu tahu...
+</p>
+
+<p>
+Kalau suatu hari kamu sedang capek sekali,
+dan dunia rasanya terlalu berisik,
+kamu boleh berhenti sebentar
+</p>
+
+<p>
+Kalau kamu belum siap bicara,
+nggak apa-apa
+</p>
+
+<p>
+Kalau kamu ingin sendiri,
+aku akan menghargainya
+</p>
+
+<p>
+Tapi aku ingin menjadi seseorang
+yang ketika kamu akhirnya siap kembali,
+kamu tahu...
+</p>
+
+<h2>aku masih ada</h2>
+
+<p>
+Bukan untuk memaksa kamu baik-baik saja
+</p>
+
+<p>
+Bukan untuk memaksa kamu cerita
+</p>
+
+<p>
+Tapi untuk menemani kamu
+melewati hari yang nggak enak
+sampai akhirnya hari itu selesai
+</p>
+
+<p>
+Karena kamu nggak harus selalu kuat
+di depan semua orang
+</p>
+
+<p>
+<strong>
+Sesekali boleh kok capek
+</strong>
+</p>
+
+</div>
+
+
+<!-- CEGIL ZONE -->
+
+<div class="card">
+
+<h2>🚨 CEGIL ZONE 🚨</h2>
+
+<p>
+Sekarang bagian yang lebih penting
+</p>
+
+<p>
+Aku punya beberapa hal yang ingin
+aku sampaikan tapi takut kamu geer
+</p>
+
+<button class="btn" onclick="showMessage('compliment')">
+🫵🏻 Pencet
+</button>
+
+<div id="compliment" class="message">
+
+KAMU MUNGKIN BOSEN DENGER AKU SELALU BILANG
+                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                         SELALU MANTEPP BANGETTT SAYANGGG 😭😭😭
+<br><br>
+
+MAHADAHYAT PAPAAA.
+<br><br>
+
+BAK DEWA YUNANI TURUN KE BUMI.
+<br><br>
+
+Tolong jangan besar kepala.
+<br>
+Aku cuma sedang jujur. 😭
+<br><br>
+
+Tapi kalau kamu senyum-senyum sendiri
+setelah baca ini...
+<br><br>
+
+<strong>
+HEHEHE KENA.
+</strong>
+
+</div>
+
+</div>
+
+
+<!-- VITAMIN C -->
+
+<div class="card">
+
+<h2>🍊 VITAMIN C GRATIS</h2>
+
+<p>
+Waktu kamu sariawan dan susah makan,
+aku sebenarnya punya solusi yang sangat
+ilmiah.
+</p>
+
+<p>
+Vitamin C.
+</p>
+
+<p>
+Gratis.
+</p>
+
+<p>
+Praktis.
+</p>
+
+<p>
+Mudah didapat.
+</p>
+
+<button class="btn" onclick="showMessage('vitamin')">
+🍊 Ambil Vitamin C
+</button>
+
+<div id="vitamin" class="message">
+
+<strong>
+VITAMIN CIPOKKK 💋
+</strong>
+
+<br><br>
+
+Jangan protes.
+<br>
+Aku yang bikin aturan.
+<br><br>
+
+💋💋💋
+<br><br>
+
+<strong>
+"Dok, saya butuh vitamin."
+<br>
+"Baik. Cipok dulu."
+</strong>
+
+😭
+
+</div>
+
+</div>
+
+
+<!-- MASAK -->
+
+<div class="card">
+
+<h2>🍳 BONUS INFO PENTING</h2>
+
+<p>
+Aku sebenarnya ingin membuat bagian
+"aku akan masakin kamu".
+</p>
+
+<p>
+Tapi...
+</p>
+
+<h1>AKU GABISA MASAK 😭</h1>
+
+<p>
+Jadi kalau suatu hari kita living together,
+mungkin kita akan makan sesuatu
+yang dipesan lewat aplikasi.
+</p>
+
+<p>
+Romantis kan?
+</p>
+
+<p>
+<strong>
+KITA BISA MAKAN BERSAMA-SAMA
+DARI HASIL KERJA KERAS DRIVER.
+</strong>
+</p>
+
+</div>
+
+
+<!-- FOTO -->
+
+<div class="card">
+
+<h2>📸 OUR LITTLE CORNER</h2>
+
+<p>
+Bagian ini nanti aku isi foto-foto
+yang bikin aku senyum sendiri.
+</p>
+
+<div class="photo-box">
+
+<p>📷 FOTO KITA NANTI DI SINI</p>
+
+<p class="small">
+(nanti foto akan kita masukkan)
+</p>
+
+</div>
+
+<p>
+Dan iya...
+aku tahu kita belum pernah ketemu.
+</p>
+
+<p>
+Jadi untuk sekarang,
+anggap saja ini tempat untuk
+menyimpan hal-hal kecil dari
+dua manusia yang masih bertemu
+lewat layar. 🤍
+</p>
+
+</div>
+
+
+<!-- LAGU -->
+
+<div class="card">
+
+<h2>🎧 Lagu untuk kamu</h2>
+
+<p>
+Nanti aku taruh lagu di sini.
+</p>
+
+<div class="photo-box">
+
+<p>🎵 YOUR SONG WILL BE HERE</p>
+
+<p class="small">
+(nanti kita masukkan file lagu)
+</p>
+
+</div>
+
+</div>
+
+
+<!-- FINAL -->
+
+<div class="card">
+
+<h2>💗 Sebelum kamu pergi...</h2>
+
+<p>
+Aku nggak tahu nanti kita akan
+sejauh apa.
+</p>
+
+<p>
+Aku nggak tahu apakah suatu hari
+kita benar-benar akan duduk
+di tempat yang sama,
+bukan cuma berada di layar yang sama.
+</p>
+
+<p>
+Aku juga nggak tahu apa yang akan
+terjadi setelah ini.
+</p>
+
+<p>
+Tapi untuk sekarang...
+</p>
+
+<p>
+aku senang pernah mengenal kamu.
+</p>
+
+<p>
+Dan kalau akhir-akhir ini hidup sedang
+terasa berat buat kamu,
+aku harap kamu ingat:
+</p>
+
+<h2>
+kamu nggak harus melewati
+semuanya sendirian.
+</h2>
+
+<p>
+Ada aku.
+</p>
+
+<p>
+Yang mungkin terlalu tengil.
+</p>
+
+<p>
+Terlalu cerewet.
+</p>
+
+<p>
+Terlalu suka kirim sticker peluk.
+</p>
+
+<p>
+Terlalu suka godain kamu.
+</p>
+
+<p>
+Dan mungkin...
+</p>
+
+<h2>
+sedikit terlalu suka sama kamu. 🤏🏻</h2>
+
+<br>
+
+<p>
+<strong>
+— dari Saa, Baee, atau apapun panggilan
+yang sedang kamu pilih hari ini. 😭💗
+</strong>
+</p>
+
+</div>
+
+</section>
+
+
+<div class="footer">
+
+<p>
+Made with too much affection,
+sedikit kegilaan,
+dan terlalu banyak mikirin Zaky. 💗
+</p>
+
+<p class="small">
+P.S. jangan geer.
+</p>
+
+</div>
+
+
+<script>
+
+function showMessage(id) {
+
+    const messages = document.querySelectorAll(".message");
+
+    messages.forEach(function(message) {
+        message.style.display = "none";
+    });
+
+    const selected = document.getElementById(id);
+
+    if (selected) {
+        selected.style.display = "block";
+
+        selected.scrollIntoView({
+            behavior: "smooth",
+            block: "center"
+        });
+    }
+}
+
+</script>
 
 </body>
 </html>
