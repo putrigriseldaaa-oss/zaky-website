@@ -732,19 +732,30 @@ button{
 
 .hero{
     position:relative;
-    height:105px;
+    height:190px;
     overflow:hidden;
     border-radius:7px;
     border:1px solid #526a8b;
-    background:
-        radial-gradient(circle at 50% 25%,#91bce9,#304e7e 35%,#0c1324 75%);
+    background:#080e1b;
     cursor:pointer;
-    transition:.2s;
+    transition:.25s ease;
+}
+
+.hero img{
+    width:100%;
+    height:100%;
+    object-fit:cover;
+    display:block;
+    transition:.3s ease;
 }
 
 .hero:hover{
     transform:translateY(-4px);
     border-color:#e6c56c;
+}
+
+.hero:hover img{
+    transform:scale(1.05);
 }
 
 .hero.selected{
@@ -753,6 +764,23 @@ button{
         0 0 18px #e8c76c,
         inset 0 0 25px #e8c76c44;
     transform:translateY(-5px);
+}
+
+.hero.selected::after{
+    content:"SELECTED";
+    position:absolute;
+    top:7px;
+    right:7px;
+    z-index:5;
+
+    padding:4px 7px;
+    border-radius:4px;
+
+    background:#e8c76c;
+    color:#111;
+
+    font-size:9px;
+    font-weight:900;
 }
 
 .hero.banned{
@@ -775,21 +803,24 @@ button{
     z-index:5;
 }
 
-.hero-symbol{
-    font-size:45px;
-    padding-top:15px;
-}
-
 .hero-name{
     position:absolute;
     bottom:0;
     left:0;
     right:0;
-    padding:7px;
+    z-index:2;
+
+    padding:25px 9px 8px;
+
     text-align:left;
-    font-size:11px;
-    font-weight:bold;
-    background:linear-gradient(transparent,#000);
+    font-size:12px;
+    font-weight:800;
+    color:#fff;
+
+    background:linear-gradient(
+        transparent,
+        rgba(0,0,0,.9)
+    );
 }
 
 /* LOCK */
@@ -2785,57 +2816,49 @@ Choose one hero to ban.
 
 <div class="hero-grid" id="banHeroes">
 
-<div class="hero" onclick="selectBan(this,'Gusion')">
-<div class="hero-symbol">⚔</div>
-<div class="hero-name">Gusion</div>
-</div>
+    <div class="hero" onclick="selectBan(this,'Alucard')">
+        <img src="assets/heroes/alucard.jpg">
+        <div class="hero-name">Alucard</div>
+    </div>
 
-<div class="hero" onclick="selectBan(this,'Lancelot')">
-<div class="hero-symbol">♠</div>
-<div class="hero-name">Lancelot</div>
-</div>
+    <div class="hero" onclick="selectBan(this,'Yin')">
+        <img src="assets/heroes/yin.jpg">
+        <div class="hero-name">Yin</div>
+    </div>
 
-<div class="hero" onclick="selectBan(this,'Ling')">
-<div class="hero-symbol">✦</div>
-<div class="hero-name">Ling</div>
-</div>
+    <div class="hero" onclick="selectBan(this,'Fanny')">
+        <img src="assets/heroes/fanny.jpg">
+        <div class="hero-name">Fanny</div>
+    </div>
 
-<div class="hero" onclick="selectBan(this,'Hayabusa')">
-<div class="hero-symbol">☄</div>
-<div class="hero-name">Hayabusa</div>
-</div>
+    <div class="hero" onclick="selectBan(this,'Hayabusa')">
+        <img src="assets/heroes/hayabusa.jpg">
+        <div class="hero-name">Hayabusa</div>
+    </div>
 
-<div class="hero" onclick="selectBan(this,'Fanny')">
-<div class="hero-symbol">♛</div>
-<div class="hero-name">Fanny</div>
-</div>
+    <div class="hero" onclick="selectBan(this,'Lancelot')">
+        <img src="assets/heroes/lancelot.jpg">
+        <div class="hero-name">Lancelot</div>
+    </div>
 
-<div class="hero" onclick="selectBan(this,'Yin')">
-<div class="hero-symbol">⚡</div>
-<div class="hero-name">Yin</div>
-</div>
+    <div class="hero" onclick="selectBan(this,'Gusion')">
+        <img src="assets/heroes/gusion.jpg">
+        <div class="hero-name">Gusion</div>
+    </div>
 
-<div class="hero" onclick="selectBan(this,'Alucard')">
-<div class="hero-symbol">♜</div>
-<div class="hero-name">Alucard</div>
-</div>
+    <div class="hero" onclick="selectBan(this,'Julian')">
+        <img src="assets/heroes/julian.jpg">
+        <div class="hero-name">Julian</div>
+    </div>
 
-<div class="hero" onclick="selectBan(this,'Chou')">
-<div class="hero-symbol">✧</div>
-<div class="hero-name">Hirara</div>
-</div>
-
-<div class="hero" onclick="selectBan(this,'Julian')">
-<div class="hero-symbol">☾</div>
-<div class="hero-name">Julian</div>
-</div>
-
-<div class="hero" onclick="selectBan(this,'Granger')">
-<div class="hero-symbol">♣</div>
-<div class="hero-name">Granger</div>
-</div>
+    <div class="hero" onclick="selectBan(this,'Ling')">
+        <img src="assets/heroes/ling.jpg">
+        <div class="hero-name">Ling</div>
+    </div>
 
 </div>
+
+
 
 <button class="btn red-btn" id="banButton" disabled onclick="confirmBan()">
 SELECT HERO FIRST
@@ -2882,52 +2905,52 @@ Choose your hero.
 <div class="hero-grid" id="pickHeroes">
 
 <div class="hero" onclick="selectPick(this,'Gusion')">
-<div class="hero-symbol">⚔</div>
+<img src="..." alt="Gusion">
 <div class="hero-name">Gusion</div>
 </div>
 
 <div class="hero" onclick="selectPick(this,'Lancelot')">
-<div class="hero-symbol">♠</div>
+<img src="..." alt="Lancelot">
 <div class="hero-name">Lancelot</div>
 </div>
 
 <div class="hero" onclick="selectPick(this,'Ling')">
-<div class="hero-symbol">✦</div>
+<img src="..." alt="Ling">
 <div class="hero-name">Ling</div>
 </div>
 
 <div class="hero" onclick="selectPick(this,'Hayabusa')">
-<div class="hero-symbol">☄</div>
+<img src="..." alt="Hayabusa">
 <div class="hero-name">Hayabusa</div>
 </div>
 
 <div class="hero" onclick="selectPick(this,'Fanny')">
-<div class="hero-symbol">♛</div>
+<img src="..." alt="Fanny">
 <div class="hero-name">Fanny</div>
 </div>
 
 <div class="hero" onclick="selectPick(this,'Yin')">
-<div class="hero-symbol">⚡</div>
+<img src="..." alt="Yin">
 <div class="hero-name">Yin</div>
 </div>
 
 <div class="hero" onclick="selectPick(this,'Alucard')">
-<div class="hero-symbol">♜</div>
+<img src="..." alt="Alucard">
 <div class="hero-name">Alucard</div>
 </div>
 
-<div class="hero" onclick="selectPick(this,'Chou')">
-<div class="hero-symbol">✧</div>
+<div class="hero" onclick="selectPick(this,'Hirara')">
+<img src="..." alt="Hirara">
 <div class="hero-name">Hirara</div>
 </div>
 
 <div class="hero" onclick="selectPick(this,'Julian')">
-<div class="hero-symbol">☾</div>
+<img src="..." alt="Julian">
 <div class="hero-name">Julian</div>
 </div>
 
 <div class="hero" onclick="selectPick(this,'Granger')">
-<div class="hero-symbol">♣</div>
+<img src="..." alt="Granger">
 <div class="hero-name">Granger</div>
 </div>
 
