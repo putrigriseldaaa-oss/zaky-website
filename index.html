@@ -4,920 +4,1507 @@
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
-<title>For ma baeee 💗</title>
+<title>Ranked Match — You × Me</title>
 
 <style>
-* {
-    box-sizing: border-box;
+
+*{
+    box-sizing:border-box;
+    margin:0;
+    padding:0;
 }
 
-body {
-    margin: 0;
-    font-family: Arial, sans-serif;
-    background: linear-gradient(135deg, #ffe4ec, #fff7f9, #e9ddff);
-    color: #4a3040;
-    overflow-x: hidden;
+html,body{
+    width:100%;
+    height:100%;
+    overflow:hidden;
+    font-family:Arial, Helvetica, sans-serif;
+    background:#050b18;
+    color:white;
 }
 
-button {
-    font-family: inherit;
+/* =========================
+   MAIN GAME
+========================= */
+
+#game{
+    width:100%;
+    height:100%;
+    position:relative;
+    overflow:hidden;
+    background:
+        radial-gradient(circle at 50% 20%, #29467e 0%, transparent 35%),
+        linear-gradient(135deg,#071426,#111b38 50%,#090817);
 }
 
-.container {
-    width: 90%;
-    max-width: 700px;
-    margin: auto;
+/* glowing background */
+
+#game::before{
+    content:"";
+    position:absolute;
+    inset:-20%;
+    background:
+        radial-gradient(circle,#486db0 0%,transparent 20%),
+        radial-gradient(circle at 80% 80%,#4c1935 0%,transparent 22%);
+    opacity:.25;
+    animation:backgroundMove 8s infinite alternate;
 }
 
-.hero {
-    min-height: 100vh;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    text-align: center;
-    padding: 30px 0;
+@keyframes backgroundMove{
+    from{transform:scale(1);}
+    to{transform:scale(1.15) rotate(2deg);}
 }
 
-.card {
-    background: rgba(255,255,255,0.88);
-    padding: 35px 25px;
-    border-radius: 30px;
-    box-shadow: 0 10px 30px rgba(100,60,90,0.15);
-    margin: 25px 0;
+/* =========================
+   SCREEN SYSTEM
+========================= */
+
+.screen{
+    position:absolute;
+    inset:0;
+    display:none;
+    flex-direction:column;
+    justify-content:center;
+    align-items:center;
+    text-align:center;
+    padding:25px;
+    z-index:2;
 }
 
-h1 {
-    font-size: 42px;
-    margin-bottom: 10px;
+.screen.active{
+    display:flex;
+    animation:screenIn .7s ease;
 }
 
-h2 {
-    color: #b64d78;
-}
-
-p {
-    line-height: 1.8;
-}
-
-.small {
-    font-size: 13px;
-    opacity: 0.7;
-}
-
-.heart {
-    font-size: 55px;
-    animation: bounce 1.5s infinite;
-}
-
-@keyframes bounce {
-    0%,100% { transform: translateY(0); }
-    50% { transform: translateY(-12px); }
-}
-
-.btn {
-    border: none;
-    background: #ff7fa3;
-    color: white;
-    padding: 13px 18px;
-    border-radius: 20px;
-    margin: 6px;
-    cursor: pointer;
-    font-size: 15px;
-    transition: 0.2s;
-}
-
-.btn:hover {
-    transform: scale(1.06);
-}
-
-.btn.purple {
-    background: #9c82d8;
-}
-
-.btn.dark {
-    background: #57425e;
-}
-
-.message {
-    display: none;
-    background: #fff0f5;
-    padding: 18px;
-    border-radius: 20px;
-    margin-top: 15px;
-    animation: appear 0.4s ease;
-}
-
-@keyframes appear {
-    from {
-        opacity: 0;
-        transform: translateY(10px);
+@keyframes screenIn{
+    from{
+        opacity:0;
+        transform:scale(1.04);
     }
-    to {
-        opacity: 1;
-        transform: translateY(0);
+    to{
+        opacity:1;
+        transform:scale(1);
     }
 }
 
-.photo-box {
-    border: 3px dashed #f3a6bd;
-    border-radius: 25px;
-    padding: 40px 15px;
-    margin: 20px 0;
-    background: #fff8fa;
+/* =========================
+   TYPOGRAPHY
+========================= */
+
+.small-title{
+    letter-spacing:4px;
+    font-size:12px;
+    color:#aebddd;
+    margin-bottom:12px;
 }
 
-.photo-box img {
-    max-width: 100%;
-    border-radius: 20px;
+.big-title{
+    font-size:clamp(35px,7vw,80px);
+    font-weight:900;
+    letter-spacing:3px;
+    text-transform:uppercase;
+    text-shadow:
+        0 4px 15px #000,
+        0 0 25px rgba(126,170,255,.5);
 }
 
-.game {
-    background: #faf4ff;
-    border-radius: 25px;
-    padding: 20px;
-    margin-top: 20px;
+.gold{
+    color:#e8c77b;
 }
 
-.footer {
-    text-align: center;
-    padding: 40px 20px 70px;
+.pink{
+    color:#ff7ea9;
 }
 
-audio {
-    width: 100%;
-    margin-top: 15px;
+/* =========================
+   BUTTON
+========================= */
+
+.game-btn{
+    border:none;
+    margin-top:30px;
+    padding:15px 42px;
+    min-width:190px;
+    border-radius:8px;
+    cursor:pointer;
+    font-weight:800;
+    letter-spacing:1px;
+    color:#fff;
+    background:
+        linear-gradient(#b9924b,#60441e);
+    border:1px solid #e8ca83;
+    box-shadow:
+        0 0 20px rgba(221,180,91,.3),
+        inset 0 1px rgba(255,255,255,.4);
+    transition:.25s;
 }
 
-.badge {
-    display: inline-block;
-    background: #ffe0ea;
-    color: #a43e67;
-    padding: 8px 14px;
-    border-radius: 30px;
-    font-size: 13px;
-    margin: 4px;
+.game-btn:hover{
+    transform:scale(1.06);
+    box-shadow:
+        0 0 30px rgba(241,198,91,.6);
 }
+
+.secondary{
+    background:linear-gradient(#294e7d,#152943);
+    border-color:#6e9dd2;
+}
+
+/* =========================
+   START SCREEN
+========================= */
+
+.start-bg{
+    position:absolute;
+    inset:0;
+    background:
+        radial-gradient(circle at 50% 35%,rgba(120,150,255,.3),transparent 25%),
+        linear-gradient(160deg,#08152d,#171837,#250f24);
+}
+
+.start-content{
+    position:relative;
+    z-index:3;
+}
+
+.rank-symbol{
+    width:110px;
+    height:110px;
+    margin:auto;
+    border-radius:50%;
+    border:3px solid #e3c777;
+    display:flex;
+    align-items:center;
+    justify-content:center;
+    font-size:45px;
+    background:radial-gradient(circle,#7b6a3d,#18192c);
+    box-shadow:0 0 40px rgba(227,199,119,.5);
+    animation:float 3s infinite ease-in-out;
+}
+
+@keyframes float{
+    50%{transform:translateY(-10px);}
+}
+
+.start-sub{
+    margin-top:12px;
+    color:#c2c7d8;
+}
+
+.special{
+    margin-top:25px;
+    font-size:clamp(24px,5vw,50px);
+    font-weight:900;
+    color:#e4c778;
+}
+
+.special span{
+    color:#ff557f;
+}
+
+/* =========================
+   MATCHMAKING
+========================= */
+
+.search-ring{
+    width:220px;
+    height:220px;
+    border-radius:50%;
+    border:2px solid #4c8eff;
+    box-shadow:
+        0 0 20px #3071ff,
+        inset 0 0 40px rgba(53,126,255,.2);
+    display:flex;
+    align-items:center;
+    justify-content:center;
+    position:relative;
+}
+
+.search-ring::before,
+.search-ring::after{
+    content:"";
+    position:absolute;
+    border-radius:50%;
+    border:1px solid rgba(100,170,255,.4);
+}
+
+.search-ring::before{
+    inset:25px;
+}
+
+.search-ring::after{
+    inset:50px;
+}
+
+.timer{
+    font-size:38px;
+    font-weight:bold;
+}
+
+/* =========================
+   MATCH FOUND
+========================= */
+
+.vs{
+    display:flex;
+    align-items:center;
+    justify-content:center;
+    gap:50px;
+    margin-top:35px;
+}
+
+.player-card{
+    width:180px;
+    min-height:230px;
+    border:1px solid #45638f;
+    background:linear-gradient(145deg,#152a4a,#070d1b);
+    border-radius:12px;
+    padding:15px;
+    box-shadow:0 15px 40px #0008;
+}
+
+.hero-placeholder{
+    height:145px;
+    border-radius:8px;
+    background:
+        radial-gradient(circle at 50% 30%,#a8d0ff,#31558e 35%,#090f21 75%);
+    display:flex;
+    align-items:center;
+    justify-content:center;
+    font-size:50px;
+    margin-bottom:10px;
+}
+
+.vs-text{
+    font-size:45px;
+    font-weight:900;
+    color:#e7c76c;
+}
+
+/* =========================
+   DRAFT
+========================= */
+
+.draft{
+    width:min(1000px,95vw);
+}
+
+.draft-header{
+    width:100%;
+    display:flex;
+    justify-content:space-between;
+    align-items:center;
+    margin-bottom:20px;
+}
+
+.phase{
+    font-size:22px;
+    font-weight:bold;
+}
+
+.countdown{
+    color:#f2cb71;
+    font-size:25px;
+}
+
+.draft-layout{
+    display:grid;
+    grid-template-columns:150px 1fr 150px;
+    gap:15px;
+}
+
+.side-list{
+    display:flex;
+    flex-direction:column;
+    gap:8px;
+}
+
+.slot{
+    height:55px;
+    border:1px solid #3e5576;
+    background:#091326;
+    border-radius:6px;
+    display:flex;
+    align-items:center;
+    padding:8px;
+    font-size:12px;
+}
+
+.hero-grid{
+    display:grid;
+    grid-template-columns:repeat(5,1fr);
+    gap:8px;
+}
+
+.hero{
+    height:90px;
+    border-radius:7px;
+    border:1px solid #536c91;
+    background:
+        linear-gradient(150deg,#455e9b,#161c3d);
+    cursor:pointer;
+    position:relative;
+    overflow:hidden;
+    transition:.2s;
+}
+
+.hero:hover{
+    transform:translateY(-5px);
+    border-color:#e3c777;
+    box-shadow:0 0 20px #d9b96555;
+}
+
+.hero::after{
+    content:"";
+    position:absolute;
+    bottom:0;
+    left:0;
+    right:0;
+    padding:8px;
+    background:linear-gradient(transparent,#000);
+}
+
+.hero-name{
+    position:absolute;
+    bottom:6px;
+    left:6px;
+    z-index:2;
+    font-size:11px;
+}
+
+/* =========================
+   LOCKED
+========================= */
+
+.locked-card{
+    width:min(500px,90vw);
+    background:linear-gradient(145deg,#192d4c,#070d1c);
+    border:1px solid #d4b764;
+    border-radius:15px;
+    padding:25px;
+    box-shadow:0 0 50px rgba(202,166,70,.25);
+}
+
+.locked-hero{
+    height:280px;
+    border-radius:12px;
+    background:
+        radial-gradient(circle at 50% 25%,#c4e2ff,#486ca4 30%,#10172c 75%);
+    display:flex;
+    align-items:center;
+    justify-content:center;
+    font-size:100px;
+}
+
+/* =========================
+   LOADING
+========================= */
+
+.loading-card{
+    width:min(850px,95vw);
+}
+
+.team{
+    display:flex;
+    justify-content:center;
+    gap:12px;
+    flex-wrap:wrap;
+    margin:30px 0;
+}
+
+.avatar{
+    width:100px;
+    height:130px;
+    border:1px solid #5575a8;
+    border-radius:8px;
+    background:linear-gradient(#263e68,#090e1c);
+    display:flex;
+    align-items:center;
+    justify-content:center;
+    font-size:38px;
+}
+
+.progress{
+    width:100%;
+    height:8px;
+    background:#182235;
+    border-radius:20px;
+    overflow:hidden;
+}
+
+.progress-bar{
+    height:100%;
+    width:0;
+    background:linear-gradient(90deg,#57aaff,#caa957);
+    transition:width 3s linear;
+}
+
+/* =========================
+   MAP
+========================= */
+
+.map-screen{
+    width:min(1050px,95vw);
+}
+
+.map{
+    width:100%;
+    aspect-ratio:16/9;
+    position:relative;
+    border-radius:15px;
+    overflow:hidden;
+    border:2px solid #5c7295;
+    background:
+        radial-gradient(circle at 20% 80%,#255f47,transparent 15%),
+        radial-gradient(circle at 80% 20%,#4c3155,transparent 15%),
+        linear-gradient(135deg,#182e36,#315b42,#183242);
+    box-shadow:0 20px 60px #000b;
+}
+
+.lane{
+    position:absolute;
+    height:9px;
+    background:#a8a06d;
+    box-shadow:0 0 8px #d9ce8a;
+    transform-origin:left;
+}
+
+.top-lane{
+    width:80%;
+    top:25%;
+    left:10%;
+    transform:rotate(25deg);
+}
+
+.mid-lane{
+    width:90%;
+    top:50%;
+    left:5%;
+    transform:rotate(-28deg);
+}
+
+.bottom-lane{
+    width:80%;
+    bottom:25%;
+    left:10%;
+    transform:rotate(25deg);
+}
+
+.base{
+    position:absolute;
+    width:65px;
+    height:65px;
+    border-radius:50%;
+    border:4px solid #6cb8ff;
+    background:#152a55;
+    box-shadow:0 0 30px #3d9cff;
+}
+
+.base.ally{
+    bottom:8%;
+    left:7%;
+}
+
+.base.enemy{
+    top:8%;
+    right:7%;
+    border-color:#ff657a;
+    background:#441d2c;
+    box-shadow:0 0 30px #ff435b;
+}
+
+.map-label{
+    position:absolute;
+    padding:7px 12px;
+    background:#050b18aa;
+    border:1px solid #ffffff44;
+    border-radius:6px;
+    font-weight:bold;
+    font-size:12px;
+}
+
+.exp{
+    top:15%;
+    left:5%;
+}
+
+.mid{
+    top:45%;
+    left:43%;
+}
+
+.gold{
+    bottom:12%;
+    right:5%;
+}
+
+/* =========================
+   BATTLE
+========================= */
+
+.battle{
+    position:absolute;
+    inset:0;
+    background:
+        radial-gradient(circle at 50% 50%,#345c38,transparent 30%),
+        linear-gradient(135deg,#122f25,#243f2b,#111c27);
+}
+
+.hud-top{
+    position:absolute;
+    top:15px;
+    left:15px;
+    right:15px;
+    display:flex;
+    justify-content:space-between;
+    z-index:4;
+}
+
+.score{
+    padding:8px 15px;
+    background:#050b18cc;
+    border:1px solid #5b7392;
+    border-radius:7px;
+}
+
+.minimap{
+    position:absolute;
+    top:70px;
+    left:20px;
+    width:130px;
+    height:130px;
+    border-radius:8px;
+    background:#101d2b;
+    border:2px solid #607796;
+    z-index:4;
+}
+
+.player{
+    position:absolute;
+    left:50%;
+    top:55%;
+    width:100px;
+    height:130px;
+    transform:translate(-50%,-50%);
+    display:flex;
+    align-items:center;
+    justify-content:center;
+    font-size:70px;
+    filter:drop-shadow(0 0 10px #67b5ff);
+}
+
+.enemy{
+    position:absolute;
+    right:25%;
+    top:35%;
+    font-size:65px;
+    filter:drop-shadow(0 0 10px #ff5267);
+}
+
+.health{
+    position:absolute;
+    top:-12px;
+    left:0;
+    right:0;
+    height:7px;
+    background:#ef4d65;
+    border-radius:10px;
+}
+
+.skills{
+    position:absolute;
+    bottom:25px;
+    right:25px;
+    display:flex;
+    gap:10px;
+}
+
+.skill{
+    width:55px;
+    height:55px;
+    border-radius:50%;
+    border:2px solid #b6c7dd;
+    background:radial-gradient(circle,#476a9f,#101a30);
+    display:flex;
+    align-items:center;
+    justify-content:center;
+    cursor:pointer;
+    font-size:22px;
+}
+
+.skill:hover{
+    transform:scale(1.1);
+}
+
+.joystick{
+    position:absolute;
+    bottom:30px;
+    left:30px;
+    width:95px;
+    height:95px;
+    border-radius:50%;
+    border:2px solid #ffffff44;
+    background:#09132399;
+}
+
+/* =========================
+   VICTORY
+========================= */
+
+.victory{
+    position:relative;
+    z-index:3;
+}
+
+.victory-icon{
+    width:180px;
+    height:180px;
+    border-radius:50%;
+    border:5px solid #e5c66d;
+    display:flex;
+    justify-content:center;
+    align-items:center;
+    font-size:80px;
+    background:radial-gradient(circle,#726039,#11182b);
+    box-shadow:0 0 60px #e5c66d66;
+    animation:victoryPulse 2s infinite;
+}
+
+@keyframes victoryPulse{
+    50%{
+        transform:scale(1.05);
+        box-shadow:0 0 90px #e5c66d88;
+    }
+}
+
+/* =========================
+   REWARD
+========================= */
+
+.reward-box{
+    width:min(500px,90vw);
+    padding:35px;
+    border-radius:15px;
+    background:linear-gradient(145deg,#172b4b,#080e1c);
+    border:1px solid #d9bc6c;
+    box-shadow:0 20px 60px #000;
+}
+
+.reward-icon{
+    font-size:80px;
+    margin:15px;
+}
+
+.reward-number{
+    font-size:45px;
+    color:#ff79a5;
+    font-weight:900;
+}
+
+/* =========================
+   CUDDLE
+========================= */
+
+.cuddle{
+    width:min(650px,90vw);
+    padding:35px;
+    background:
+        linear-gradient(145deg,#28172b,#0a1222);
+    border:1px solid #e3a1ba;
+    border-radius:20px;
+    box-shadow:0 0 60px #f06f9b33;
+}
+
+.heart{
+    font-size:75px;
+    animation:heartBeat 1.4s infinite;
+}
+
+@keyframes heartBeat{
+    50%{transform:scale(1.2);}
+}
+
+.cuddle h2{
+    color:#ff91b4;
+    margin:15px 0;
+    font-size:38px;
+}
+
+/* =========================
+   LETTER
+========================= */
+
+.letter{
+    width:min(700px,92vw);
+    max-height:75vh;
+    overflow:auto;
+    padding:40px;
+    text-align:left;
+    color:#332b2c;
+    background:
+        linear-gradient(#f9efd9,#ead7b7);
+    border-radius:5px;
+    box-shadow:0 20px 70px #000b;
+    position:relative;
+}
+
+.letter::before{
+    content:"♥";
+    position:absolute;
+    top:15px;
+    right:20px;
+    font-size:30px;
+    color:#a93e57;
+}
+
+.letter h2{
+    text-align:center;
+    margin-bottom:25px;
+    color:#682536;
+}
+
+.letter p{
+    line-height:1.8;
+    margin-bottom:18px;
+}
+
+/* =========================
+   END
+========================= */
+
+.end{
+    background:
+        radial-gradient(circle at 50% 40%,#6b2c42,transparent 25%),
+        linear-gradient(135deg,#090c18,#241321,#090c18);
+}
+
+.end .heart{
+    color:#ff6f9e;
+}
+
+/* =========================
+   MOBILE
+========================= */
+
+@media(max-width:700px){
+
+    .big-title{
+        font-size:38px;
+    }
+
+    .vs{
+        gap:10px;
+        transform:scale(.8);
+    }
+
+    .draft-layout{
+        grid-template-columns:70px 1fr 70px;
+    }
+
+    .hero-grid{
+        grid-template-columns:repeat(3,1fr);
+    }
+
+    .hero{
+        height:65px;
+    }
+
+    .player-card{
+        width:130px;
+        min-height:180px;
+    }
+
+    .hero-placeholder{
+        height:110px;
+    }
+
+    .letter{
+        padding:25px;
+    }
+
+}
+
 </style>
 </head>
 
 <body>
 
-<!-- PEMBUKA -->
+<div id="game">
 
-<section class="hero">
-<div class="container">
+<!-- =========================
+START
+========================= -->
 
-<div class="card">
+<section class="screen active" id="start">
 
-<div class="heart">💗</div>
+<div class="start-bg"></div>
 
-<h1>For my baby boy.</h1>
+<div class="start-content">
 
-<p>
-atau mungkin lebih tepatnya...
-</p>
+<div class="rank-symbol">✦</div>
 
-<h2>HII SAYANG KU, CINTA KU, KEKASIH KU 💗</h2>
+<div class="small-title">SPECIAL EDITION</div>
 
-<p>
-Selamat datang di website yang sebenarnya
-nggak kamu minta tapi tetap aku buat
-</p>
+<div class="big-title">
+RANKED MATCH
+</div>
 
-<p>
-Jangan kabur dulu
-Aku tahu kamu suka menghilang
-🫵🏻
-</p>
+<div class="special">
+ZAKY <span>×</span> SASA
+</div>
 
-<button class="btn" onclick="showMessage('welcome')">
-Pencet kalau berani 👀
+<div class="start-sub">
+Are you ready, baee? ♥
+</div>
+
+<button class="game-btn" onclick="next('matchmaking')">
+START GAME
 </button>
 
-<div id="welcome" class="message">
-HAHAHAHA KENA 😝
-<br><br>
-Sekarang sudah terlanjur masuk,
-jadi tolong lihat sampai selesai
-<br><br>
-Aku hari ini gada kabar iseng bikin ini sayang
 </div>
 
-</div>
-
-</div>
 </section>
 
 
-<!-- DISCLAIMER -->
+<!-- =========================
+MATCHMAKING
+========================= -->
 
-<section class="container">
+<section class="screen" id="matchmaking">
 
-<div class="card">
+<div class="small-title">RANKED MATCH</div>
 
-<h2>📌 Disclaimer kecil</h2>
-
-<p>
-Sebenernya aku belum tau banyak tentang kamu baeee, cedih:(((
-</p>
-
-<p>
-Jadi kalau nanti aku ada pilihan
-ML, boxing, olahraga, tidur, atau hal-hal lain...
-itu sebagian besar adalah hasil pengamatan ku
-kalau salah semua ya udah sih salah siapa gamau kasih tau
-😤
-</p>
-
-<p>
-Jadi jangan protes kalau ada yang salah
-Aku kan cuma...
-</p>
-
-<h2>✨ sok tahu tentang kamu ✨</h2>
-
+<div class="search-ring">
+<div class="timer" id="timer">00:12</div>
 </div>
 
+<h2 style="margin-top:25px;">
+Finding the perfect match...
+</h2>
 
-<!-- BAD DAYS -->
-
-<div class="card">
-
-<h2>🌧️ Kalau akhir-akhir ini kamu lagi capek or get bad days...</h2>
-
-<p>
-Aku tahu kamu punya kebiasaan bilang
-<strong>"gapapa"</strong>
-meskipun sebenarnya mungkin ada banyak hal
-yang sedang kamu pendam sendiri
-</p>
-
-<p>
-Dan aku tahu kamu kadang lebih memilih diam,
-menghilang, main, boxing, dkk
-atau melakukan sesuatu sendiri
-daripada menjelaskan apa yang sebenarnya terjadi
-</p>
-
-<p>
-Aku nggak akan maksa kamu cerita
-</p>
-
-<p>
-Karena menurutku,
-<strong>nggak semua rasa sakit harus langsung diceritakan</strong>
-Kadang seseorang cuma butuh waktu
-untuk mengerti apa yang sedang dia rasakan
-</p>
-
-<p>
-Jadi kalau kamu sedang nggak baik-baik saja...
-<strong>nggak apa-apa</strong>
-</p>
-
-</div>
-
-
-<!-- SESI 1 -->
-
-<div class="card">
-
-<h2>🎮 SESI 1 — MODE PENYELAMATAN</h2>
-
-<p>
-Oke, sekarang pilih cara kamu menghadapi bad mood
-<br>
-<strong>BEBAS.</strong>
-Aku nggak bakal bawel
-</p>
-
-<button class="btn" onclick="showMessage('ml')">
-🎮 Main ML
+<button class="game-btn secondary" onclick="next('found')">
+CANCEL
 </button>
 
-<button class="btn" onclick="showMessage('boxing')">
-🥊 Boxing
+</section>
+
+
+<!-- =========================
+MATCH FOUND
+========================= -->
+
+<section class="screen" id="found">
+
+<div class="small-title">
+MATCH FOUND
+</div>
+
+<div class="vs">
+
+<div class="player-card">
+<div class="hero-placeholder">⚔</div>
+<strong>ZAKY</strong>
+</div>
+
+<div class="vs-text">VS</div>
+
+<div class="player-card">
+<div class="hero-placeholder">?</div>
+<strong>ENEMY</strong>
+</div>
+
+</div>
+
+<button class="game-btn" onclick="next('ban')">
+LET'S GO!
 </button>
 
-<button class="btn" onclick="showMessage('gym')">
-🏋🏻‍♂️ GYM
+</section>
+
+
+<!-- =========================
+BAN
+========================= -->
+
+<section class="screen" id="ban">
+
+<div class="draft">
+
+<div class="draft-header">
+<div class="phase">
+BAN PHASE
+</div>
+
+<div class="countdown">
+00:23
+</div>
+</div>
+
+<div class="draft-layout">
+
+<div class="side-list">
+<div class="slot">Zaky</div>
+<div class="slot">YOU</div>
+<div class="slot">♡</div>
+<div class="slot">♡</div>
+<div class="slot">♡</div>
+</div>
+
+<div>
+
+<div class="hero-grid">
+
+<div class="hero">⚔<span class="hero-name">HERO 01</span></div>
+<div class="hero">♠<span class="hero-name">HERO 02</span></div>
+<div class="hero">✦<span class="hero-name">HERO 03</span></div>
+<div class="hero">☄<span class="hero-name">HERO 04</span></div>
+<div class="hero">♛<span class="hero-name">HERO 05</span></div>
+
+<div class="hero">⚡<span class="hero-name">HERO 06</span></div>
+<div class="hero">♜<span class="hero-name">HERO 07</span></div>
+<div class="hero">✧<span class="hero-name">HERO 08</span></div>
+<div class="hero">☾<span class="hero-name">HERO 09</span></div>
+<div class="hero">♣<span class="hero-name">HERO 10</span></div>
+
+<div class="hero">✹<span class="hero-name">HERO 11</span></div>
+<div class="hero">⚔<span class="hero-name">HERO 12</span></div>
+<div class="hero">♠<span class="hero-name">HERO 13</span></div>
+<div class="hero">✦<span class="hero-name">HERO 14</span></div>
+<div class="hero">☄<span class="hero-name">HERO 15</span></div>
+
+</div>
+
+<button class="game-btn" onclick="next('pick')">
+BAN HERO
 </button>
 
-<button class="btn" onclick="showMessage('sleep')">
-💤 Tidur & menghilang
+</div>
+
+<div class="side-list">
+<div class="slot">ENEMY</div>
+<div class="slot">?</div>
+<div class="slot">?</div>
+<div class="slot">?</div>
+<div class="slot">?</div>
+</div>
+
+</div>
+
+</div>
+
+</section>
+
+
+<!-- =========================
+PICK HERO
+========================= -->
+
+<section class="screen" id="pick">
+
+<div class="draft">
+
+<div class="phase">
+PICK PHASE
+</div>
+
+<div class="countdown">
+00:28
+</div>
+
+<div class="hero-grid" style="margin-top:25px;">
+
+<div class="hero" onclick="next('locked')">⚔<span class="hero-name">Gusion</span></div>
+<div class="hero">♠<span class="hero-name">Hero 02</span></div>
+<div class="hero">✦<span class="hero-name">Hero 03</span></div>
+<div class="hero">☄<span class="hero-name">Hero 04</span></div>
+<div class="hero">♛<span class="hero-name">Hero 05</span></div>
+
+<div class="hero">⚡<span class="hero-name">Hero 06</span></div>
+<div class="hero">♜<span class="hero-name">Hero 07</span></div>
+<div class="hero">✧<span class="hero-name">Hero 08</span></div>
+<div class="hero">☾<span class="hero-name">Hero 09</span></div>
+<div class="hero">♣<span class="hero-name">Hero 10</span></div>
+
+</div>
+
+<p style="margin-top:20px;color:#9daac0;">
+Choose your hero...
+</p>
+
+</div>
+
+</section>
+
+
+<!-- =========================
+LOCKED
+========================= -->
+
+<section class="screen" id="locked">
+
+<div class="locked-card">
+
+<div class="locked-hero">
+⚔
+</div>
+
+<div class="small-title" style="margin-top:20px;">
+YOUR HERO
+</div>
+
+<div class="big-title" style="font-size:35px;">
+LOCKED IN
+</div>
+
+<p style="margin-top:10px;color:#aebbd0;">
+Let's do this, baeee ♥
+</p>
+
+<button class="game-btn" onclick="next('loading')">
+LOCKED IN
 </button>
 
-
-<div id="ml" class="message">
-🎮 <strong>MAIN ML.</strong>
-<br><br>
-Yaudah sana main
-Keluarin semua emosinya di Land of Dawn
-<br><br>
-Tapi kalau kalah ga boleh makin badmood
-SEMOGA WS KAMU LEBIH BANYAK DRPD LS MU, buruan gih nyampe imo 👀
 </div>
 
+</section>
 
-<div id="boxing" class="message">
-🥊 <strong>BOXING.</strong>
-<br><br>
-Pukul samsaknya
-Jangan pukul orangg bae
-Tapi aku tau sih kamu gabakal kek gitu
-Gabut banget lu bang 🫵 
+
+<!-- =========================
+LOADING
+========================= -->
+
+<section class="screen" id="loading">
+
+<div class="loading-card">
+
+<div class="big-title" style="font-size:35px;">
+LOADING
 </div>
 
+<div class="team">
 
-<div id="sport" class="message">
-🏃 <strong>GYM.</strong>
-<br><br>
-Nah ini bagus
-Keluarin capeknya dari badan
-Biar pikiranmu juga sedikit lebih lega
-Biar kamu bisa bobo juga
-<br><br>
-Kamu sengaja yaa semantep itu
-biar aku gragas kann baee😘
-</div>
-
-
-<div id="sleep" class="message">
-💤 <strong>TIDUR & MENGHILANG.</strong>
-<br><br>
-Kamu kalau butuh waktu, it's okay. Just take ur time
-Tapi aku minta tolong tetap berkabar yaa sayang
-<br><br>
-Istirahat
-Nggak perlu menjelaskan apa pun
-Nggak perlu pura-pura baik-baik saja.
-<br><br>
-<strong>Tapi jangan lupa balik</strong>
-<br><br>
-Karena masih ada aku yang belum selesai
-mengganggu hidupmu 🫵🏻
-</div>
+<div class="avatar">⚔</div>
+<div class="avatar">✦</div>
+<div class="avatar">♠</div>
+<div class="avatar">☄</div>
+<div class="avatar">♛</div>
 
 </div>
 
+<div class="progress">
+<div class="progress-bar" id="progress"></div>
+</div>
 
-<!-- SESI 2 -->
-
-<div class="card">
-
-<h2>🚨 SESI 2 — SEKARANG GILIRAN AKU 🚨</h2>
-
-<p>
-Oke kamu sudah memilih cara buat
-menenangkan diri
+<p style="margin-top:20px;color:#9daac0;">
+Preparing battlefield...
 </p>
 
-<p>
-<strong>SEKARANG NGGAK ADA PILIHAN KABUR.</strong>
-</p>
-
-<p>
-Sekarang kamu wajib memilih:
-</p>
-
-<button class="btn" onclick="showMessage('annoy')">
-😈 Ganggu aku
+<button class="game-btn" onclick="next('land')">
+ENTER THE LAND
 </button>
 
-<button class="btn purple" onclick="showMessage('story')">
-💬 Aku mau cerita
+</div>
+
+</section>
+
+
+<!-- =========================
+LAND
+========================= -->
+
+<section class="screen" id="land">
+
+<div class="map-screen">
+
+<div class="small-title">
+THE LAND
+</div>
+
+<div class="map">
+
+<div class="lane top-lane"></div>
+<div class="lane mid-lane"></div>
+<div class="lane bottom-lane"></div>
+
+<div class="base ally"></div>
+<div class="base enemy"></div>
+
+<div class="map-label exp">
+EXP LANE
+</div>
+
+<div class="map-label mid">
+MID LANE
+</div>
+
+<div class="map-label gold">
+GOLD LANE
+</div>
+
+</div>
+
+<button class="game-btn" onclick="next('battle')">
+ENTER BATTLE
 </button>
 
-<button class="btn dark" onclick="showMessage('hug')">
-🫂 Aku cuma mau diam
+</div>
+
+</section>
+
+
+<!-- =========================
+BATTLE
+========================= -->
+
+<section class="screen" id="battle">
+
+<div class="battle">
+
+<div class="hud-top">
+
+<div class="score">
+ZAKY&nbsp;&nbsp; 8 — 4 &nbsp;&nbsp; ENEMY
+</div>
+
+<div class="score">
+$ 812
+</div>
+
+</div>
+
+<div class="minimap"></div>
+
+<div class="player">
+
+<div class="health"></div>
+
+⚔
+
+</div>
+
+<div class="enemy">
+☄
+</div>
+
+<div class="joystick"></div>
+
+<div class="skills">
+
+<div class="skill">✦</div>
+<div class="skill">⚡</div>
+<div class="skill">☄</div>
+<div class="skill">✹</div>
+
+</div>
+
+</div>
+
+<button
+class="game-btn"
+style="position:absolute;z-index:10;bottom:25px;left:50%;transform:translateX(-50%);"
+onclick="next('victory')">
+
+PUSH TOWER
+
 </button>
 
+</section>
 
-<div id="annoy" class="message">
-AHAHAHA
-<br><br>
-<strong>SELAMAT.</strong>
-<br>
-Sekarang kamu resmi menjadi korban
-gangguan aku
-<br><br>
-Aku mau peluk kamu yang lamaaa dan erattt sambil puk - puk
-<br>
-Kamu nggak boleh nolak
-<br>
-Aku juga mau kith yang banyak banyak, mwahh mwahhh 💋💋💋
-<br>
-Kamu juga nggak boleh nolak.
-<br><br>
-<strong>INI BUKAN DEMOKRASI</strong>
-😭🫂💋
+
+<!-- =========================
+VICTORY
+========================= -->
+
+<section class="screen" id="victory">
+
+<div class="victory">
+
+<div class="victory-icon">
+✦
 </div>
 
-
-<div id="story" class="message">
-💬 <strong>Kalau kamu mau cerita...</strong>
-<br><br>
-Aku dengerin
-<br><br>
-Nggak harus rapi
-Nggak harus masuk akal
-Nggak harus tahu harus mulai dari mana
-<br><br>
-Kamu boleh cerita sambil marah
-<br>
-Boleh sambil bingung
-<br>
-Boleh cuma bilang:
-<br><br>
-<strong>"Aku capek"</strong>
-<br><br>
-Dan aku akan mengerti bahwa
-mungkin hari ini kamu nggak membutuhkan
-solusi
-<br><br>
-Mungkin kamu cuma membutuhkan seseorang
-yang bilang:
-<br><br>
-<strong>"Iya, aku dengerinkamu sayanggg"</strong>
+<div class="small-title" style="margin-top:25px;">
+MATCH RESULT
 </div>
 
-
-<div id="hug" class="message">
-🫂
-<br><br>
-Yaudah
-Sini
-<br><br>
-Nggak usah ngomong
-<br><br>
-*peluk virtual lama banget*
-<br><br>
-🫂🫂🫂🫂🫂
-<br><br>
-Aku nggak pergi
+<div class="big-title">
+VICTORY
 </div>
 
+<div style="margin-top:15px;font-size:25px;">
+22 <span style="color:#e35e70;">—</span> 10
 </div>
 
-
-<!-- GOOD BOY -->
-
-<div class="card">
-
-<h2>🏆 GOOD BOY AWARD</h2>
-
-<span class="badge">GOOD BOY</span>
-<span class="badge">STILL TRYING</span>
-<span class="badge">PROUD OF YOU</span>
-
-<p>
-Aku tahu mungkin kamu nggak menganggap
-ini sesuatu yang besar
-</p>
-
-<p>
-Tapi aku mau bilang sesuatu:
-</p>
-
-<h2>Aku bangga sama kamu</h2>
-
-<p>
-Kamu pelan-pelan belajar menghadapi masalah
-tanpa harus melampiaskannya ke hal-hal
-yang justru bisa bikin kamu makin chaoss
-</p>
-
-<p>
-Dan aku tahu proses seperti itu
-nggak gampang
-</p>
-
-<p>
-Kamu nggak harus langsung berubah
-Nggak harus langsung sempurna
-</p>
-
-<p>
-<strong>
-Pelan-pelan juga tetap maju
-</strong>
-</p>
-
-<p>
-Soo...
-ur always doin great. good job, baeee 👩‍❤️‍💋‍👨 
-</p>
-
-<p>
-I'm proud of you, my babyyyy 🤍
-</p>
-
-</div>
-
-
-<!-- PESAN DEEP -->
-
-<div class="card">
-
-<h2>💌 Ada sesuatu yang mau aku bilang...</h2>
-
-<p>
-Aku memang gatau apa yang kamu alami
-Aku juga ga memaksa kamu buat cerita
-</p>
-
-<p>
-Karena aku tau kamu punya privasi dan kamu bisa menyelesaikannya
-Karena kamu juga bisa aja mikir aku tidak pernah di posisi kamu
-</p>
-
-<p>
-Jujur aku juga bingung harus ngapain dan gimana
-LAMA LAMA KU SAMPERIN JUGA KAMUUUU BAEEEEEEE
-</p>
-
-<p>
-Aku cuma ingin kamu tahu...
-</p>
-
-<p>
-Kalau suatu hari kamu sedang capek sekali,
-dan dunia rasanya terlalu berisik,
-kamu boleh berhenti sebentar
-</p>
-
-<p>
-Kalau kamu belum siap bicara,
-nggak apa-apa
-</p>
-
-<p>
-Kalau kamu ingin sendiri,
-aku akan menghargainya
-</p>
-
-<p>
-Tapi aku ingin menjadi seseorang
-yang ketika kamu akhirnya siap kembali,
-kamu tahu...
-</p>
-
-<h2>aku masih ada</h2>
-
-<p>
-Bukan untuk memaksa kamu baik-baik saja
-</p>
-
-<p>
-Bukan untuk memaksa kamu cerita
-</p>
-
-<p>
-Tapi untuk menemani kamu
-melewati hari yang nggak enak
-sampai akhirnya hari itu selesai
-</p>
-
-<p>
-Karena kamu nggak harus selalu kuat
-di depan semua orang
-</p>
-
-<p>
-<strong>
-Sesekali boleh kok capek
-</strong>
-</p>
-
-</div>
-
-
-<!-- CEGIL ZONE -->
-
-<div class="card">
-
-<h2>🚨 CEGIL ZONE 🚨</h2>
-
-<p>
-Sekarang bagian yang lebih penting
-</p>
-
-<p>
-Aku punya beberapa hal yang ingin
-aku sampaikan tapi takut kamu geer
-</p>
-
-<button class="btn" onclick="showMessage('compliment')">
-🫵🏻 Pencet
+<button class="game-btn" onclick="next('reward')">
+TAP TO CONTINUE
 </button>
 
-<div id="compliment" class="message">
-
-KAMU MUNGKIN BOSEN DENGER AKU SELALU BILANG
-                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                         SELALU MANTEPP BANGETTT SAYANGGG 😭😭😭
-<br><br>
-
-MAHADAHYAT PAPAAA.
-<br><br>
-
-BAK DEWA YUNANI TURUN KE BUMI.
-<br><br>
-
-Tolong jangan besar kepala.
-<br>
-Aku cuma sedang jujur. 😭
-<br><br>
-
-Tapi kalau kamu senyum-senyum sendiri
-setelah baca ini...
-<br><br>
-
-<strong>
-HEHEHE KENA.
-</strong>
-
 </div>
 
+</section>
+
+
+<!-- =========================
+REWARD
+========================= -->
+
+<section class="screen" id="reward">
+
+<div class="reward-box">
+
+<div class="small-title">
+YOU GOT
 </div>
 
+<div class="reward-icon">
+✦
+</div>
 
-<!-- VITAMIN C -->
+<div class="reward-number">
++50 LOVE POINTS
+</div>
 
-<div class="card">
-
-<h2>🍊 VITAMIN C GRATIS</h2>
-
-<p>
-Waktu kamu sariawan dan susah makan,
-aku sebenarnya punya solusi yang sangat
-ilmiah.
+<p style="margin-top:12px;">
+Keep going, baeee! ♥
 </p>
 
-<p>
-Vitamin C.
-</p>
-
-<p>
-Gratis.
-</p>
-
-<p>
-Praktis.
-</p>
-
-<p>
-Mudah didapat.
-</p>
-
-<button class="btn" onclick="showMessage('vitamin')">
-🍊 Ambil Vitamin C
+<button class="game-btn" onclick="next('cuddle')">
+CLAIM REWARD
 </button>
 
-<div id="vitamin" class="message">
-
-<strong>
-VITAMIN CIPOKKK 💋
-</strong>
-
-<br><br>
-
-Jangan protes.
-<br>
-Aku yang bikin aturan.
-<br><br>
-
-💋💋💋
-<br><br>
-
-<strong>
-"Dok, saya butuh vitamin."
-<br>
-"Baik. Cipok dulu."
-</strong>
-
-😭
-
 </div>
 
+</section>
+
+
+<!-- =========================
+CUDDLE
+========================= -->
+
+<section class="screen" id="cuddle">
+
+<div class="cuddle">
+
+<div class="heart">
+♥
 </div>
 
-
-<!-- MASAK -->
-
-<div class="card">
-
-<h2>🍳 BONUS INFO PENTING</h2>
-
-<p>
-Aku sebenarnya ingin membuat bagian
-"aku akan masakin kamu".
-</p>
-
-<p>
-Tapi...
-</p>
-
-<h1>AKU GABISA MASAK 😭</h1>
-
-<p>
-Jadi kalau suatu hari kita living together,
-mungkin kita akan makan sesuatu
-yang dipesan lewat aplikasi.
-</p>
-
-<p>
-Romantis kan?
-</p>
-
-<p>
-<strong>
-KITA BISA MAKAN BERSAMA-SAMA
-DARI HASIL KERJA KERAS DRIVER.
-</strong>
-</p>
-
+<div class="small-title">
+SPECIAL REWARD UNLOCKED
 </div>
-
-
-<!-- FOTO -->
-
-<div class="card">
-
-<h2>📸 OUR LITTLE CORNER</h2>
-
-<p>
-Bagian ini nanti aku isi foto-foto
-yang bikin aku senyum sendiri.
-</p>
-
-<div class="photo-box">
-
-<p>📷 FOTO KITA NANTI DI SINI</p>
-
-<p class="small">
-(nanti foto akan kita masukkan)
-</p>
-
-</div>
-
-<p>
-Dan iya...
-aku tahu kita belum pernah ketemu.
-</p>
-
-<p>
-Jadi untuk sekarang,
-anggap saja ini tempat untuk
-menyimpan hal-hal kecil dari
-dua manusia yang masih bertemu
-lewat layar. 🤍
-</p>
-
-</div>
-
-
-<!-- LAGU -->
-
-<div class="card">
-
-<h2>🎧 Lagu untuk kamu</h2>
-
-<p>
-Nanti aku taruh lagu di sini.
-</p>
-
-<div class="photo-box">
-
-<p>🎵 YOUR SONG WILL BE HERE</p>
-
-<p class="small">
-(nanti kita masukkan file lagu)
-</p>
-
-</div>
-
-</div>
-
-
-<!-- FINAL -->
-
-<div class="card">
-
-<h2>💗 Sebelum kamu pergi...</h2>
-
-<p>
-Aku nggak tahu nanti kita akan
-sejauh apa.
-</p>
-
-<p>
-Aku nggak tahu apakah suatu hari
-kita benar-benar akan duduk
-di tempat yang sama,
-bukan cuma berada di layar yang sama.
-</p>
-
-<p>
-Aku juga nggak tahu apa yang akan
-terjadi setelah ini.
-</p>
-
-<p>
-Tapi untuk sekarang...
-</p>
-
-<p>
-aku senang pernah mengenal kamu.
-</p>
-
-<p>
-Dan kalau akhir-akhir ini hidup sedang
-terasa berat buat kamu,
-aku harap kamu ingat:
-</p>
 
 <h2>
-kamu nggak harus melewati
-semuanya sendirian.
+CUDDLE PRIVILEGE
+</h2>
+
+<div class="reward-number">
++100 LOVE POINTS
+</div>
+
+<p style="margin-top:15px;line-height:1.7;color:#d6c7cf;">
+Reward ini tidak bisa ditukar dengan diamond.
+<br>
+Tidak bisa dijual.
+<br>
+Dan hanya berlaku kalau kamu mau.
+<br><br>
+
+<strong>
+Hadiah sebenarnya:
+<br>
+a tight cuddle from me 🤍
+</strong>
+</p>
+
+<button class="game-btn" onclick="next('letter')">
+CONTINUE
+</button>
+
+</div>
+
+</section>
+
+
+<!-- =========================
+LETTER
+========================= -->
+
+<section class="screen" id="letter">
+
+<div class="letter">
+
+<h2>
+For my baeee, ♥
 </h2>
 
 <p>
-Ada aku.
+Zaky,
 </p>
 
 <p>
-Yang mungkin terlalu tengil.
+Kalau kamu sampai di bagian ini,
+berarti kamu berhasil menyelesaikan
+satu match yang sengaja aku bikin
+khusus buat kamu.
 </p>
 
 <p>
-Terlalu cerewet.
+Aku tahu akhir-akhir ini kamu mungkin
+lagi capek, banyak pikiran, atau
+kadang cuma pengen menghilang sebentar.
 </p>
 
 <p>
-Terlalu suka kirim sticker peluk.
+Jadi aku nggak mau website ini terasa
+seperti ceramah atau tuntutan.
+Aku cuma mau bikin satu tempat kecil
+yang isinya hal-hal yang mungkin
+bisa bikin kamu senyum.
 </p>
 
 <p>
-Terlalu suka godain kamu.
+Pertemuan kita masih lama kan bae? 
+Aku pingin menenal kamu jauh lebih banyakk.
+Tidak sekedar suka nya saja tapi duka juga.
 </p>
 
 <p>
-Dan mungkin...
+Terimakasih karena sudah kasih aku kesempatan, 
+terimakasih juga kamu tidak mendorong ku untuk pergi.
+Aku selalu pingin jadi rumah buat kamu apapun sikon nya
 </p>
-
-<h2>
-sedikit terlalu suka sama kamu. 🤏🏻</h2>
-
-<br>
 
 <p>
-<strong>
-— dari Saa, Baee, atau apapun panggilan
-yang sedang kamu pilih hari ini. 😭💗
-</strong>
+AYOK LAH LIVING TOGETHER AJA
+CAPEK AKU KANGEN TERUSSSS
+Nanti free hug, pukis and cuddle ahaha
 </p>
+
+<p>
+No pressure.
+No obligation.
+Cuma dua orang yang
+sama-sama pengen merasa nyaman.
+</p>
+
+<p>
+Thank you for being part
+of my little story baee.
+</p>
+
+<p>
+— For You, Always ♥
+</p>
+
+<button
+class="game-btn"
+onclick="next('end')">
+
+NEXT
+
+</button>
 
 </div>
 
 </section>
 
 
-<div class="footer">
+<!-- =========================
+END
+========================= -->
 
-<p>
-Made with too much affection,
-sedikit kegilaan,
-dan terlalu banyak mikirin Zaky. 💗
+<section class="screen end" id="end">
+
+<div class="small-title">
+SPECIAL EDITION
+</div>
+
+<div class="big-title">
+THE END
+</div>
+
+<p style="margin-top:20px;color:#c6cada;">
+But our game is just beginning.
 </p>
 
-<p class="small">
-P.S. jangan geer.
-</p>
+<div class="heart" style="margin-top:25px;">
+♥
+</div>
+
+<button class="game-btn" onclick="next('start')">
+PLAY AGAIN
+</button>
+
+</section>
 
 </div>
 
 
 <script>
 
-function showMessage(id) {
+/* =========================
+   SCREEN NAVIGATION
+========================= */
 
-    const messages = document.querySelectorAll(".message");
+function next(id){
 
-    messages.forEach(function(message) {
-        message.style.display = "none";
+    const screens =
+        document.querySelectorAll(".screen");
+
+    screens.forEach(screen=>{
+        screen.classList.remove("active");
     });
 
-    const selected = document.getElementById(id);
+    const target =
+        document.getElementById(id);
 
-    if (selected) {
-        selected.style.display = "block";
-
-        selected.scrollIntoView({
-            behavior: "smooth",
-            block: "center"
-        });
+    if(target){
+        target.classList.add("active");
     }
+
+    if(id === "loading"){
+
+        const bar =
+            document.getElementById("progress");
+
+        bar.style.width="0%";
+
+        setTimeout(()=>{
+            bar.style.width="100%";
+        },100);
+
+    }
+
 }
+
+
+/* =========================
+   MATCHMAKING TIMER
+========================= */
+
+let time = 12;
+
+setInterval(()=>{
+
+    const timer =
+        document.getElementById("timer");
+
+    if(
+        document.getElementById("matchmaking")
+        .classList.contains("active")
+    ){
+
+        if(time > 0){
+            time--;
+
+            timer.textContent =
+                "00:" +
+                String(time).padStart(2,"0");
+        }
+
+    }
+
+},1000);
 
 </script>
 
