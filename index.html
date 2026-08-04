@@ -7,7 +7,6 @@
 <title>Ranked Match — You × Me</title>
 
 <style>
-
 *{
     box-sizing:border-box;
     margin:0;
@@ -18,68 +17,35 @@ html,body{
     width:100%;
     height:100%;
     overflow:hidden;
-    font-family:Arial, Helvetica, sans-serif;
-    background:#050b18;
-    color:white;
+    font-family:Arial,Helvetica,sans-serif;
+    background:#050914;
+    color:#fff;
 }
 
-/* =========================
-   MAIN GAME
-========================= */
-
-#game{
-    width:100%;
-    height:100%;
-    position:relative;
-    overflow:hidden;
-    background:
-        radial-gradient(circle at 50% 20%, #29467e 0%, transparent 35%),
-        linear-gradient(135deg,#071426,#111b38 50%,#090817);
+button{
+    font-family:inherit;
 }
-
-/* glowing background */
-
-#game::before{
-    content:"";
-    position:absolute;
-    inset:-20%;
-    background:
-        radial-gradient(circle,#486db0 0%,transparent 20%),
-        radial-gradient(circle at 80% 80%,#4c1935 0%,transparent 22%);
-    opacity:.25;
-    animation:backgroundMove 8s infinite alternate;
-}
-
-@keyframes backgroundMove{
-    from{transform:scale(1);}
-    to{transform:scale(1.15) rotate(2deg);}
-}
-
-/* =========================
-   SCREEN SYSTEM
-========================= */
 
 .screen{
     position:absolute;
     inset:0;
     display:none;
-    flex-direction:column;
     justify-content:center;
     align-items:center;
     text-align:center;
     padding:25px;
-    z-index:2;
+    overflow:hidden;
 }
 
 .screen.active{
     display:flex;
-    animation:screenIn .7s ease;
+    animation:screenIn .5s ease;
 }
 
 @keyframes screenIn{
     from{
         opacity:0;
-        transform:scale(1.04);
+        transform:scale(1.03);
     }
     to{
         opacity:1;
@@ -87,243 +53,286 @@ html,body{
     }
 }
 
-/* =========================
-   TYPOGRAPHY
-========================= */
-
-.small-title{
-    letter-spacing:4px;
-    font-size:12px;
-    color:#aebddd;
-    margin-bottom:12px;
-}
-
-.big-title{
-    font-size:clamp(35px,7vw,80px);
-    font-weight:900;
-    letter-spacing:3px;
-    text-transform:uppercase;
-    text-shadow:
-        0 4px 15px #000,
-        0 0 25px rgba(126,170,255,.5);
-}
-
-.gold{
-    color:#e8c77b;
-}
-
-.pink{
-    color:#ff7ea9;
-}
-
-/* =========================
-   BUTTON
-========================= */
-
-.game-btn{
-    border:none;
-    margin-top:30px;
-    padding:15px 42px;
-    min-width:190px;
-    border-radius:8px;
-    cursor:pointer;
-    font-weight:800;
-    letter-spacing:1px;
-    color:#fff;
-    background:
-        linear-gradient(#b9924b,#60441e);
-    border:1px solid #e8ca83;
-    box-shadow:
-        0 0 20px rgba(221,180,91,.3),
-        inset 0 1px rgba(255,255,255,.4);
-    transition:.25s;
-}
-
-.game-btn:hover{
-    transform:scale(1.06);
-    box-shadow:
-        0 0 30px rgba(241,198,91,.6);
-}
-
-.secondary{
-    background:linear-gradient(#294e7d,#152943);
-    border-color:#6e9dd2;
-}
-
-/* =========================
-   START SCREEN
-========================= */
-
-.start-bg{
+.game-bg{
     position:absolute;
     inset:0;
     background:
-        radial-gradient(circle at 50% 35%,rgba(120,150,255,.3),transparent 25%),
-        linear-gradient(160deg,#08152d,#171837,#250f24);
+        radial-gradient(circle at 50% 20%,#314b83 0%,transparent 30%),
+        radial-gradient(circle at 80% 80%,#4d1938 0%,transparent 25%),
+        linear-gradient(145deg,#061022,#10192d,#160c1b);
 }
 
-.start-content{
+.game-bg::after{
+    content:"";
+    position:absolute;
+    inset:0;
+    background:
+        linear-gradient(115deg,transparent 40%,rgba(255,255,255,.04) 50%,transparent 60%);
+    animation:shine 5s infinite linear;
+}
+
+@keyframes shine{
+    from{transform:translateX(-100%);}
+    to{transform:translateX(100%);}
+}
+
+.content{
     position:relative;
-    z-index:3;
+    z-index:2;
+    width:min(1100px,96vw);
 }
 
-.rank-symbol{
-    width:110px;
-    height:110px;
-    margin:auto;
+.mini{
+    color:#aebbd0;
+    font-size:12px;
+    letter-spacing:4px;
+    margin-bottom:12px;
+}
+
+.title{
+    font-size:clamp(40px,8vw,85px);
+    font-weight:900;
+    letter-spacing:3px;
+    text-transform:uppercase;
+    text-shadow:0 5px 25px #000;
+}
+
+.gold{
+    color:#e5c46b;
+}
+
+.pink{
+    color:#ff739d;
+}
+
+.btn{
+    margin-top:25px;
+    padding:14px 42px;
+    border-radius:7px;
+    border:1px solid #e2c574;
+    background:linear-gradient(#b8934c,#59421f);
+    color:white;
+    font-weight:900;
+    letter-spacing:1px;
+    cursor:pointer;
+    box-shadow:0 0 20px #d9b75d33;
+    transition:.2s;
+}
+
+.btn:hover{
+    transform:scale(1.05);
+    box-shadow:0 0 30px #d9b75d66;
+}
+
+.btn:disabled{
+    opacity:.35;
+    cursor:not-allowed;
+    transform:none;
+}
+
+.blue-btn{
+    border-color:#78a9df;
+    background:linear-gradient(#315a8c,#152842);
+}
+
+.red-btn{
+    border-color:#e07080;
+    background:linear-gradient(#8a3547,#3d1723);
+}
+
+/* START */
+
+.rank-logo{
+    width:115px;
+    height:115px;
     border-radius:50%;
-    border:3px solid #e3c777;
+    margin:auto;
     display:flex;
-    align-items:center;
     justify-content:center;
-    font-size:45px;
-    background:radial-gradient(circle,#7b6a3d,#18192c);
-    box-shadow:0 0 40px rgba(227,199,119,.5);
-    animation:float 3s infinite ease-in-out;
+    align-items:center;
+    font-size:48px;
+    border:3px solid #e5c46b;
+    background:radial-gradient(circle,#71603a,#11172a);
+    box-shadow:0 0 45px #e5c46b55;
+    animation:float 2.5s infinite ease-in-out;
 }
 
 @keyframes float{
-    50%{transform:translateY(-10px);}
-}
-
-.start-sub{
-    margin-top:12px;
-    color:#c2c7d8;
+    50%{transform:translateY(-8px);}
 }
 
 .special{
-    margin-top:25px;
-    font-size:clamp(24px,5vw,50px);
+    font-size:clamp(25px,5vw,48px);
     font-weight:900;
-    color:#e4c778;
+    color:#e5c46b;
+    margin-top:20px;
 }
 
 .special span{
-    color:#ff557f;
+    color:#ff709a;
 }
 
-/* =========================
-   MATCHMAKING
-========================= */
+/* MATCHING */
 
-.search-ring{
-    width:220px;
-    height:220px;
+.search-circle{
+    width:210px;
+    height:210px;
     border-radius:50%;
-    border:2px solid #4c8eff;
+    border:2px solid #5797ff;
+    display:flex;
+    justify-content:center;
+    align-items:center;
+    margin:auto;
     box-shadow:
-        0 0 20px #3071ff,
-        inset 0 0 40px rgba(53,126,255,.2);
+        0 0 30px #347dff66,
+        inset 0 0 35px #347dff22;
+    animation:searchPulse 1.7s infinite;
+}
+
+@keyframes searchPulse{
+    50%{
+        transform:scale(1.05);
+        box-shadow:0 0 55px #347dff88;
+    }
+}
+
+.timer-big{
+    font-size:42px;
+    font-weight:900;
+}
+
+/* MATCH FOUND */
+
+.vs-area{
     display:flex;
-    align-items:center;
     justify-content:center;
-    position:relative;
-}
-
-.search-ring::before,
-.search-ring::after{
-    content:"";
-    position:absolute;
-    border-radius:50%;
-    border:1px solid rgba(100,170,255,.4);
-}
-
-.search-ring::before{
-    inset:25px;
-}
-
-.search-ring::after{
-    inset:50px;
-}
-
-.timer{
-    font-size:38px;
-    font-weight:bold;
-}
-
-/* =========================
-   MATCH FOUND
-========================= */
-
-.vs{
-    display:flex;
     align-items:center;
-    justify-content:center;
-    gap:50px;
-    margin-top:35px;
+    gap:35px;
+    margin-top:30px;
 }
 
 .player-card{
-    width:180px;
-    min-height:230px;
-    border:1px solid #45638f;
-    background:linear-gradient(145deg,#152a4a,#070d1b);
-    border-radius:12px;
+    width:200px;
     padding:15px;
-    box-shadow:0 15px 40px #0008;
+    background:linear-gradient(145deg,#172b4b,#080e1b);
+    border:1px solid #55759d;
+    border-radius:12px;
+    box-shadow:0 15px 45px #0008;
 }
 
-.hero-placeholder{
-    height:145px;
+.avatar-large{
+    height:170px;
+    display:flex;
+    justify-content:center;
+    align-items:center;
+    font-size:75px;
     border-radius:8px;
     background:
-        radial-gradient(circle at 50% 30%,#a8d0ff,#31558e 35%,#090f21 75%);
-    display:flex;
-    align-items:center;
-    justify-content:center;
-    font-size:50px;
+        radial-gradient(circle at 50% 30%,#bddaff,#3a5e91 30%,#0a1121);
     margin-bottom:10px;
 }
 
-.vs-text{
-    font-size:45px;
+.vs{
+    font-size:42px;
     font-weight:900;
-    color:#e7c76c;
+    color:#e5c46b;
 }
 
-/* =========================
-   DRAFT
-========================= */
+/* LOBBY */
 
-.draft{
+.lobby{
     width:min(1000px,95vw);
+    background:linear-gradient(145deg,#101f38,#080e19);
+    border:1px solid #4d6688;
+    border-radius:15px;
+    padding:25px;
+    box-shadow:0 20px 60px #0008;
 }
 
-.draft-header{
-    width:100%;
+.lobby-header{
     display:flex;
     justify-content:space-between;
-    align-items:center;
+    border-bottom:1px solid #354964;
+    padding-bottom:15px;
     margin-bottom:20px;
 }
 
-.phase{
-    font-size:22px;
-    font-weight:bold;
-}
-
-.countdown{
-    color:#f2cb71;
-    font-size:25px;
-}
-
-.draft-layout{
+.players{
     display:grid;
-    grid-template-columns:150px 1fr 150px;
-    gap:15px;
+    grid-template-columns:repeat(5,1fr);
+    gap:10px;
 }
 
-.side-list{
+.lobby-player{
+    min-height:150px;
+    border:1px solid #3c5577;
+    border-radius:8px;
+    background:linear-gradient(#1b3153,#080e19);
     display:flex;
     flex-direction:column;
+    justify-content:center;
+    align-items:center;
     gap:8px;
 }
 
-.slot{
-    height:55px;
-    border:1px solid #3e5576;
-    background:#091326;
+.lobby-player .face{
+    width:70px;
+    height:70px;
+    border-radius:50%;
+    background:radial-gradient(circle,#608bc0,#11192a);
+    display:flex;
+    justify-content:center;
+    align-items:center;
+    font-size:32px;
+}
+
+.ready{
+    color:#71d69c;
+    font-size:11px;
+    letter-spacing:1px;
+}
+
+/* DRAFT */
+
+.draft{
+    width:min(1100px,96vw);
+}
+
+.draft-top{
+    display:flex;
+    justify-content:space-between;
+    align-items:center;
+    margin-bottom:18px;
+}
+
+.phase{
+    font-size:25px;
+    font-weight:900;
+}
+
+.countdown{
+    color:#e7c86e;
+    font-size:27px;
+    font-weight:900;
+}
+
+.draft-grid{
+    display:grid;
+    grid-template-columns:140px 1fr 140px;
+    gap:15px;
+}
+
+.team-list{
+    display:flex;
+    flex-direction:column;
+    gap:7px;
+}
+
+.team-slot{
+    height:54px;
+    border:1px solid #3d5677;
     border-radius:6px;
+    background:#091223;
     display:flex;
     align-items:center;
     padding:8px;
@@ -337,156 +346,175 @@ html,body{
 }
 
 .hero{
-    height:90px;
-    border-radius:7px;
-    border:1px solid #536c91;
-    background:
-        linear-gradient(150deg,#455e9b,#161c3d);
-    cursor:pointer;
     position:relative;
+    height:105px;
     overflow:hidden;
+    border-radius:7px;
+    border:1px solid #526a8b;
+    background:
+        radial-gradient(circle at 50% 25%,#91bce9,#304e7e 35%,#0c1324 75%);
+    cursor:pointer;
     transition:.2s;
 }
 
 .hero:hover{
-    transform:translateY(-5px);
-    border-color:#e3c777;
-    box-shadow:0 0 20px #d9b96555;
+    transform:translateY(-4px);
+    border-color:#e6c56c;
 }
 
-.hero::after{
-    content:"";
+.hero.selected{
+    border:3px solid #e8c76c;
+    box-shadow:
+        0 0 18px #e8c76c,
+        inset 0 0 25px #e8c76c44;
+    transform:translateY(-5px);
+}
+
+.hero.banned{
+    filter:grayscale(1);
+    opacity:.35;
+    cursor:not-allowed;
+}
+
+.hero.banned::before{
+    content:"BANNED";
     position:absolute;
-    bottom:0;
-    left:0;
-    right:0;
-    padding:8px;
-    background:linear-gradient(transparent,#000);
+    inset:0;
+    display:flex;
+    align-items:center;
+    justify-content:center;
+    background:#850d22aa;
+    color:#ff7589;
+    font-weight:900;
+    font-size:15px;
+    z-index:5;
+}
+
+.hero-symbol{
+    font-size:45px;
+    padding-top:15px;
 }
 
 .hero-name{
     position:absolute;
-    bottom:6px;
-    left:6px;
-    z-index:2;
+    bottom:0;
+    left:0;
+    right:0;
+    padding:7px;
+    text-align:left;
     font-size:11px;
+    font-weight:bold;
+    background:linear-gradient(transparent,#000);
 }
 
-/* =========================
-   LOCKED
-========================= */
+/* LOCK */
 
-.locked-card{
-    width:min(500px,90vw);
-    background:linear-gradient(145deg,#192d4c,#070d1c);
-    border:1px solid #d4b764;
-    border-radius:15px;
+.lock-card{
+    width:min(500px,92vw);
     padding:25px;
-    box-shadow:0 0 50px rgba(202,166,70,.25);
+    border:1px solid #d9bc68;
+    border-radius:15px;
+    background:linear-gradient(145deg,#182c4c,#080e1b);
+    box-shadow:0 0 60px #d9bc6822;
 }
 
-.locked-hero{
+.lock-hero{
     height:280px;
-    border-radius:12px;
+    border-radius:10px;
     background:
-        radial-gradient(circle at 50% 25%,#c4e2ff,#486ca4 30%,#10172c 75%);
+        radial-gradient(circle at 50% 25%,#c5e3ff,#476a9d 30%,#0b1223 75%);
     display:flex;
     align-items:center;
     justify-content:center;
     font-size:100px;
 }
 
-/* =========================
-   LOADING
-========================= */
+/* LOADING */
 
-.loading-card{
-    width:min(850px,95vw);
+.loading{
+    width:min(850px,94vw);
 }
 
-.team{
+.loading-heroes{
     display:flex;
     justify-content:center;
-    gap:12px;
-    flex-wrap:wrap;
+    gap:10px;
     margin:30px 0;
 }
 
-.avatar{
-    width:100px;
+.load-card{
+    width:105px;
     height:130px;
-    border:1px solid #5575a8;
+    border:1px solid #526c91;
     border-radius:8px;
-    background:linear-gradient(#263e68,#090e1c);
     display:flex;
-    align-items:center;
     justify-content:center;
-    font-size:38px;
+    align-items:center;
+    font-size:40px;
+    background:linear-gradient(#243b63,#080e1c);
 }
 
 .progress{
     width:100%;
     height:8px;
-    background:#182235;
+    background:#172236;
     border-radius:20px;
     overflow:hidden;
 }
 
-.progress-bar{
+.progress-fill{
+    width:0%;
     height:100%;
-    width:0;
-    background:linear-gradient(90deg,#57aaff,#caa957);
-    transition:width 3s linear;
+    background:linear-gradient(90deg,#4d9eff,#e3c36a);
+    transition:width 4s linear;
 }
 
-/* =========================
-   MAP
-========================= */
+/* MAP */
 
-.map-screen{
+.map-wrap{
     width:min(1050px,95vw);
 }
 
 .map{
+    position:relative;
     width:100%;
     aspect-ratio:16/9;
-    position:relative;
-    border-radius:15px;
     overflow:hidden;
-    border:2px solid #5c7295;
+    border:2px solid #536f8c;
+    border-radius:14px;
     background:
-        radial-gradient(circle at 20% 80%,#255f47,transparent 15%),
-        radial-gradient(circle at 80% 20%,#4c3155,transparent 15%),
-        linear-gradient(135deg,#182e36,#315b42,#183242);
-    box-shadow:0 20px 60px #000b;
+        radial-gradient(circle at 20% 20%,#41604c,transparent 20%),
+        radial-gradient(circle at 80% 80%,#503d50,transparent 20%),
+        linear-gradient(135deg,#173c37,#315d43,#18313b);
+    box-shadow:0 20px 60px #000a;
 }
 
 .lane{
     position:absolute;
     height:9px;
-    background:#a8a06d;
-    box-shadow:0 0 8px #d9ce8a;
-    transform-origin:left;
+    background:#aaa26e;
+    box-shadow:0 0 8px #d8cd86;
+    border-radius:20px;
 }
 
-.top-lane{
-    width:80%;
-    top:25%;
+.lane.top{
+    width:75%;
     left:10%;
+    top:23%;
     transform:rotate(25deg);
 }
 
-.mid-lane{
+.lane.mid{
     width:90%;
-    top:50%;
     left:5%;
+    top:50%;
     transform:rotate(-28deg);
 }
 
-.bottom-lane{
-    width:80%;
-    bottom:25%;
+.lane.bottom{
+    width:75%;
     left:10%;
+    bottom:23%;
     transform:rotate(25deg);
 }
 
@@ -495,310 +523,329 @@ html,body{
     width:65px;
     height:65px;
     border-radius:50%;
-    border:4px solid #6cb8ff;
-    background:#152a55;
-    box-shadow:0 0 30px #3d9cff;
+    border:4px solid;
 }
 
-.base.ally{
-    bottom:8%;
-    left:7%;
+.ally-base{
+    bottom:7%;
+    left:6%;
+    border-color:#61adff;
+    background:#102c5b;
+    box-shadow:0 0 35px #368cff;
 }
 
-.base.enemy{
-    top:8%;
-    right:7%;
-    border-color:#ff657a;
-    background:#441d2c;
-    box-shadow:0 0 30px #ff435b;
+.enemy-base{
+    top:7%;
+    right:6%;
+    border-color:#ff6075;
+    background:#4a1825;
+    box-shadow:0 0 35px #ff435d;
 }
 
 .map-label{
     position:absolute;
-    padding:7px 12px;
-    background:#050b18aa;
-    border:1px solid #ffffff44;
-    border-radius:6px;
+    padding:6px 10px;
+    border-radius:5px;
+    background:#040a14bb;
+    border:1px solid #ffffff33;
+    font-size:11px;
     font-weight:bold;
-    font-size:12px;
 }
 
-.exp{
-    top:15%;
-    left:5%;
-}
-
-.mid{
-    top:45%;
-    left:43%;
-}
-
-.gold{
-    bottom:12%;
-    right:5%;
-}
-
-/* =========================
-   BATTLE
-========================= */
+/* BATTLE */
 
 .battle{
     position:absolute;
     inset:0;
     background:
-        radial-gradient(circle at 50% 50%,#345c38,transparent 30%),
-        linear-gradient(135deg,#122f25,#243f2b,#111c27);
+        radial-gradient(circle at 50% 50%,#3d7044,transparent 30%),
+        linear-gradient(135deg,#142f27,#274b31,#111c27);
 }
 
-.hud-top{
+.battle::before{
+    content:"";
     position:absolute;
+    inset:0;
+    opacity:.35;
+    background:
+        repeating-linear-gradient(
+            45deg,
+            transparent,
+            transparent 30px,
+            #ffffff08 31px,
+            transparent 32px
+        );
+}
+
+.hud{
+    position:absolute;
+    z-index:5;
     top:15px;
     left:15px;
     right:15px;
     display:flex;
     justify-content:space-between;
-    z-index:4;
 }
 
-.score{
-    padding:8px 15px;
-    background:#050b18cc;
-    border:1px solid #5b7392;
-    border-radius:7px;
+.hud-box{
+    padding:8px 14px;
+    border-radius:6px;
+    background:#040a14dd;
+    border:1px solid #526a88;
+    font-size:13px;
 }
 
 .minimap{
     position:absolute;
-    top:70px;
-    left:20px;
-    width:130px;
-    height:130px;
-    border-radius:8px;
-    background:#101d2b;
-    border:2px solid #607796;
     z-index:4;
+    left:20px;
+    top:65px;
+    width:135px;
+    height:135px;
+    border-radius:8px;
+    border:2px solid #66809e;
+    background:#11202c;
 }
 
-.player{
+.battle-hero{
     position:absolute;
     left:50%;
-    top:55%;
+    top:53%;
+    transform:translate(-50%,-50%);
+    width:110px;
+    height:150px;
+    display:flex;
+    align-items:center;
+    justify-content:center;
+    font-size:75px;
+    filter:drop-shadow(0 0 12px #6ab5ff);
+    transition:.3s;
+}
+
+.enemy-hero{
+    position:absolute;
+    right:25%;
+    top:35%;
     width:100px;
     height:130px;
-    transform:translate(-50%,-50%);
     display:flex;
     align-items:center;
     justify-content:center;
     font-size:70px;
-    filter:drop-shadow(0 0 10px #67b5ff);
+    filter:drop-shadow(0 0 12px #ff4f65);
+    transition:.3s;
 }
 
-.enemy{
+.hp-container{
     position:absolute;
-    right:25%;
-    top:35%;
-    font-size:65px;
-    filter:drop-shadow(0 0 10px #ff5267);
+    width:120px;
+    top:-10px;
+    left:50%;
+    transform:translateX(-50%);
 }
 
-.health{
-    position:absolute;
-    top:-12px;
-    left:0;
-    right:0;
-    height:7px;
-    background:#ef4d65;
+.hp-bar{
+    height:8px;
+    background:#ed4c63;
     border-radius:10px;
+    transition:.4s;
 }
 
-.skills{
+.player-hp{
+    background:#45c77c;
+}
+
+.battle-actions{
     position:absolute;
-    bottom:25px;
-    right:25px;
+    z-index:8;
+    bottom:22px;
+    left:50%;
+    transform:translateX(-50%);
     display:flex;
     gap:10px;
-}
-
-.skill{
-    width:55px;
-    height:55px;
-    border-radius:50%;
-    border:2px solid #b6c7dd;
-    background:radial-gradient(circle,#476a9f,#101a30);
-    display:flex;
     align-items:center;
-    justify-content:center;
-    cursor:pointer;
-    font-size:22px;
 }
 
-.skill:hover{
+.action{
+    width:62px;
+    height:62px;
+    border-radius:50%;
+    border:2px solid #8ba5c4;
+    background:radial-gradient(circle,#4a6d9d,#101a2d);
+    color:#fff;
+    font-size:23px;
+    cursor:pointer;
+    transition:.15s;
+}
+
+.action:hover{
     transform:scale(1.1);
 }
 
-.joystick{
+.action.attack{
+    border-color:#f06b78;
+}
+
+.action.skill{
+    border-color:#e4c46b;
+}
+
+.action.defend{
+    border-color:#6caeff;
+}
+
+.action.tower{
+    border-color:#bd88e8;
+}
+
+.battle-message{
     position:absolute;
-    bottom:30px;
-    left:30px;
-    width:95px;
-    height:95px;
-    border-radius:50%;
-    border:2px solid #ffffff44;
-    background:#09132399;
+    z-index:10;
+    left:50%;
+    top:22%;
+    transform:translateX(-50%);
+    min-width:220px;
+    padding:10px 18px;
+    border-radius:8px;
+    background:#050b18dd;
+    border:1px solid #ffffff33;
+    opacity:0;
+    transition:.3s;
 }
 
-/* =========================
-   VICTORY
-========================= */
-
-.victory{
-    position:relative;
-    z-index:3;
+.battle-message.show{
+    opacity:1;
 }
 
-.victory-icon{
+.damage{
+    position:absolute;
+    z-index:20;
+    color:#ff667a;
+    font-size:26px;
+    font-weight:900;
+    animation:damageFloat 1s forwards;
+}
+
+@keyframes damageFloat{
+    from{
+        opacity:1;
+        transform:translateY(0);
+    }
+    to{
+        opacity:0;
+        transform:translateY(-55px);
+    }
+}
+
+/* VICTORY */
+
+.victory-symbol{
     width:180px;
     height:180px;
     border-radius:50%;
-    border:5px solid #e5c66d;
+    border:5px solid #e6c66d;
     display:flex;
     justify-content:center;
     align-items:center;
     font-size:80px;
-    background:radial-gradient(circle,#726039,#11182b);
-    box-shadow:0 0 60px #e5c66d66;
-    animation:victoryPulse 2s infinite;
+    background:radial-gradient(circle,#71603d,#0e1426);
+    box-shadow:0 0 70px #e6c66d66;
+    animation:victoryPulse 1.7s infinite;
 }
 
 @keyframes victoryPulse{
     50%{
-        transform:scale(1.05);
-        box-shadow:0 0 90px #e5c66d88;
+        transform:scale(1.07);
+        box-shadow:0 0 100px #e6c66d99;
     }
 }
 
-/* =========================
-   REWARD
-========================= */
+/* REWARD */
 
-.reward-box{
-    width:min(500px,90vw);
+.reward-card{
+    width:min(500px,92vw);
     padding:35px;
     border-radius:15px;
-    background:linear-gradient(145deg,#172b4b,#080e1c);
-    border:1px solid #d9bc6c;
+    border:1px solid #d8ba68;
+    background:linear-gradient(145deg,#192d4b,#080e1c);
     box-shadow:0 20px 60px #000;
 }
 
 .reward-icon{
-    font-size:80px;
+    font-size:75px;
     margin:15px;
 }
 
-.reward-number{
-    font-size:45px;
-    color:#ff79a5;
+.points{
+    color:#ff78a4;
+    font-size:40px;
     font-weight:900;
 }
 
-/* =========================
-   CUDDLE
-========================= */
+/* CUDDLE */
 
-.cuddle{
-    width:min(650px,90vw);
+.cuddle-card{
+    width:min(650px,92vw);
     padding:35px;
-    background:
-        linear-gradient(145deg,#28172b,#0a1222);
-    border:1px solid #e3a1ba;
     border-radius:20px;
-    box-shadow:0 0 60px #f06f9b33;
+    border:1px solid #d997b2;
+    background:linear-gradient(145deg,#2b172b,#0b1220);
+    box-shadow:0 0 60px #f0789b33;
 }
 
 .heart{
     font-size:75px;
-    animation:heartBeat 1.4s infinite;
+    animation:heartbeat 1.2s infinite;
 }
 
-@keyframes heartBeat{
-    50%{transform:scale(1.2);}
+@keyframes heartbeat{
+    50%{transform:scale(1.18);}
 }
 
-.cuddle h2{
-    color:#ff91b4;
-    margin:15px 0;
+.cuddle-title{
     font-size:38px;
+    color:#ff91b4;
+    font-weight:900;
+    margin:15px 0;
 }
 
-/* =========================
-   LETTER
-========================= */
+/* LETTER */
 
 .letter{
-    width:min(700px,92vw);
-    max-height:75vh;
+    width:min(720px,92vw);
+    max-height:78vh;
     overflow:auto;
-    padding:40px;
+    padding:38px;
     text-align:left;
     color:#332b2c;
-    background:
-        linear-gradient(#f9efd9,#ead7b7);
+    background:linear-gradient(#faf0dc,#ead8b9);
     border-radius:5px;
-    box-shadow:0 20px 70px #000b;
-    position:relative;
-}
-
-.letter::before{
-    content:"♥";
-    position:absolute;
-    top:15px;
-    right:20px;
-    font-size:30px;
-    color:#a93e57;
+    box-shadow:0 25px 70px #000c;
 }
 
 .letter h2{
+    color:#682536;
     text-align:center;
     margin-bottom:25px;
-    color:#682536;
 }
 
 .letter p{
     line-height:1.8;
-    margin-bottom:18px;
+    margin-bottom:17px;
 }
 
-/* =========================
-   END
-========================= */
-
-.end{
-    background:
-        radial-gradient(circle at 50% 40%,#6b2c42,transparent 25%),
-        linear-gradient(135deg,#090c18,#241321,#090c18);
-}
-
-.end .heart{
-    color:#ff6f9e;
-}
-
-/* =========================
-   MOBILE
-========================= */
+/* MOBILE */
 
 @media(max-width:700px){
 
-    .big-title{
-        font-size:38px;
+    .players{
+        grid-template-columns:repeat(2,1fr);
+        max-height:55vh;
+        overflow:auto;
     }
 
-    .vs{
-        gap:10px;
-        transform:scale(.8);
-    }
-
-    .draft-layout{
-        grid-template-columns:70px 1fr 70px;
+    .draft-grid{
+        grid-template-columns:65px 1fr 65px;
     }
 
     .hero-grid{
@@ -806,24 +853,45 @@ html,body{
     }
 
     .hero{
-        height:65px;
+        height:75px;
+    }
+
+    .hero-symbol{
+        font-size:32px;
+    }
+
+    .team-slot{
+        font-size:9px;
+    }
+
+    .vs-area{
+        gap:10px;
+        transform:scale(.8);
     }
 
     .player-card{
-        width:130px;
-        min-height:180px;
+        width:150px;
     }
 
-    .hero-placeholder{
-        height:110px;
+    .battle-actions{
+        gap:5px;
+    }
+
+    .action{
+        width:50px;
+        height:50px;
+        font-size:18px;
+    }
+
+    .minimap{
+        width:100px;
+        height:100px;
     }
 
     .letter{
         padding:25px;
     }
-
 }
-
 </style>
 </head>
 
@@ -831,21 +899,17 @@ html,body{
 
 <div id="game">
 
-<!-- =========================
-START
-========================= -->
-
+<!-- START -->
 <section class="screen active" id="start">
+<div class="game-bg"></div>
 
-<div class="start-bg"></div>
+<div class="content">
 
-<div class="start-content">
+<div class="rank-logo">✦</div>
 
-<div class="rank-symbol">✦</div>
+<div class="mini">SPECIAL EDITION</div>
 
-<div class="small-title">SPECIAL EDITION</div>
-
-<div class="big-title">
+<div class="title">
 RANKED MATCH
 </div>
 
@@ -853,488 +917,641 @@ RANKED MATCH
 ZAKY <span>×</span> SASA
 </div>
 
-<div class="start-sub">
-Are you ready, baee? ♥
-</div>
+<p style="margin-top:12px;color:#bbc4d5;">
+special edition of moba for ma baeee ♥
+</p>
 
-<button class="game-btn" onclick="next('matchmaking')">
-START GAME
+<button class="btn" onclick="go('matchmaking')">
+READY
 </button>
 
 </div>
-
 </section>
 
 
-<!-- =========================
-MATCHMAKING
-========================= -->
-
+<!-- MATCHMAKING -->
 <section class="screen" id="matchmaking">
+<div class="game-bg"></div>
 
-<div class="small-title">RANKED MATCH</div>
+<div class="content">
 
-<div class="search-ring">
-<div class="timer" id="timer">00:12</div>
+<div class="mini">RANKED MATCHMAKING</div>
+
+<div class="search-circle">
+<div class="timer-big" id="matchTimer">
+00:12
+</div>
 </div>
 
 <h2 style="margin-top:25px;">
-Finding the perfect match...
+SEARCHING FOR MATCH...
 </h2>
 
-<button class="game-btn secondary" onclick="next('found')">
-CANCEL
+<p id="matchStatus" style="margin-top:10px;color:#9eacc3;">
+Looking for someone worth your time...
+</p>
+
+<button class="btn blue-btn" onclick="go('found')">
+START
 </button>
 
+</div>
 </section>
 
 
-<!-- =========================
-MATCH FOUND
-========================= -->
-
+<!-- MATCH FOUND -->
 <section class="screen" id="found">
+<div class="game-bg"></div>
 
-<div class="small-title">
-MATCH FOUND
-</div>
+<div class="content">
 
-<div class="vs">
+<div class="mini">MATCH FOUND</div>
+
+<div class="vs-area">
 
 <div class="player-card">
-<div class="hero-placeholder">⚔</div>
+<div class="avatar-large">⚔</div>
 <strong>ZAKY</strong>
+<p style="color:#72d69c;margin-top:6px;">
+READY
+</p>
 </div>
 
-<div class="vs-text">VS</div>
+<div class="vs">VS</div>
 
 <div class="player-card">
-<div class="hero-placeholder">?</div>
-<strong>ENEMY</strong>
+<div class="avatar-large">♥</div>
+<strong>SASA</strong>
+<p style="color:#72d69c;margin-top:6px;">
+READY
+</p>
 </div>
 
 </div>
 
-<button class="game-btn" onclick="next('ban')">
-LET'S GO!
+<button class="btn" onclick="go('lobby')">
+ACCEPT
 </button>
 
+</div>
 </section>
 
 
-<!-- =========================
-BAN
-========================= -->
+<!-- LOBBY -->
+<section class="screen" id="lobby">
+<div class="game-bg"></div>
 
+<div class="content">
+
+<div class="lobby">
+
+<div class="lobby-header">
+<strong>RANKED LOBBY</strong>
+<span id="lobbyTimer">READY CHECK</span>
+</div>
+
+<div class="players">
+
+<div class="lobby-player">
+<div class="face">⚔</div>
+<strong>ZAKY</strong>
+<span class="ready">READY</span>
+</div>
+
+<div class="lobby-player">
+<div class="face">♥</div>
+<strong>YOU</strong>
+<span class="ready">READY</span>
+</div>
+
+<div class="lobby-player">
+<div class="face">?</div>
+<span>PLAYER 03</span>
+</div>
+
+<div class="lobby-player">
+<div class="face">?</div>
+<span>PLAYER 04</span>
+</div>
+
+<div class="lobby-player">
+<div class="face">?</div>
+<span>PLAYER 05</span>
+</div>
+
+</div>
+
+<button class="btn" onclick="startBan()">
+ENTER DRAFT
+</button>
+
+</div>
+
+</div>
+</section>
+
+
+<!-- BAN -->
 <section class="screen" id="ban">
+<div class="game-bg"></div>
+
+<div class="content">
 
 <div class="draft">
 
-<div class="draft-header">
-<div class="phase">
-BAN PHASE
+<div class="draft-top">
+<div class="phase">BAN PHASE</div>
+<div class="countdown" id="banTimer">00:20</div>
 </div>
 
-<div class="countdown">
-00:23
-</div>
-</div>
+<p style="color:#9faec2;margin-bottom:15px;">
+Choose one hero to ban.
+</p>
 
-<div class="draft-layout">
+<div class="draft-grid">
 
-<div class="side-list">
-<div class="slot">Zaky</div>
-<div class="slot">YOU</div>
-<div class="slot">♡</div>
-<div class="slot">♡</div>
-<div class="slot">♡</div>
+<div class="team-list">
+<div class="team-slot">ZAKY</div>
+<div class="team-slot">YOU</div>
+<div class="team-slot">PLAYER</div>
+<div class="team-slot">PLAYER</div>
+<div class="team-slot">PLAYER</div>
 </div>
 
 <div>
 
-<div class="hero-grid">
+<div class="hero-grid" id="banHeroes">
 
-<div class="hero">⚔<span class="hero-name">HERO 01</span></div>
-<div class="hero">♠<span class="hero-name">HERO 02</span></div>
-<div class="hero">✦<span class="hero-name">HERO 03</span></div>
-<div class="hero">☄<span class="hero-name">HERO 04</span></div>
-<div class="hero">♛<span class="hero-name">HERO 05</span></div>
+<div class="hero" onclick="selectBan(this,'Gusion')">
+<div class="hero-symbol">⚔</div>
+<div class="hero-name">Gusion</div>
+</div>
 
-<div class="hero">⚡<span class="hero-name">HERO 06</span></div>
-<div class="hero">♜<span class="hero-name">HERO 07</span></div>
-<div class="hero">✧<span class="hero-name">HERO 08</span></div>
-<div class="hero">☾<span class="hero-name">HERO 09</span></div>
-<div class="hero">♣<span class="hero-name">HERO 10</span></div>
+<div class="hero" onclick="selectBan(this,'Lancelot')">
+<div class="hero-symbol">♠</div>
+<div class="hero-name">Lancelot</div>
+</div>
 
-<div class="hero">✹<span class="hero-name">HERO 11</span></div>
-<div class="hero">⚔<span class="hero-name">HERO 12</span></div>
-<div class="hero">♠<span class="hero-name">HERO 13</span></div>
-<div class="hero">✦<span class="hero-name">HERO 14</span></div>
-<div class="hero">☄<span class="hero-name">HERO 15</span></div>
+<div class="hero" onclick="selectBan(this,'Ling')">
+<div class="hero-symbol">✦</div>
+<div class="hero-name">Ling</div>
+</div>
+
+<div class="hero" onclick="selectBan(this,'Hayabusa')">
+<div class="hero-symbol">☄</div>
+<div class="hero-name">Hayabusa</div>
+</div>
+
+<div class="hero" onclick="selectBan(this,'Fanny')">
+<div class="hero-symbol">♛</div>
+<div class="hero-name">Fanny</div>
+</div>
+
+<div class="hero" onclick="selectBan(this,'Yin')">
+<div class="hero-symbol">⚡</div>
+<div class="hero-name">Yin</div>
+</div>
+
+<div class="hero" onclick="selectBan(this,'Alucard')">
+<div class="hero-symbol">♜</div>
+<div class="hero-name">Alucard</div>
+</div>
+
+<div class="hero" onclick="selectBan(this,'Chou')">
+<div class="hero-symbol">✧</div>
+<div class="hero-name">Chou</div>
+</div>
+
+<div class="hero" onclick="selectBan(this,'Julian')">
+<div class="hero-symbol">☾</div>
+<div class="hero-name">Julian</div>
+</div>
+
+<div class="hero" onclick="selectBan(this,'Granger')">
+<div class="hero-symbol">♣</div>
+<div class="hero-name">Granger</div>
+</div>
 
 </div>
 
-<button class="game-btn" onclick="next('pick')">
-BAN HERO
+<button class="btn red-btn" id="banButton" disabled onclick="confirmBan()">
+SELECT HERO FIRST
 </button>
 
-</div>
-
-<div class="side-list">
-<div class="slot">ENEMY</div>
-<div class="slot">?</div>
-<div class="slot">?</div>
-<div class="slot">?</div>
-<div class="slot">?</div>
-</div>
+<p id="banStatus" style="margin-top:12px;color:#e3c46c;">
+No hero selected
+</p>
 
 </div>
 
+<div class="team-list">
+<div class="team-slot">ENEMY</div>
+<div class="team-slot">?</div>
+<div class="team-slot">?</div>
+<div class="team-slot">?</div>
+<div class="team-slot">?</div>
 </div>
 
+</div>
+</div>
+
+</div>
 </section>
 
 
-<!-- =========================
-PICK HERO
-========================= -->
-
+<!-- PICK -->
 <section class="screen" id="pick">
+<div class="game-bg"></div>
+
+<div class="content">
 
 <div class="draft">
 
-<div class="phase">
-PICK PHASE
+<div class="draft-top">
+<div class="phase">PICK PHASE</div>
+<div class="countdown" id="pickTimer">00:25</div>
 </div>
 
-<div class="countdown">
-00:28
-</div>
-
-<div class="hero-grid" style="margin-top:25px;">
-
-<div class="hero" onclick="next('locked')">⚔<span class="hero-name">Gusion</span></div>
-<div class="hero">♠<span class="hero-name">Hero 02</span></div>
-<div class="hero">✦<span class="hero-name">Hero 03</span></div>
-<div class="hero">☄<span class="hero-name">Hero 04</span></div>
-<div class="hero">♛<span class="hero-name">Hero 05</span></div>
-
-<div class="hero">⚡<span class="hero-name">Hero 06</span></div>
-<div class="hero">♜<span class="hero-name">Hero 07</span></div>
-<div class="hero">✧<span class="hero-name">Hero 08</span></div>
-<div class="hero">☾<span class="hero-name">Hero 09</span></div>
-<div class="hero">♣<span class="hero-name">Hero 10</span></div>
-
-</div>
-
-<p style="margin-top:20px;color:#9daac0;">
-Choose your hero...
+<p style="color:#9faec2;margin-bottom:15px;">
+Choose your hero.
 </p>
 
+<div class="hero-grid" id="pickHeroes">
+
+<div class="hero" onclick="selectPick(this,'Gusion')">
+<div class="hero-symbol">⚔</div>
+<div class="hero-name">Gusion</div>
 </div>
 
-</section>
-
-
-<!-- =========================
-LOCKED
-========================= -->
-
-<section class="screen" id="locked">
-
-<div class="locked-card">
-
-<div class="locked-hero">
-⚔
+<div class="hero" onclick="selectPick(this,'Lancelot')">
+<div class="hero-symbol">♠</div>
+<div class="hero-name">Lancelot</div>
 </div>
 
-<div class="small-title" style="margin-top:20px;">
-YOUR HERO
+<div class="hero" onclick="selectPick(this,'Ling')">
+<div class="hero-symbol">✦</div>
+<div class="hero-name">Ling</div>
 </div>
 
-<div class="big-title" style="font-size:35px;">
-LOCKED IN
+<div class="hero" onclick="selectPick(this,'Hayabusa')">
+<div class="hero-symbol">☄</div>
+<div class="hero-name">Hayabusa</div>
 </div>
 
-<p style="margin-top:10px;color:#aebbd0;">
-Let's do this, baeee ♥
+<div class="hero" onclick="selectPick(this,'Fanny')">
+<div class="hero-symbol">♛</div>
+<div class="hero-name">Fanny</div>
+</div>
+
+<div class="hero" onclick="selectPick(this,'Yin')">
+<div class="hero-symbol">⚡</div>
+<div class="hero-name">Yin</div>
+</div>
+
+<div class="hero" onclick="selectPick(this,'Alucard')">
+<div class="hero-symbol">♜</div>
+<div class="hero-name">Alucard</div>
+</div>
+
+<div class="hero" onclick="selectPick(this,'Chou')">
+<div class="hero-symbol">✧</div>
+<div class="hero-name">Chou</div>
+</div>
+
+<div class="hero" onclick="selectPick(this,'Julian')">
+<div class="hero-symbol">☾</div>
+<div class="hero-name">Julian</div>
+</div>
+
+<div class="hero" onclick="selectPick(this,'Granger')">
+<div class="hero-symbol">♣</div>
+<div class="hero-name">Granger</div>
+</div>
+
+</div>
+
+<p id="pickStatus" style="margin-top:15px;color:#9faec2;">
+No hero selected
 </p>
 
-<button class="game-btn" onclick="next('loading')">
-LOCKED IN
+<button class="btn" id="pickButton" disabled onclick="confirmPick()">
+SELECT HERO FIRST
 </button>
 
 </div>
 
+</div>
 </section>
 
 
-<!-- =========================
-LOADING
-========================= -->
+<!-- LOCKED -->
+<section class="screen" id="locked">
+<div class="game-bg"></div>
 
+<div class="content">
+
+<div class="lock-card">
+
+<div class="lock-hero" id="lockedHero">
+⚔
+</div>
+
+<div class="mini" style="margin-top:18px;">
+YOUR HERO
+</div>
+
+<div class="title" style="font-size:38px;">
+LOCKED IN
+</div>
+
+<h3 id="lockedName" style="color:#e5c46b;margin-top:8px;">
+Gusion
+</h3>
+
+<p style="margin-top:10px;color:#abb8cb;">
+Okay baby boy, let's cook. ♥
+</p>
+
+<button class="btn" onclick="go('loading')">
+CONFIRM
+</button>
+
+</div>
+
+</div>
+</section>
+
+
+<!-- LOADING -->
 <section class="screen" id="loading">
+<div class="game-bg"></div>
 
-<div class="loading-card">
+<div class="content">
 
-<div class="big-title" style="font-size:35px;">
+<div class="loading">
+
+<div class="mini">ENTERING BATTLEFIELD</div>
+
+<div class="title" style="font-size:45px;">
 LOADING
 </div>
 
-<div class="team">
+<div class="loading-heroes">
 
-<div class="avatar">⚔</div>
-<div class="avatar">✦</div>
-<div class="avatar">♠</div>
-<div class="avatar">☄</div>
-<div class="avatar">♛</div>
+<div class="load-card">⚔</div>
+<div class="load-card">✦</div>
+<div class="load-card">♠</div>
+<div class="load-card">☄</div>
+<div class="load-card">♛</div>
 
 </div>
 
 <div class="progress">
-<div class="progress-bar" id="progress"></div>
+<div class="progress-fill" id="loadBar"></div>
 </div>
 
-<p style="margin-top:20px;color:#9daac0;">
+<p style="margin-top:15px;color:#aebbd0;">
 Preparing battlefield...
 </p>
 
-<button class="game-btn" onclick="next('land')">
-ENTER THE LAND
+<button class="btn" onclick="go('land')">
+ENTER LAND
 </button>
 
 </div>
 
+</div>
 </section>
 
 
-<!-- =========================
-LAND
-========================= -->
-
+<!-- LAND -->
 <section class="screen" id="land">
+<div class="game-bg"></div>
 
-<div class="map-screen">
+<div class="content">
 
-<div class="small-title">
-THE LAND
-</div>
+<div class="map-wrap">
+
+<div class="mini">BATTLEFIELD</div>
 
 <div class="map">
 
-<div class="lane top-lane"></div>
-<div class="lane mid-lane"></div>
-<div class="lane bottom-lane"></div>
+<div class="lane top"></div>
+<div class="lane mid"></div>
+<div class="lane bottom"></div>
 
-<div class="base ally"></div>
-<div class="base enemy"></div>
+<div class="base ally-base"></div>
+<div class="base enemy-base"></div>
 
-<div class="map-label exp">
+<div class="map-label" style="top:12%;left:5%;">
 EXP LANE
 </div>
 
-<div class="map-label mid">
+<div class="map-label" style="top:46%;left:43%;">
 MID LANE
 </div>
 
-<div class="map-label gold">
+<div class="map-label" style="bottom:12%;right:5%;">
 GOLD LANE
 </div>
 
 </div>
 
-<button class="game-btn" onclick="next('battle')">
+<button class="btn" onclick="startBattle()">
 ENTER BATTLE
 </button>
 
 </div>
 
+</div>
 </section>
 
 
-<!-- =========================
-BATTLE
-========================= -->
-
+<!-- BATTLE -->
 <section class="screen" id="battle">
 
 <div class="battle">
 
-<div class="hud-top">
+<div class="hud">
 
-<div class="score">
-ZAKY&nbsp;&nbsp; 8 — 4 &nbsp;&nbsp; ENEMY
+<div class="hud-box">
+ZAKY &nbsp; <span id="score">0</span> — 0 &nbsp; ENEMY
 </div>
 
-<div class="score">
-$ 812
+<div class="hud-box">
+GOLD: <span id="gold">500</span>
 </div>
 
 </div>
 
 <div class="minimap"></div>
 
-<div class="player">
+<div class="battle-hero" id="battlePlayer">
 
-<div class="health"></div>
+<div class="hp-container">
+<div class="hp-bar player-hp" id="playerHp"></div>
+</div>
 
 ⚔
 
 </div>
 
-<div class="enemy">
+<div class="enemy-hero" id="enemyHero">
+
+<div class="hp-container">
+<div class="hp-bar" id="enemyHp"></div>
+</div>
+
 ☄
-</div>
-
-<div class="joystick"></div>
-
-<div class="skills">
-
-<div class="skill">✦</div>
-<div class="skill">⚡</div>
-<div class="skill">☄</div>
-<div class="skill">✹</div>
 
 </div>
 
+<div class="battle-message" id="battleMessage">
+READY?
 </div>
 
-<button
-class="game-btn"
-style="position:absolute;z-index:10;bottom:25px;left:50%;transform:translateX(-50%);"
-onclick="next('victory')">
+<div class="battle-actions">
 
-PUSH TOWER
-
+<button class="action attack" onclick="attackEnemy()">
+⚔
 </button>
+
+<button class="action skill" onclick="skillEnemy()">
+✦
+</button>
+
+<button class="action defend" onclick="defend()">
+🛡
+</button>
+
+<button class="action tower" onclick="pushTower()">
+🏰
+</button>
+
+</div>
+
+</div>
 
 </section>
 
 
-<!-- =========================
-VICTORY
-========================= -->
-
+<!-- VICTORY -->
 <section class="screen" id="victory">
+<div class="game-bg"></div>
 
-<div class="victory">
+<div class="content">
 
-<div class="victory-icon">
+<div class="victory-symbol">
 ✦
 </div>
 
-<div class="small-title" style="margin-top:25px;">
+<div class="mini" style="margin-top:25px;">
 MATCH RESULT
 </div>
 
-<div class="big-title">
+<div class="title">
 VICTORY
 </div>
 
-<div style="margin-top:15px;font-size:25px;">
-22 <span style="color:#e35e70;">—</span> 10
-</div>
+<p id="finalScore" style="font-size:24px;margin-top:12px;">
+1 — 0
+</p>
 
-<button class="game-btn" onclick="next('reward')">
+<button class="btn" onclick="go('reward')">
 TAP TO CONTINUE
 </button>
 
 </div>
-
 </section>
 
 
-<!-- =========================
-REWARD
-========================= -->
-
+<!-- REWARD -->
 <section class="screen" id="reward">
+<div class="game-bg"></div>
 
-<div class="reward-box">
+<div class="content">
 
-<div class="small-title">
-YOU GOT
-</div>
+<div class="reward-card">
 
-<div class="reward-icon">
-✦
-</div>
+<div class="mini">REWARD UNLOCKED</div>
 
-<div class="reward-number">
+<div class="reward-icon">✦</div>
+
+<div class="points">
 +50 LOVE POINTS
 </div>
 
-<p style="margin-top:12px;">
-Keep going, baeee! ♥
+<p style="margin-top:12px;color:#c1cad8;">
+Good job, baby boy ♥
 </p>
 
-<button class="game-btn" onclick="next('cuddle')">
+<button class="btn" onclick="go('cuddle')">
 CLAIM REWARD
 </button>
 
 </div>
 
+</div>
 </section>
 
 
-<!-- =========================
-CUDDLE
-========================= -->
-
+<!-- CUDDLE -->
 <section class="screen" id="cuddle">
+<div class="game-bg"></div>
 
-<div class="cuddle">
+<div class="content">
 
-<div class="heart">
-♥
+<div class="cuddle-card">
+
+<div class="heart">♥</div>
+
+<div class="mini">
+SPECIAL REWARD
 </div>
 
-<div class="small-title">
-SPECIAL REWARD UNLOCKED
-</div>
-
-<h2>
+<div class="cuddle-title">
 CUDDLE PRIVILEGE
-</h2>
+</div>
 
-<div class="reward-number">
+<div class="points">
 +100 LOVE POINTS
 </div>
 
-<p style="margin-top:15px;line-height:1.7;color:#d6c7cf;">
-Reward ini tidak bisa ditukar dengan diamond.
-<br>
-Tidak bisa dijual.
-<br>
-Dan hanya berlaku kalau kamu mau.
+<p style="margin-top:18px;line-height:1.8;color:#d4c6cf;">
+
+Hadiah ini nggak bisa ditukar diamond.<br>
+Nggak bisa dijual.<br>
+Nggak bisa dipindahtangankan.
+
 <br><br>
 
 <strong>
 Hadiah sebenarnya:
 <br>
-a tight cuddle from me 🤍
+cuddle, hug, puk-puk kepala,
+<br>
+dan mungkin kiss kalau aku lagi berani. 😭
 </strong>
+
 </p>
 
-<button class="game-btn" onclick="next('letter')">
-CONTINUE
+<button class="btn" onclick="go('letter')">
+OPEN FINAL REWARD
 </button>
 
 </div>
 
+</div>
 </section>
 
 
-<!-- =========================
-LETTER
-========================= -->
-
+<!-- LETTER -->
 <section class="screen" id="letter">
 
 <div class="letter">
 
 <h2>
-For my baeee, ♥
+For my baby boy, ♥
 </h2>
 
 <p>
@@ -1342,66 +1559,101 @@ Zaky,
 </p>
 
 <p>
-Kalau kamu sampai di bagian ini,
-berarti kamu berhasil menyelesaikan
-satu match yang sengaja aku bikin
-khusus buat kamu.
+Kalau kamu sampai di sini berarti kamu
+berhasil menyelesaikan satu ranked match
+yang entah kenapa aku buat khusus buat kamu.
 </p>
 
 <p>
-Aku tahu akhir-akhir ini kamu mungkin
-lagi capek, banyak pikiran, atau
-kadang cuma pengen menghilang sebentar.
+Aku tahu akhir-akhir ini mungkin ada
+hari-hari yang terasa berat buat kamu.
+Kadang capek, badmood, banyak pikiran,
+atau mungkin cuma pengen diam dan
+menghilang sebentar.
 </p>
 
 <p>
-Jadi aku nggak mau website ini terasa
-seperti ceramah atau tuntutan.
-Aku cuma mau bikin satu tempat kecil
-yang isinya hal-hal yang mungkin
-bisa bikin kamu senyum.
+Aku nggak mau maksa kamu harus selalu
+cerita atau harus selalu baik-baik saja.
+Kalau memang butuh sendiri, ya sudah.
+Ambil waktu kamu.
 </p>
 
 <p>
-Pertemuan kita masih lama kan bae? 
-Aku pingin menenal kamu jauh lebih banyakk.
-Tidak sekedar suka nya saja tapi duka juga.
+Aku cuma mau kamu tahu satu hal:
+kalau suatu hari kamu pengen cerita,
+aku ada.
+Kalau nggak pengen cerita juga nggak apa-apa.
+Aku masih bisa duduk di sebelahmu,
+ngasih peluk, puk-puk, terus gangguin
+kamu sedikit sampai kamu kesel. 😭
 </p>
 
 <p>
-Terimakasih karena sudah kasih aku kesempatan, 
-terimakasih juga kamu tidak mendorong ku untuk pergi.
-Aku selalu pingin jadi rumah buat kamu apapun sikon nya
+Dan kalau suatu hari kita benar-benar
+living together...
+aku nggak akan nyuruh kamu masak.
 </p>
 
 <p>
-AYOK LAH LIVING TOGETHER AJA
-CAPEK AKU KANGEN TERUSSSS
-Nanti free hug, pukis and cuddle ahaha
+AKU AJA GABISA MASAK SHIBALL 😭
+</p>
+
+<p>
+Kita sama-sama capek.
+Jadi pulang, rebahan, cuddle,
+hug, puk-puk kepala,
+atau kalau mood-nya mendukung...
+kiss juga boleh. HEHE.
 </p>
 
 <p>
 No pressure.
 No obligation.
-Cuma dua orang yang
-sama-sama pengen merasa nyaman.
+Aku cuma pengen ada tempat
+di mana kamu bisa merasa aman
+untuk jadi diri kamu sendiri.
 </p>
 
 <p>
-Thank you for being part
-of my little story baee.
+Dan btw...
+good job karena kamu pelan-pelan
+berhenti melampiaskan semuanya
+ke minum.
+Aku tahu mungkin prosesnya nggak gampang,
+tapi menurutku itu keren.
+You did good, boy.
 </p>
 
 <p>
-— For You, Always ♥
+Kalau hari ini kamu masih capek,
+nggak apa-apa.
+Nggak semua masalah harus selesai
+hari ini.
 </p>
 
-<button
-class="game-btn"
-onclick="next('end')">
+<p>
+Istirahat dulu.
+Besok coba lagi.
+Kalau masih berat,
+yaudah...
+kita hadapin pelan-pelan.
+</p>
 
+<p>
+Aku nggak janji bisa memperbaiki
+semuanya untuk kamu.
+Tapi aku bisa jadi seseorang
+yang tetap ada di sampingmu
+sambil kamu memperbaikinya sendiri.
+</p>
+
+<p>
+— from your annoying little girl ♥
+</p>
+
+<button class="btn" onclick="go('end')">
 NEXT
-
 </button>
 
 </div>
@@ -1409,32 +1661,33 @@ NEXT
 </section>
 
 
-<!-- =========================
-END
-========================= -->
+<!-- END -->
+<section class="screen" id="end">
+<div class="game-bg"></div>
 
-<section class="screen end" id="end">
+<div class="content">
 
-<div class="small-title">
+<div class="mini">
 SPECIAL EDITION
 </div>
 
-<div class="big-title">
+<div class="title">
 THE END
 </div>
 
-<p style="margin-top:20px;color:#c6cada;">
-But our game is just beginning.
+<p style="margin-top:18px;color:#c1cada;">
+But maybe not our story.
 </p>
 
-<div class="heart" style="margin-top:25px;">
+<div class="heart" style="color:#ff709a;margin-top:25px;">
 ♥
 </div>
 
-<button class="game-btn" onclick="next('start')">
+<button class="btn" onclick="location.reload()">
 PLAY AGAIN
 </button>
 
+</div>
 </section>
 
 </div>
@@ -1442,69 +1695,708 @@ PLAY AGAIN
 
 <script>
 
-/* =========================
-   SCREEN NAVIGATION
-========================= */
+/* ================================
+   BASIC NAVIGATION
+================================ */
 
-function next(id){
+function go(id){
 
-    const screens =
-        document.querySelectorAll(".screen");
+    document.querySelectorAll(".screen")
+    .forEach(s => s.classList.remove("active"));
 
-    screens.forEach(screen=>{
-        screen.classList.remove("active");
-    });
-
-    const target =
-        document.getElementById(id);
-
-    if(target){
-        target.classList.add("active");
-    }
+    document.getElementById(id)
+    .classList.add("active");
 
     if(id === "loading"){
+        startLoading();
+    }
 
-        const bar =
-            document.getElementById("progress");
+}
 
-        bar.style.width="0%";
+
+/* ================================
+   TIMER SYSTEM
+================================ */
+
+let timerIntervals = {};
+
+function startTimer(elementId,seconds,onFinish){
+
+    clearInterval(timerIntervals[elementId]);
+
+    let remaining = seconds;
+
+    const element =
+        document.getElementById(elementId);
+
+    function update(){
+
+        let mins =
+            Math.floor(remaining / 60);
+
+        let secs =
+            remaining % 60;
+
+        element.textContent =
+            String(mins).padStart(2,"0")
+            + ":"
+            + String(secs).padStart(2,"0");
+
+    }
+
+    update();
+
+    timerIntervals[elementId] =
+        setInterval(()=>{
+
+            remaining--;
+
+            update();
+
+            if(remaining <= 0){
+
+                clearInterval(
+                    timerIntervals[elementId]
+                );
+
+                if(onFinish){
+                    onFinish();
+                }
+
+            }
+
+        },1000);
+}
+
+
+/* ================================
+   MATCHMAKING
+================================ */
+
+function startMatchmaking(){
+
+    startTimer(
+        "matchTimer",
+        12,
+        ()=>{
+            go("found");
+        }
+    );
+
+}
+
+document
+.getElementById("matchmaking")
+.addEventListener("transitionstart",()=>{});
+
+
+const originalGo = go;
+
+go = function(id){
+
+    originalGo(id);
+
+    if(id === "matchmaking"){
+        startMatchmaking();
+    }
+
+};
+
+
+/* ================================
+   BAN SYSTEM
+================================ */
+
+let selectedBan = null;
+let selectedBanName = "";
+
+function startBan(){
+
+    selectedBan = null;
+    selectedBanName = "";
+
+    document
+    .getElementById("banButton")
+    .disabled = true;
+
+    document
+    .getElementById("banButton")
+    .textContent =
+        "SELECT HERO FIRST";
+
+    document
+    .getElementById("banStatus")
+    .textContent =
+        "No hero selected";
+
+    document
+    .querySelectorAll("#banHeroes .hero")
+    .forEach(hero=>{
+        hero.classList.remove("selected");
+    });
+
+    go("ban");
+
+    startTimer(
+        "banTimer",
+        20,
+        ()=>{
+            if(!selectedBan){
+                alert("Time's up! Pick phase begins.");
+            }
+
+            go("pick");
+
+            startPickTimer();
+        }
+    );
+
+}
+
+
+function selectBan(element,name){
+
+    if(element.classList.contains("banned")){
+        return;
+    }
+
+    document
+    .querySelectorAll("#banHeroes .hero")
+    .forEach(hero=>{
+        hero.classList.remove("selected");
+    });
+
+    element.classList.add("selected");
+
+    selectedBan = element;
+    selectedBanName = name;
+
+    document
+    .getElementById("banButton")
+    .disabled = false;
+
+    document
+    .getElementById("banButton")
+    .textContent =
+        "BAN " + name.toUpperCase();
+
+    document
+    .getElementById("banStatus")
+    .textContent =
+        name + " selected";
+}
+
+
+function confirmBan(){
+
+    if(!selectedBan){
+        return;
+    }
+
+    selectedBan.classList.remove("selected");
+    selectedBan.classList.add("banned");
+
+    selectedBan.onclick = null;
+
+    document
+    .getElementById("banButton")
+    .disabled = true;
+
+    document
+    .getElementById("banButton")
+    .textContent =
+        "BANNED ✓";
+
+    document
+    .getElementById("banStatus")
+    .textContent =
+        selectedBanName + " has been banned.";
+
+    clearInterval(timerIntervals["banTimer"]);
+
+    setTimeout(()=>{
+        go("pick");
+        startPickTimer();
+    },1200);
+
+}
+
+
+/* ================================
+   PICK SYSTEM
+================================ */
+
+let selectedPick = null;
+let selectedPickName = "";
+
+function startPickTimer(){
+
+    selectedPick = null;
+    selectedPickName = "";
+
+    document
+    .querySelectorAll("#pickHeroes .hero")
+    .forEach(hero=>{
+        hero.classList.remove("selected");
+    });
+
+    document
+    .getElementById("pickButton")
+    .disabled = true;
+
+    document
+    .getElementById("pickButton")
+    .textContent =
+        "SELECT HERO FIRST";
+
+    document
+    .getElementById("pickStatus")
+    .textContent =
+        "No hero selected";
+
+    startTimer(
+        "pickTimer",
+        25,
+        ()=>{
+            if(!selectedPick){
+
+                selectedPick =
+                    document
+                    .querySelector("#pickHeroes .hero");
+
+                selectedPickName =
+                    selectedPick
+                    .querySelector(".hero-name")
+                    .textContent;
+
+            }
+
+            confirmPick();
+        }
+    );
+
+}
+
+
+function selectPick(element,name){
+
+    document
+    .querySelectorAll("#pickHeroes .hero")
+    .forEach(hero=>{
+        hero.classList.remove("selected");
+    });
+
+    element.classList.add("selected");
+
+    selectedPick = element;
+    selectedPickName = name;
+
+    document
+    .getElementById("pickButton")
+    .disabled = false;
+
+    document
+    .getElementById("pickButton")
+    .textContent =
+        "CONFIRM " + name.toUpperCase();
+
+    document
+    .getElementById("pickStatus")
+    .textContent =
+        "Selected: " + name;
+
+}
+
+
+function confirmPick(){
+
+    if(!selectedPick){
+        return;
+    }
+
+    clearInterval(timerIntervals["pickTimer"]);
+
+    document
+    .getElementById("lockedName")
+    .textContent =
+        selectedPickName;
+
+    document
+    .getElementById("lockedHero")
+    .textContent =
+        selectedPick
+        .querySelector(".hero-symbol")
+        .textContent;
+
+    go("locked");
+
+}
+
+
+/* ================================
+   LOADING
+================================ */
+
+function startLoading(){
+
+    const bar =
+        document.getElementById("loadBar");
+
+    bar.style.width = "0%";
+
+    setTimeout(()=>{
+        bar.style.width = "100%";
+    },100);
+
+}
+
+
+/* ================================
+   BATTLE VARIABLES
+================================ */
+
+let enemyHP = 100;
+let playerHP = 100;
+let score = 0;
+let gold = 500;
+let defending = false;
+let battleStarted = false;
+
+
+/* ================================
+   START BATTLE
+================================ */
+
+function startBattle(){
+
+    enemyHP = 100;
+    playerHP = 100;
+    score = 0;
+    gold = 500;
+    defending = false;
+    battleStarted = true;
+
+    updateBattleUI();
+
+    go("battle");
+
+    showMessage(
+        "ENEMY DETECTED ⚔"
+    );
+
+}
+
+
+/* ================================
+   ATTACK
+================================ */
+
+function attackEnemy(){
+
+    if(!battleStarted){
+        return;
+    }
+
+    let damage =
+        Math.floor(
+            Math.random() * 11
+        ) + 10;
+
+    enemyHP -= damage;
+
+    gold += 25;
+
+    showDamage(
+        damage,
+        "enemy"
+    );
+
+    showMessage(
+        "BASIC ATTACK! -" +
+        damage +
+        " HP"
+    );
+
+    enemyCounterAttack();
+
+    checkBattle();
+
+}
+
+
+/* ================================
+   SKILL
+================================ */
+
+function skillEnemy(){
+
+    if(!battleStarted){
+        return;
+    }
+
+    let damage =
+        Math.floor(
+            Math.random() * 16
+        ) + 20;
+
+    enemyHP -= damage;
+
+    gold += 40;
+
+    showDamage(
+        damage,
+        "enemy"
+    );
+
+    showMessage(
+        "SKILL HIT! -" +
+        damage +
+        " HP 💥"
+    );
+
+    enemyCounterAttack();
+
+    checkBattle();
+
+}
+
+
+/* ================================
+   DEFEND
+================================ */
+
+function defend(){
+
+    if(!battleStarted){
+        return;
+    }
+
+    defending = true;
+
+    showMessage(
+        "DEFEND! 🛡 DAMAGE REDUCED"
+    );
+
+    setTimeout(()=>{
+        defending = false;
+    },2000);
+
+    enemyCounterAttack();
+
+    checkBattle();
+
+}
+
+
+/* ================================
+   PUSH TOWER
+================================ */
+
+function pushTower(){
+
+    if(!battleStarted){
+        return;
+    }
+
+    let damage =
+        Math.floor(
+            Math.random() * 9
+        ) + 7;
+
+    gold += 60;
+
+    showMessage(
+        "TOWER HIT! 🏰 +" +
+        damage +
+        " GOLD"
+    );
+
+    enemyCounterAttack();
+
+    checkBattle();
+
+}
+
+
+/* ================================
+   ENEMY ATTACK
+================================ */
+
+function enemyCounterAttack(){
+
+    if(enemyHP <= 0){
+        return;
+    }
+
+    let damage =
+        Math.floor(
+            Math.random() * 8
+        ) + 5;
+
+    if(defending){
+        damage =
+            Math.floor(
+                damage * .4
+            );
+    }
+
+    playerHP -= damage;
+
+    showDamage(
+        damage,
+        "player"
+    );
+
+    updateBattleUI();
+
+}
+
+
+/* ================================
+   BATTLE CHECK
+================================ */
+
+function checkBattle(){
+
+    updateBattleUI();
+
+    if(enemyHP <= 0){
+
+        enemyHP = 0;
+        score++;
+
+        battleStarted = false;
+
+        document
+        .getElementById("finalScore")
+        .textContent =
+            score + " — 0";
 
         setTimeout(()=>{
-            bar.style.width="100%";
-        },100);
+            go("victory");
+        },1000);
+
+        return;
+    }
+
+    if(playerHP <= 0){
+
+        playerHP = 0;
+
+        battleStarted = false;
+
+        setTimeout(()=>{
+
+            alert(
+                "Defeated 😭 Tapi namanya juga ranked. Coba lagi."
+            );
+
+            go("land");
+
+        },700);
 
     }
 
 }
 
 
-/* =========================
-   MATCHMAKING TIMER
-========================= */
+/* ================================
+   UI
+================================ */
 
-let time = 12;
+function updateBattleUI(){
 
-setInterval(()=>{
+    document
+    .getElementById("enemyHp")
+    .style.width =
+        Math.max(enemyHP,0) + "%";
 
-    const timer =
-        document.getElementById("timer");
+    document
+    .getElementById("playerHp")
+    .style.width =
+        Math.max(playerHP,0) + "%";
 
-    if(
-        document.getElementById("matchmaking")
-        .classList.contains("active")
-    ){
+    document
+    .getElementById("score")
+    .textContent =
+        score;
 
-        if(time > 0){
-            time--;
+    document
+    .getElementById("gold")
+    .textContent =
+        gold;
 
-            timer.textContent =
-                "00:" +
-                String(time).padStart(2,"0");
-        }
+}
+
+
+/* ================================
+   MESSAGE
+================================ */
+
+let messageTimeout;
+
+function showMessage(text){
+
+    const message =
+        document.getElementById(
+            "battleMessage"
+        );
+
+    message.textContent = text;
+
+    message.classList.add("show");
+
+    clearTimeout(messageTimeout);
+
+    messageTimeout =
+        setTimeout(()=>{
+            message.classList.remove("show");
+        },1200);
+
+}
+
+
+/* ================================
+   DAMAGE TEXT
+================================ */
+
+function showDamage(amount,target){
+
+    const damage =
+        document.createElement("div");
+
+    damage.className = "damage";
+
+    damage.textContent =
+        "-" + amount;
+
+    if(target === "enemy"){
+
+        damage.style.left =
+            "70%";
+
+        damage.style.top =
+            "35%";
+
+    }else{
+
+        damage.style.left =
+            "48%";
+
+        damage.style.top =
+            "50%";
 
     }
 
-},1000);
+    document
+    .getElementById("battle")
+    .appendChild(damage);
+
+    setTimeout(()=>{
+        damage.remove();
+    },1000);
+
+}
 
 </script>
 
