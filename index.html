@@ -845,6 +845,14 @@ button{
     font-size:100px;
 }
 
+.lock-hero img{
+    width:100%;
+    height:100%;
+    object-fit:cover;
+    display:block;
+    border-radius:inherit;
+}
+    
 /* LOADING */
 
 .loading{
@@ -3973,7 +3981,7 @@ function selectPick(element,name){
 
 }
 
-
+    
 function confirmPick(){
 
     if(!selectedPick){
@@ -3987,12 +3995,28 @@ function confirmPick(){
     .textContent =
         selectedPickName;
 
-    document
-    .getElementById("lockedHero")
-    .textContent =
-        selectedPick
-        .querySelector(".hero-symbol")
-        .textContent;
+    const selectedImage =
+        selectedPick.querySelector("img");
+
+    const lockedHero =
+        document.getElementById("lockedHero");
+
+    lockedHero.innerHTML = "";
+
+    const heroImage =
+        document.createElement("img");
+
+    heroImage.src =
+        selectedImage.src;
+
+    heroImage.alt =
+        selectedPickName;
+
+    heroImage.style.width = "100%";
+    heroImage.style.height = "100%";
+    heroImage.style.objectFit = "cover";
+
+    lockedHero.appendChild(heroImage);
 
     go("locked");
 
