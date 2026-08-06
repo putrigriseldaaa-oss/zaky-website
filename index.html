@@ -3151,6 +3151,8 @@ ENTER LAND
     <!-- MAP -->
     <div class="moba-map" id="mobaMap">
 
+        <div id="threeHeroLayer"></div>
+
         <!-- TERRAIN -->
         <div class="terrain jungle-a"></div>
         <div class="terrain jungle-b"></div>
@@ -5868,5 +5870,379 @@ function showDamage(amount,target){
 
 </script>
 
+<script type="module">
+    import * as THREE from "https://cdn.jsdelivr.net/npm/three@0.179.1/build/three.module.js";
+
+    window.THREE = THREE;
+</script>
+
+<script type="module">
+
+import * as THREE from "https://cdn.jsdelivr.net/npm/three@0.179.1/build/three.module.js";
+
+let threeScene;
+let threeCamera;
+let threeRenderer;
+let threeHero;
+
+function create3DHero(){
+
+    const map = document.getElementById("threeHeroLayer");
+
+    if(!map){
+        console.log("threeHeroLayer tidak ditemukan");
+        return;
+    }
+
+    /* SCENE */
+
+    threeScene = new THREE.Scene();
+
+    /* CAMERA */
+
+    threeCamera =
+        new THREE.PerspectiveCamera(
+            45,
+            map.clientWidth / map.clientHeight,
+            0.1,
+            1000
+        );
+
+    threeCamera.position.set(
+        0,
+        5,
+        8
+    );
+
+    threeCamera.lookAt(
+        0,
+        1,
+        0
+    );
+
+    /* RENDERER */
+
+    threeRenderer =
+        new THREE.WebGLRenderer({
+            antialias:true,
+            alpha:true
+        });
+
+    threeRenderer.setPixelRatio(
+        Math.min(window.devicePixelRatio,2)
+    );
+
+    threeRenderer.setSize(
+        map.clientWidth,
+        map.clientHeight
+    );
+
+    map.appendChild(
+        threeRenderer.domElement
+    );
+
+    /* LIGHT */
+
+    const ambient =
+        new THREE.AmbientLight(
+            0xffffff,
+            2
+        );
+
+    threeScene.add(ambient);
+
+    const light =
+        new THREE.DirectionalLight(
+            0xffffff,
+            3
+        );
+
+    light.position.set(
+        3,
+        8,
+        5
+    );
+
+    threeScene.add(light);
+
+
+    /* HERO */
+
+    threeHero =
+        new THREE.Group();
+
+
+    /* HEAD */
+
+    const headGeometry =
+        new THREE.SphereGeometry(
+            0.32,
+            32,
+            32
+        );
+
+    const skinMaterial =
+        new THREE.MeshStandardMaterial({
+            color:0xd69b78
+        });
+
+    const head =
+        new THREE.Mesh(
+            headGeometry,
+            skinMaterial
+        );
+
+    head.position.y = 2.55;
+
+    threeHero.add(head);
+
+
+    /* BODY */
+
+    const bodyGeometry =
+        new THREE.CapsuleGeometry(
+            0.42,
+            0.9,
+            8,
+            16
+        );
+
+    const bodyMaterial =
+        new THREE.MeshStandardMaterial({
+            color:0x293b66
+        });
+
+    const body =
+        new THREE.Mesh(
+            bodyGeometry,
+            bodyMaterial
+        );
+
+    body.position.y = 1.55;
+
+    threeHero.add(body);
+
+
+    /* ARM */
+
+    const armGeometry =
+        new THREE.CapsuleGeometry(
+            0.12,
+            0.65,
+            6,
+            12
+        );
+
+    const armMaterial =
+        new THREE.MeshStandardMaterial({
+            color:0x344d7a
+        });
+
+
+    const leftArm =
+        new THREE.Mesh(
+            armGeometry,
+            armMaterial
+        );
+
+    leftArm.position.set(
+        -0.52,
+        1.65,
+        0
+    );
+
+    leftArm.rotation.z = -0.15;
+
+    threeHero.add(leftArm);
+
+
+    const rightArm =
+        new THREE.Mesh(
+            armGeometry,
+            armMaterial
+        );
+
+    rightArm.position.set(
+        0.52,
+        1.65,
+        0
+    );
+
+    rightArm.rotation.z = 0.15;
+
+    threeHero.add(rightArm);
+
+
+    /* LEGS */
+
+    const legGeometry =
+        new THREE.CapsuleGeometry(
+            0.15,
+            0.75,
+            6,
+            12
+        );
+
+    const legMaterial =
+        new THREE.MeshStandardMaterial({
+            color:0x151b2d
+        });
+
+
+    const leftLeg =
+        new THREE.Mesh(
+            legGeometry,
+            legMaterial
+        );
+
+    leftLeg.position.set(
+        -0.22,
+        0.65,
+        0
+    );
+
+    threeHero.add(leftLeg);
+
+
+    const rightLeg =
+        new THREE.Mesh(
+            legGeometry,
+            legMaterial
+        );
+
+    rightLeg.position.set(
+        0.22,
+        0.65,
+        0
+    );
+
+    threeHero.add(rightLeg);
+
+
+    /* WEAPON */
+
+    const weaponGeometry =
+        new THREE.CylinderGeometry(
+            0.04,
+            0.04,
+            1.2,
+            12
+        );
+
+    const weaponMaterial =
+        new THREE.MeshStandardMaterial({
+            color:0xe5c46b,
+            metalness:0.8,
+            roughness:0.25
+        });
+
+    const weapon =
+        new THREE.Mesh(
+            weaponGeometry,
+            weaponMaterial
+        );
+
+    weapon.position.set(
+        0.75,
+        1.7,
+        0
+    );
+
+    weapon.rotation.z =
+        -Math.PI / 4;
+
+    threeHero.add(weapon);
+
+
+    /* HERO SCALE */
+
+    threeHero.scale.set(
+        0.75,
+        0.75,
+        0.75
+    );
+
+
+    /* POSITION */
+
+    threeHero.position.set(
+        0,
+        0,
+        0
+    );
+
+    threeScene.add(
+        threeHero
+    );
+
+
+    animate3DHero();
+}
+
+
+/* ANIMATION */
+
+function animate3DHero(){
+
+    requestAnimationFrame(
+        animate3DHero
+    );
+
+    if(threeHero){
+
+        threeHero.rotation.y += 0.003;
+
+    }
+
+    threeRenderer.render(
+        threeScene,
+        threeCamera
+    );
+}
+
+
+/* RESIZE */
+
+window.addEventListener(
+    "resize",
+    () => {
+
+        const map =
+            document.getElementById(
+                "threeHeroLayer"
+            );
+
+        if(!map || !threeCamera || !threeRenderer){
+            return;
+        }
+
+        threeCamera.aspect =
+            map.clientWidth /
+            map.clientHeight;
+
+        threeCamera.updateProjectionMatrix();
+
+        threeRenderer.setSize(
+            map.clientWidth,
+            map.clientHeight
+        );
+
+    }
+);
+
+
+/* MULAI SAAT LAND DIBUKA */
+
+window.addEventListener(
+    "load",
+    () => {
+
+        create3DHero();
+
+    }
+);
+
+</script>
+    
 </body>
 </html>
